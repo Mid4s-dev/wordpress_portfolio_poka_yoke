@@ -1,0 +1,22 @@
+{
+  "name": "evelyn-portfolio",
+  "version": "1.0.0",
+  "description": "Beautiful photography portfolio theme for Evelyn with Tailwind CSS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/tailwind-input.css -o ./tailwind-output.css --watch",
+    "build": "npx tailwindcss -i ./src/tailwind-input.css -o ./tailwind-output.css --minify"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "tailwind",
+    "portfolio"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.0",
+    "tailwindcss": "^3.4.0"
+  }
+}

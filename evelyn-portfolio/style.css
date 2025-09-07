@@ -1,0 +1,249 @@
+/*
+Theme Name: Evelyn Portfolio
+Theme URI: https://example.com/
+Author: You
+Description: Beautiful photography portfolio theme for Evelyn with Tailwind CSS — Showcases images, tells stories, and includes an easy-to-manage blog.
+Version: 1.0.0
+Text Domain: evelyn-portfolio
+*/
+
+/* Base Styles */
+body { 
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    overflow-x: hidden;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, .font-heading {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Critical Tailwind Classes */
+/* Display and Positioning */
+.hidden { display: none; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.block { display: block; }
+.grid { display: grid; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.top-0 { top: 0; }
+.z-50 { z-index: 50; }
+
+/* Flex and Grid Utilities */
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-4 { gap: 1rem; }
+.space-x-8 > * + * { margin-left: 2rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+
+/* Sizing and Spacing */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.my-4 { margin-top: 1rem; margin-bottom: 1rem; }
+.mt-4 { margin-top: 1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.p-4 { padding: 1rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+/* Colors and Backgrounds */
+.text-white { color: white; }
+.text-gray-700 { color: #374151; }
+.text-gray-800 { color: #1f2937; }
+.text-blue-600 { color: #2563eb; }
+.bg-white { background-color: white; }
+.bg-blue-600 { background-color: #2563eb; }
+.bg-opacity-90 { background-color: rgba(0, 0, 0, 0.9); }
+
+/* Shadows and Effects */
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+.rounded-lg { border-radius: 0.5rem; }
+
+/* Typography */
+.text-sm { font-size: 0.875rem; }
+.text-lg { font-size: 1.125rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+.font-bold { font-weight: 700; }
+.font-medium { font-weight: 500; }
+
+/* Transitions */
+.transition { transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.duration-300 { transition-duration: 300ms; }
+
+/* Container */
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+    .sm\:block { display: block; }
+    .sm\:hidden { display: none; }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+    .md\:flex { display: flex; }
+    .md\:hidden { display: none; }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+    .lg\:flex { display: flex; }
+    .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+/* Portfolio Item Animation */
+.portfolio-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.portfolio-item.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-item:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.portfolio-item:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+/* Blog Post Hover Effects */
+.blog-post {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-post-overlay {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.blog-post-content {
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+/* Image Gallery */
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 1rem;
+}
+
+.portfolio-gallery img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-gallery img:hover {
+    transform: scale(1.03);
+}
+
+/* Button Hover Effects */
+.btn-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.6s;
+}
+
+.btn-hover:hover:after {
+    left: 100%;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section:after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+}
+
+/* Newsletter Form Enhancements */
+.newsletter-form input {
+    transition: border-color 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* Admin-side Image Placeholders */
+.editor-styles-wrapper .portfolio-hero img {
+    max-height: 420px;
+    object-fit: cover;
+    width: 100%;
+    border: 2px dashed #4F46E5;
+    padding: 2px;
+}
+
+.editor-styles-wrapper .portfolio-slot img {
+    max-height: 240px;
+    object-fit: cover;
+    width: 100%;
+    border: 2px dashed #4F46E5;
+    padding: 2px;
+}
+
+.editor-styles-wrapper .portfolio-hero:hover:before,
+.editor-styles-wrapper .portfolio-slot:hover:before {
+    content: "Click to change image";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    z-index: 10;
+}

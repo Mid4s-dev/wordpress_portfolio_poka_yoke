@@ -1,0 +1,280 @@
+/* Portfolio Styles */
+
+/* Portfolio Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.portfolio-grid.columns-2 {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+}
+
+.portfolio-grid.columns-4 {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .portfolio-grid.columns-2 {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Portfolio Items */
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item-image {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* 4:3 Aspect Ratio */
+    overflow: hidden;
+}
+
+.portfolio-item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: #fff;
+    padding: 1.5rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-item-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.portfolio-item-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.portfolio-item-categories {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+/* Hover Effects */
+.hover-effect-zoom img {
+    transition: transform 0.5s ease;
+}
+
+.hover-effect-zoom:hover img {
+    transform: scale(1.1);
+}
+
+.hover-effect-overlay .portfolio-item-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transform: none;
+}
+
+.hover-effect-overlay:hover .portfolio-item-overlay {
+    opacity: 1;
+}
+
+.hover-effect-slide .portfolio-item-overlay {
+    transform: translateY(100%);
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: transform 0.3s ease;
+}
+
+.hover-effect-slide:hover .portfolio-item-overlay {
+    transform: translateY(0);
+}
+
+.hover-effect-fade .portfolio-item-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: none;
+    transition: opacity 0.5s ease;
+}
+
+.hover-effect-fade:hover .portfolio-item-overlay {
+    opacity: 1;
+}
+
+/* Portfolio Single */
+.portfolio-single .portfolio-gallery {
+    margin: 2rem 0;
+}
+
+.portfolio-single .portfolio-gallery-item {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Portfolio Filter */
+.portfolio-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.filter-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-button.active {
+    background-color: #3B82F6;
+    color: white;
+}
+
+/* Portfolio Navigation */
+.portfolio-navigation {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Related Projects */
+.portfolio-related {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Portfolio Admin */
+.portfolio-gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.gallery-image {
+    position: relative;
+    margin: 5px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    cursor: move;
+}
+
+.gallery-image img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.remove-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2px;
+    color: red;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 18px;
+}
+
+/* Custom Lightbox Styles are now handled inline in functions.php */
+
+/* For Portfolio Image Manager tabs */
+.nav-tab-wrapper {
+    margin-bottom: 1rem;
+}
+
+.nav-tab {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    margin-right: 5px;
+    background: #f7f7f7;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+.nav-tab-active {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+    color: #0073aa;
+}
+
+.tab-content {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #2271b1;
+    transition: width 0.3s ease;
+}

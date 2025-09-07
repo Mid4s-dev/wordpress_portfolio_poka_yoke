@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+body { 
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    overflow-x: hidden;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, .font-heading {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Portfolio Item Animation */
+.portfolio-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.portfolio-item.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.portfolio-item:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.portfolio-item:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+/* Blog Post Hover Effects */
+.blog-post {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-post-overlay {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.blog-post-content {
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+/* Image Gallery */
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 1rem;
+}
+
+.portfolio-gallery img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-gallery img:hover {
+    transform: scale(1.03);
+}
+
+/* Button Hover Effects */
+.btn-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.6s;
+}
+
+.btn-hover:hover:after {
+    left: 100%;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section:after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+}
+
+/* Newsletter Form Enhancements */
+.newsletter-form input {
+    transition: border-color 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}

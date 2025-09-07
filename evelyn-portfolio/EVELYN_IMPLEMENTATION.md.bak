@@ -1,0 +1,105 @@
+Evelyn Portfolio — Implementation Overview
+
+This document describes the code Notes,Notes & recommended next steps
+- Tailwind: CDN is for prototyping; recommend setting up an npm + Tailwind build pipeline and producing a small, optimized CSS file.
+- Theme polish: add more templates (404, search, pagination), archive styling, and accessible markup improvements.aSupport & next steps
+- If you want, I can:
+  - Convert the demo post to draft (so it won't appear publicly until you want).
+  - Replace Tailwind CDN with a build pipeline and small stylesheet.
+  - Add more locked block templates (different page types) for reusability across clients.& recommended next steps
+- Tailwind: CDN is for prototyping; recommend setting up an npm + Tailwind build pipeline and producing a small, optimized CSS file.
+- Theme polish: add more templates (404, search, pagination), archive styling, and accessible markup improvements.elyn's portfolio site. It explains features, where code lives, admin pages, shortcodes, and operational notes.
+
+Summary of goals fulfilled
+- Provide a reusable theme that renders portfolio items with a beautiful, responsive UI.
+- Allow Lynn (Editor) to add images and write blog content without touching code.
+- Provide predefined image slots (block template) so content editors only replace images in fixed slots.
+- Provide global Owner Profile settings and social links used across the theme.
+- Provide onboarding and dashboard widgets to guide Lynn.
+
+Primary components and locations
+- Purpose: Lightweight, self-contained functionality.
+- Main features:
+  - Registers `portfolio` Custom Post Type (CPT) with basic supports.
+  - When WP is ready, registers a block template for `portfolio` containing:
+    - core/image (hero), core/heading, core/paragraph, and three core/image slots.
+    - `template_lock => 'insert'` so editors can replace/remove template blocks but cannot add arbitrary blocks outside the template.
+  - Enqueues Tailwind CDN for editor preview (quick visual parity).
+  - Social links meta box for portfolio items — stored in post meta `_portfolio_social`.
+  - Owner Profile settings page (Appearance → Owner Profile) — stores global options:
+    - `owner_profile_name` (string)
+    - `owner_profile_bio` (text)
+    - `owner_profile_social` (array with keys twitter, linkedin, instagram)
+  - Onboarding admin page (Appearance → Evelyn Onboarding) with step-by-step links.
+  - Dashboard widget “Evelyn Quick Start” for quick links.
+  - Newsletter features:
+    - Creates DB table `{wpdb->prefix}newsletter_subscribers` when WP is installed.
+    - Shortcode `[newsletter_signup]` outputs a small signup form.
+    - Form handler stores subscriber (email, name, added_at) and sends a single welcome email via `wp_mail()`.
+    - Admin management page (Tools → Newsletter) to view latest subscribers (restricted to `manage_options`).
+  - Demo content: creates a demo `portfolio` post once for onboarding (only when WP ready). The demo uses placeholder images and is flagged in option `evelyn_demo_created`.
+
+Safety and install readiness
+- The theme includes a function `evelyn_is_ready()` which returns true only if WP has finished installation (`function_exists('is_blog_installed') && is_blog_installed()`).
+- All operations that require a working WP environment (editor assets, block template features, DB creation, shortcode registration, admin pages, demo creation) are guarded by `evelyn_is_ready()` so installing a fresh WP will not fail or run these parts prematurely.
+- Capability checks:
+  - Owner Profile and onboarding pages are accessible to users with `edit_posts` capability so Editors (Lynn) can edit them.
+  - Newsletter admin viewer is restricted to `manage_options` (admins).
+
+Database schema
+- Table: `{wpdb->prefix}newsletter_subscribers`
+  - id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT
+  - added_at DATETIME NOT NULL
+- Stored settings (WP options):
+  - `owner_profile_name` (string)
+  - `evelyn_demo_created` (flag)
+
+Theme: `wp-content/themes/evelyn-portfolio`
+- Purpose: Reusable theme skeleton that demonstrates how to render portfolio items and the Owner Profile.
+- Files added:
+  - `style.css` — theme header and basic body CSS.
+  - `functions.php` — registers nav, enqueues Tailwind CDN (quick start), editor styles, helper `evelyn_owner_profile_html()`.
+  - `header.php`, `footer.php` — lightweight header/footer.
+  - `index.php` — generic loop for posts.
+  - `front-page.php` — front page showing Owner Profile and newsletter shortcode.
+  - `archive-portfolio.php` — archive for portfolio CPT.
+  - `single-portfolio.php` — single template rendering featured image, content, and social links via `portfolio_render_social_links()`.
+  - `EVELYN_IMPLEMENTATION.md` — this document.
+
+How the editor experience works (for Lynn)
+- Lynn logs in with an Editor account.
+- She can go to Appearance → Owner Profile and set her name, bio and social links (done once).
+- She can go to Posts → Portfolio (menu added by CPT) → Add New (or Dashboard widget / Onboarding links).
+- The editor will show predefined image slots and a content area. Lynn can click a slot to set/replace images via the Media Library (drag & drop works, too).
+- She edits the blog content in the normal Gutenberg editor (no custom editor code required from her).
+- To place the newsletter signup on a page, she creates a Page and adds a Shortcode block containing `[newsletter_signup]`.
+
+Rendering & styling
+- The theme enqueues Tailwind CDN for fast prototyping; for production it is recommended to replace with a Tailwind build pipeline.
+- The editor also gets the Tailwind CSS for WYSIWYG parity (via `add_editor_style`).
+- The `single-portfolio.php` template uses featured image + the post content. The block template ensures images are in predictable positions, letting the theme control layout/responsiveness and JS animations.
+
+Shortcode & newsletter flow
+- Shortcode: `[newsletter_signup]` — renders a small form asking for name and email.
+- Submission posts to `admin-post.php?action=subscribe_newsletter`.
+
+Notes, limitations & recommended next steps
+- Deliverability: `wp_mail()` relies on the server’s mail configuration. For production, configure SMTP (WP Mail SMTP) or use a provider (Mailgun/SendGrid) or use their API. I can integrate SMTP wiring into the mu-plugin if you want.
+- Double opt-in: currently the system is single opt-in. Double opt-in is recommended (send confirmation and require click). I can implement this flow.
+- Tailwind: CDN is for prototyping; recommend setting up an npm + Tailwind build pipeline and producing a small, optimized CSS file.
+- Security & privacy: IPs are not stored; consider GDPR/privacy requirements for subscriber data (consent text, data export, deletion).
+- Theme polish: add more templates (404, search, pagination), archive styling, and accessible markup improvements.
+
+Developer notes (quick pointers)
+- To create a child theme or adapt visuals, edit `wp-content/themes/evelyn-portfolio/functions.php` and templates.
+- To disable demo creation, remove or comment the demo creation block or set the option `evelyn_demo_created` to `1` manually in DB or via WP CLI.
+
+Support & next steps
+- If you want, I can:
+  - Convert the demo post to draft (so it won’t appear publicly until you want).
+  - Implement double opt-in and SMTP integration.
+  - Replace Tailwind CDN with a build pipeline and small stylesheet.
+  - Add more locked block templates (different page types) for reusability across clients.
+
+Contact
+- This file was generated by the development assistant during the project setup. If anything is missing or you want additional structure, request edits and I will update the implementation doc.

@@ -1,0 +1,18 @@
+# Allow direct access to JavaScript files
+<FilesMatch "\.(js)$">
+    # Prevent WordPress from processing these files
+    <IfModule mod_rewrite.c>
+        RewriteEngine Off
+    </IfModule>
+    
+    # Set caching headers
+    <IfModule mod_expires.c>
+        ExpiresActive On
+        ExpiresDefault "access plus 1 year"
+    </IfModule>
+    
+    # Set proper MIME type
+    <IfModule mod_headers.c>
+        Header set Content-Type "application/javascript"
+    </IfModule>
+</FilesMatch>
