@@ -17,22 +17,15 @@ get_header();
             <div class="hero-content">
                 <h1 class="heading-xl text-gray-900 mb-6">
                     <?php esc_html_e( 'Hi, I\'m ', 'portfolio' ); ?>
-                    <span class="text-primary-600"><?php echo get_bloginfo( 'name' ); ?></span>
+                    <span class="text-primary-600">Evelyn Kanyua</span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl text-gray-600 font-semibold mb-6"><?php esc_html_e( 'Full-Stack Developer & UI/UX Designer', 'portfolio' ); ?></h2>
+                <h2 class="text-2xl md:text-3xl text-gray-600 font-semibold mb-6"><?php esc_html_e( 'PR & Communications Lead', 'portfolio' ); ?></h2>
                 <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                    <?php 
-                    $tagline = get_bloginfo( 'description' );
-                    if ( $tagline ) {
-                        echo esc_html( $tagline );
-                    } else {
-                        esc_html_e( 'I craft responsive websites and web applications that provide intuitive, pixel-perfect user experiences.', 'portfolio' );
-                    }
-                    ?>
+                    <?php esc_html_e( 'I create compelling narratives, build strong brand relationships, and drive strategic communication campaigns that engage audiences and deliver measurable results.', 'portfolio' ); ?>
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#contact" class="btn btn-primary btn-lg">
-                        <?php esc_html_e( 'Contact Me', 'portfolio' ); ?>
+                        <?php esc_html_e( 'Let\'s Connect', 'portfolio' ); ?>
                     </a>
                     <a href="#portfolio" class="btn btn-outline btn-lg">
                         <?php esc_html_e( 'View My Work', 'portfolio' ); ?>
@@ -66,38 +59,38 @@ get_header();
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
             <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">About Me</span>
-            <h2 class="heading-lg mb-6">Get to know me</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">I'm a passionate developer with expertise in creating exceptional digital experiences.</p>
+            <h2 class="heading-lg mb-6">Strategic Communications Professional</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Experienced PR and Communications Lead with a passion for storytelling and brand building.</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
             <div class="col-span-1">
                 <div class="relative">
                     <div class="absolute inset-0 bg-primary-600 rounded-lg transform -translate-x-4 -translate-y-4"></div>
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/about-me.jpg' ); ?>" alt="About me" class="relative z-10 rounded-lg shadow-lg w-full h-auto">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/about-me.jpg' ); ?>" alt="Evelyn Kanyua" class="relative z-10 rounded-lg shadow-lg w-full h-auto">
                 </div>
             </div>
             
             <div class="col-span-1 md:col-span-2">
-                <h3 class="heading-md mb-4">My Background</h3>
-                <p class="text-gray-600 mb-6">With over 5 years of experience in web development, I specialize in building modern, responsive websites and applications. I'm passionate about creating clean, efficient code and intuitive user interfaces.</p>
+                <h3 class="heading-md mb-4">My Professional Journey</h3>
+                <p class="text-gray-600 mb-6">With over 7 years of experience in public relations and strategic communications, I specialize in building compelling brand narratives, managing crisis communications, and developing integrated campaigns that drive meaningful engagement across traditional and digital media channels.</p>
                 
-                <h4 class="heading-sm mb-3">My Skills</h4>
+                <h4 class="heading-sm mb-3">Core Competencies</h4>
                 <div class="mb-6">
                     <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">HTML5</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">CSS3</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">JavaScript</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">React</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Vue.js</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Node.js</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">PHP</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">WordPress</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Tailwind CSS</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Media Relations</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Crisis Communication</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Content Strategy</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Brand Management</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Social Media Strategy</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Stakeholder Engagement</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Event Management</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Press Release Writing</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Campaign Management</span>
                     </div>
                 </div>
                 
-                <a href="#" class="btn btn-primary">Download CV</a>
+                <a href="#" class="btn btn-primary">Download My CV</a>
             </div>
         </div>
     </div>
@@ -108,8 +101,8 @@ get_header();
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
             <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Services</span>
-            <h2 class="heading-lg mb-6">What I Can Do For You</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">I provide end-to-end solutions for your digital needs.</p>
+            <h2 class="heading-lg mb-6">How I Can Help Your Brand</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive PR and communications solutions tailored to your brand's unique needs.</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -117,11 +110,11 @@ get_header();
             <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
                 <div class="text-primary-600 mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15" />
                     </svg>
                 </div>
-                <h3 class="heading-sm mb-3">Web Development</h3>
-                <p class="text-gray-600 mb-4">I build custom websites that are fast, responsive, and optimized for search engines using modern technologies.</p>
+                <h3 class="heading-sm mb-3">Media Relations</h3>
+                <p class="text-gray-600 mb-4">Building strong relationships with journalists and securing strategic media coverage that amplifies your brand message and credibility.</p>
                 <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
                     Learn More
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -134,11 +127,11 @@ get_header();
             <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
                 <div class="text-primary-600 mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
                     </svg>
                 </div>
-                <h3 class="heading-sm mb-3">Mobile App Development</h3>
-                <p class="text-gray-600 mb-4">I create cross-platform mobile apps that provide a seamless user experience on any device.</p>
+                <h3 class="heading-sm mb-3">Crisis Communication</h3>
+                <p class="text-gray-600 mb-4">Managing reputation during challenging times with strategic crisis communication plans and rapid response protocols.</p>
                 <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
                     Learn More
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -151,11 +144,62 @@ get_header();
             <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
                 <div class="text-primary-600 mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                 </div>
-                <h3 class="heading-sm mb-3">UI/UX Design</h3>
-                <p class="text-gray-600 mb-4">I design intuitive user interfaces and experiences that are both visually appealing and functional.</p>
+                <h3 class="heading-sm mb-3">Content Strategy</h3>
+                <p class="text-gray-600 mb-4">Developing compelling content strategies that engage your target audience across multiple channels and platforms.</p>
+                <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
+                    Learn More
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-primary-600 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <h3 class="heading-sm mb-3">Stakeholder Engagement</h3>
+                <p class="text-gray-600 mb-4">Creating meaningful connections with key stakeholders through targeted communication and relationship-building strategies.</p>
+                <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
+                    Learn More
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-primary-600 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+                    </svg>
+                </div>
+                <h3 class="heading-sm mb-3">Social Media Strategy</h3>
+                <p class="text-gray-600 mb-4">Developing and executing comprehensive social media strategies that build community and drive engagement.</p>
+                <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
+                    Learn More
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="text-primary-600 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3 class="heading-sm mb-3">Event Management</h3>
+                <p class="text-gray-600 mb-4">Planning and executing memorable corporate events, press conferences, and brand activations that create lasting impact.</p>
                 <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
                     Learn More
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -172,22 +216,22 @@ get_header();
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
             <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Portfolio</span>
-            <h2 class="heading-lg mb-6">My Recent Projects</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Here are some of my latest work that showcase my skills and expertise.</p>
+            <h2 class="heading-lg mb-6">Recent Campaigns & Projects</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Showcasing successful PR campaigns, brand launches, and communication strategies that delivered measurable results.</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Project 1 -->
             <div class="card overflow-hidden group">
                 <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-1.jpg' ); ?>" alt="E-commerce Website" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-1.jpg' ); ?>" alt="Tech Startup Launch Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
                         <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">E-commerce Website</h4>
-                            <p class="text-gray-200 mb-4">A fully responsive online store with advanced filtering and checkout system.</p>
+                            <h4 class="text-white font-semibold text-xl mb-2">Tech Startup Launch</h4>
+                            <p class="text-gray-200 mb-4">Integrated campaign that secured 150+ media placements and 50M+ media impressions within 3 months.</p>
                             <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Project</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Code</a>
+                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
+                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Results</a>
                             </div>
                         </div>
                     </div>
@@ -197,14 +241,14 @@ get_header();
             <!-- Project 2 -->
             <div class="card overflow-hidden group">
                 <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-2.jpg' ); ?>" alt="Social Media Dashboard" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-2.jpg' ); ?>" alt="Crisis Communication Management" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
                         <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Social Media Dashboard</h4>
-                            <p class="text-gray-200 mb-4">Analytics dashboard for social media performance tracking.</p>
+                            <h4 class="text-white font-semibold text-xl mb-2">Crisis Communication</h4>
+                            <p class="text-gray-200 mb-4">Successfully managed reputation crisis with strategic messaging, reducing negative sentiment by 80%.</p>
                             <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Project</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Code</a>
+                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
+                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Strategy</a>
                             </div>
                         </div>
                     </div>
@@ -214,14 +258,14 @@ get_header();
             <!-- Project 3 -->
             <div class="card overflow-hidden group">
                 <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-3.jpg' ); ?>" alt="Food Delivery App" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-3.jpg' ); ?>" alt="Non-Profit Awareness Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
                         <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Food Delivery App</h4>
-                            <p class="text-gray-200 mb-4">Mobile app for food ordering and real-time delivery tracking.</p>
+                            <h4 class="text-white font-semibold text-xl mb-2">Non-Profit Campaign</h4>
+                            <p class="text-gray-200 mb-4">Awareness campaign that increased donations by 200% and volunteer sign-ups by 150%.</p>
                             <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Project</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Code</a>
+                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
+                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Impact</a>
                             </div>
                         </div>
                     </div>
@@ -231,14 +275,14 @@ get_header();
             <!-- Project 4 -->
             <div class="card overflow-hidden group">
                 <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-4.jpg' ); ?>" alt="Fitness Tracking App" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-4.jpg' ); ?>" alt="Corporate Rebrand Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
                         <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Fitness Tracking App</h4>
-                            <p class="text-gray-200 mb-4">Mobile app for tracking workouts, nutrition, and health metrics.</p>
+                            <h4 class="text-white font-semibold text-xl mb-2">Corporate Rebrand</h4>
+                            <p class="text-gray-200 mb-4">Complete rebrand communication strategy that improved brand perception by 60% across all demographics.</p>
                             <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Project</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Code</a>
+                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
+                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Results</a>
                             </div>
                         </div>
                     </div>
@@ -248,14 +292,14 @@ get_header();
             <!-- Project 5 -->
             <div class="card overflow-hidden group">
                 <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-5.jpg' ); ?>" alt="Real Estate Website" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-5.jpg' ); ?>" alt="Product Launch Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
                         <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Real Estate Website</h4>
-                            <p class="text-gray-200 mb-4">Property listing website with advanced search and filtering options.</p>
+                            <h4 class="text-white font-semibold text-xl mb-2">Product Launch</h4>
+                            <p class="text-gray-200 mb-4">Multi-channel campaign generating 10M+ social impressions and exceeding sales targets by 40%.</p>
                             <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Project</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Code</a>
+                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
+                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Metrics</a>
                             </div>
                         </div>
                     </div>
@@ -265,14 +309,14 @@ get_header();
             <!-- Project 6 -->
             <div class="card overflow-hidden group">
                 <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-6.jpg' ); ?>" alt="Travel Blog" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-6.jpg' ); ?>" alt="Thought Leadership Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
                         <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Travel Blog</h4>
-                            <p class="text-gray-200 mb-4">Content-rich travel blog with dynamic content loading and commenting.</p>
+                            <h4 class="text-white font-semibold text-xl mb-2">Thought Leadership</h4>
+                            <p class="text-gray-200 mb-4">Executive positioning campaign resulting in 50+ speaking opportunities and industry recognition.</p>
                             <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Project</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Code</a>
+                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
+                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Awards</a>
                             </div>
                         </div>
                     </div>
@@ -281,7 +325,7 @@ get_header();
         </div>
         
         <div class="text-center mt-12">
-            <a href="#" class="btn btn-primary">View All Projects</a>
+            <a href="#" class="btn btn-primary">View All Case Studies</a>
         </div>
     </div>
 </section>
@@ -291,8 +335,8 @@ get_header();
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
             <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Testimonials</span>
-            <h2 class="heading-lg mb-6">What People Say</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear from clients I've worked with on various projects.</p>
+            <h2 class="heading-lg mb-6">Client Success Stories</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear from brands and organizations I've helped achieve their communication goals.</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -310,12 +354,12 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <blockquote class="text-gray-600 mb-6">"Working with John was a fantastic experience. He delivered our e-commerce website ahead of schedule and exceeded our expectations. His attention to detail and ability to understand our needs made the process smooth and enjoyable."</blockquote>
+                <blockquote class="text-gray-600 mb-6">"Evelyn's strategic communication expertise was instrumental in our successful market expansion. Her ability to craft compelling narratives and build relationships with key stakeholders resulted in unprecedented media coverage and brand awareness. She's a true professional who delivers exceptional results."</blockquote>
                 <div class="flex items-center">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-1.jpg' ); ?>" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover mr-4">
                     <div>
                         <p class="font-medium">Sarah Johnson</p>
-                        <p class="text-sm text-gray-500">CEO, FashionHub</p>
+                        <p class="text-sm text-gray-500">CEO, InnovateX Technologies</p>
                     </div>
                 </div>
             </div>
@@ -334,12 +378,60 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <blockquote class="text-gray-600 mb-6">"John redesigned our entire website and the results were remarkable. Our site traffic increased by 150% and customer engagement metrics improved significantly. His technical skills combined with design sensibility are truly impressive."</blockquote>
+                <blockquote class="text-gray-600 mb-6">"During our organization's most challenging crisis, Evelyn provided exceptional crisis communication leadership. Her calm approach, strategic thinking, and media expertise helped us navigate the situation with transparency and integrity. Our stakeholder trust actually increased post-crisis."</blockquote>
                 <div class="flex items-center">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-2.jpg' ); ?>" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover mr-4">
                     <div>
                         <p class="font-medium">Michael Chen</p>
-                        <p class="text-sm text-gray-500">Marketing Director, TechStart</p>
+                        <p class="text-sm text-gray-500">Director, Global Impact Foundation</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="card p-8">
+                <div class="flex items-center mb-6">
+                    <div class="text-primary-600">
+                        <!-- 5 Stars -->
+                        <div class="flex">
+                            <?php for ($i = 0; $i < 5; $i++): ?>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            <?php endfor; ?>
+                        </div>
+                    </div>
+                </div>
+                <blockquote class="text-gray-600 mb-6">"Evelyn transformed our brand's communication strategy completely. Her integrated approach to PR and digital communications increased our brand visibility by 300% and established us as thought leaders in our industry. She's a strategic communicator with exceptional execution skills."</blockquote>
+                <div class="flex items-center">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-3.jpg' ); ?>" alt="Lisa Rodriguez" class="w-12 h-12 rounded-full object-cover mr-4">
+                    <div>
+                        <p class="font-medium">Lisa Rodriguez</p>
+                        <p class="text-sm text-gray-500">VP Marketing, EcoSolutions Inc.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="card p-8">
+                <div class="flex items-center mb-6">
+                    <div class="text-primary-600">
+                        <!-- 5 Stars -->
+                        <div class="flex">
+                            <?php for ($i = 0; $i < 5; $i++): ?>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                            <?php endfor; ?>
+                        </div>
+                    </div>
+                </div>
+                <blockquote class="text-gray-600 mb-6">"Working with Evelyn was a game-changer for our product launch. Her media relations expertise and strategic storytelling secured coverage in top-tier publications and generated massive buzz. The campaign exceeded all our KPIs and set a new standard for our future launches."</blockquote>
+                <div class="flex items-center">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-4.jpg' ); ?>" alt="James Wilson" class="w-12 h-12 rounded-full object-cover mr-4">
+                    <div>
+                        <p class="font-medium">James Wilson</p>
+                        <p class="text-sm text-gray-500">Head of Product, FutureTech Labs</p>
                     </div>
                 </div>
             </div>
@@ -513,7 +605,7 @@ get_header();
                             </div>
                             <div>
                                 <h4 class="font-medium">Phone</h4>
-                                <a href="tel:+1234567890" class="text-gray-600 hover:text-primary-600">(123) 456-7890</a>
+                                <a href="tel:+254700123456" class="text-gray-600 hover:text-primary-600">+254 700 123 456</a>
                             </div>
                         </div>
                         
@@ -526,7 +618,7 @@ get_header();
                             </div>
                             <div>
                                 <h4 class="font-medium">Location</h4>
-                                <p class="text-gray-600">San Francisco, CA</p>
+                                <p class="text-gray-600">Nairobi, Kenya</p>
                             </div>
                         </div>
                     </div>

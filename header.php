@@ -81,7 +81,7 @@
                         <div class="flex flex-col h-full bg-white">
                             <!-- Header section with branding -->
                             <div class="flex items-center justify-between p-6 border-b border-gray-100 bg-white">
-                                <h2 class="text-xl font-bold text-gray-900"><?php bloginfo( 'name' ); ?></h2>
+                                <h2 class="text-xl font-bold text-gray-900">Evelyn Kanyua</h2>
                             </div>
                             
                             <!-- Navigation links -->
