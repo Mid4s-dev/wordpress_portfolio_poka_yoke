@@ -20,21 +20,21 @@
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'portfolio' ); ?></a>
 
-    <header id="masthead" class="site-header">
+    <header id="masthead" class="site-header bg-white sticky top-0 z-50 shadow-sm">
         <div class="container mx-auto flex items-center justify-between p-4">
             <div class="site-branding">
                 <?php if ( has_custom_logo() ) : ?>
                     <?php the_custom_logo(); ?>
                 <?php else : ?>
-                    <h1 class="site-title">
-                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+                    <h1 class="site-title text-xl font-bold">
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="text-gray-900 hover:text-primary-600 transition-colors"><?php bloginfo( 'name' ); ?></a>
                     </h1>
                 <?php endif; ?>
             </div>
 
             <button class="mobile-menu-toggle md:hidden" aria-controls="primary-menu" aria-expanded="false">
                 <span class="screen-reader-text"><?php esc_html_e( 'Menu', 'portfolio' ); ?></span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-800">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -50,6 +50,8 @@
                         'container'      => false,
                         'menu_class'     => 'hidden md:flex md:gap-8',
                         'fallback_cb'    => false,
+                        'link_before'    => '<span class="text-gray-800 hover:text-primary-600 font-medium transition-colors">',
+                        'link_after'     => '</span>',
                     )
                 );
                 ?>
