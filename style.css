@@ -1,0 +1,183 @@
+/*
+Theme Name: Portfolio
+Theme URI: https://wordpress.org/themes/portfolio/
+Author: The Portfolio Theme Team
+Author URI: https://wordpress.org/
+Description: A modern portfolio theme inspired by Next.js Tailwind CSS Portfolio Template.
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: portfolio
+Tags: portfolio, responsive, blog, custom-colors, custom-logo, custom-menu, featured-images, block-patterns
+
+Portfolio WordPress Theme, (C) 2025 WordPress.org
+*/
+
+/**
+ * Base styles
+ */
+:root {
+  --primary-color: #2563EB;
+  --primary-color-dark: #1D4ED8;
+  --text-color: #111827;
+  --background-color: #FFFFFF;
+  --gray-light: #F9FAFB;
+  --gray-medium: #6B7280;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+/* WordPress Core Classes */
+.alignleft {
+  float: left;
+  margin: 0.5em 1em 0.5em 0;
+}
+
+.alignright {
+  float: right;
+  margin: 0.5em 0 0.5em 1em;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-caption {
+  max-width: 100%;
+}
+
+.wp-caption-text {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--gray-medium);
+  margin-top: 0.25rem;
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* Screen Reader Text */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+/* Accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Fix Common Issues */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-color-dark);
+}
+
+/* Fix for Admin Bar */
+body.admin-bar .site-header {
+  top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  body.admin-bar .site-header {
+    top: 46px;
+  }
+}
+
+/* Mobile Menu Styles */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--background-color);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0.5rem;
+  color: var(--text-color);
+  z-index: 1001;
+}
+
+.mobile-menu-toggle:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.main-navigation.menu-open #primary-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--background-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.main-navigation.menu-open li {
+  margin: 0.5rem 0;
+}
+
+@media (min-width: 768px) {
+  #primary-menu {
+    display: flex !important;
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+  }
+}
