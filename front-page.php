@@ -17,9 +17,9 @@ get_header();
             <div class="hero-content">
                 <h1 class="heading-xl text-gray-900 mb-6">
                     <?php esc_html_e( 'Hi, I\'m ', 'portfolio' ); ?>
-                    <span class="text-primary-600">Evelyn Kanyua</span>
+                    <span class="text-primary-600"><?php echo portfolio_get_owner_name(); ?></span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl text-gray-600 font-semibold mb-6"><?php esc_html_e( 'PR & Communications Lead', 'portfolio' ); ?></h2>
+                <h2 class="text-2xl md:text-3xl text-gray-600 font-semibold mb-6"><?php bloginfo( 'description' ); ?></h2>
                 <p class="text-xl text-gray-600 mb-8 leading-relaxed">
                     <?php esc_html_e( 'I create compelling narratives, build strong brand relationships, and drive strategic communication campaigns that engage audiences and deliver measurable results.', 'portfolio' ); ?>
                 </p>
@@ -35,8 +35,11 @@ get_header();
             <div class="hero-image">
                 <div class="relative">
                     <?php if ( has_custom_logo() ) : ?>
-                        <div class="hero-avatar rounded-full overflow-hidden">
-                            <?php the_custom_logo(); ?>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-primary-600 rounded-full transform translate-x-4 translate-y-4"></div>
+                            <div class="hero-avatar relative z-10 bg-white rounded-full border-4 border-white shadow-lg">
+                                <?php the_custom_logo(); ?>
+                            </div>
                         </div>
                     <?php else : ?>
                         <div class="relative">
@@ -67,7 +70,7 @@ get_header();
             <div class="col-span-1">
                 <div class="relative">
                     <div class="absolute inset-0 bg-primary-600 rounded-lg transform -translate-x-4 -translate-y-4"></div>
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/about-me.jpg' ); ?>" alt="Evelyn Kanyua" class="relative z-10 rounded-lg shadow-lg w-full h-auto">
+                    <img src="<?php echo esc_url( portfolio_get_about_image() ); ?>" alt="<?php echo esc_attr( portfolio_get_owner_name() ); ?>" class="relative z-10 rounded-lg shadow-lg w-full h-auto">
                 </div>
             </div>
             
@@ -354,7 +357,7 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <blockquote class="text-gray-600 mb-6">"Evelyn's strategic communication expertise was instrumental in our successful market expansion. Her ability to craft compelling narratives and build relationships with key stakeholders resulted in unprecedented media coverage and brand awareness. She's a true professional who delivers exceptional results."</blockquote>
+                <blockquote class="text-gray-600 mb-6">"<?php echo esc_html( portfolio_get_owner_name() ); ?>'s strategic communication expertise was instrumental in our successful market expansion. Her ability to craft compelling narratives and build relationships with key stakeholders resulted in unprecedented media coverage and brand awareness. She's a true professional who delivers exceptional results."</blockquote>
                 <div class="flex items-center">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-1.jpg' ); ?>" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover mr-4">
                     <div>
@@ -378,7 +381,7 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <blockquote class="text-gray-600 mb-6">"During our organization's most challenging crisis, Evelyn provided exceptional crisis communication leadership. Her calm approach, strategic thinking, and media expertise helped us navigate the situation with transparency and integrity. Our stakeholder trust actually increased post-crisis."</blockquote>
+                <blockquote class="text-gray-600 mb-6">"During our organization's most challenging crisis, <?php echo esc_html( portfolio_get_owner_name() ); ?> provided exceptional crisis communication leadership. Her calm approach, strategic thinking, and media expertise helped us navigate the situation with transparency and integrity. Our stakeholder trust actually increased post-crisis."</blockquote>
                 <div class="flex items-center">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-2.jpg' ); ?>" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover mr-4">
                     <div>
@@ -402,7 +405,7 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <blockquote class="text-gray-600 mb-6">"Evelyn transformed our brand's communication strategy completely. Her integrated approach to PR and digital communications increased our brand visibility by 300% and established us as thought leaders in our industry. She's a strategic communicator with exceptional execution skills."</blockquote>
+                <blockquote class="text-gray-600 mb-6">"<?php echo esc_html( portfolio_get_owner_name() ); ?> transformed our brand's communication strategy completely. Her integrated approach to PR and digital communications increased our brand visibility by 300% and established us as thought leaders in our industry. She's a strategic communicator with exceptional execution skills."</blockquote>
                 <div class="flex items-center">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-3.jpg' ); ?>" alt="Lisa Rodriguez" class="w-12 h-12 rounded-full object-cover mr-4">
                     <div>
@@ -426,7 +429,7 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <blockquote class="text-gray-600 mb-6">"Working with Evelyn was a game-changer for our product launch. Her media relations expertise and strategic storytelling secured coverage in top-tier publications and generated massive buzz. The campaign exceeded all our KPIs and set a new standard for our future launches."</blockquote>
+                <blockquote class="text-gray-600 mb-6">"Working with <?php echo esc_html( portfolio_get_owner_name() ); ?> was a game-changer for our product launch. Her media relations expertise and strategic storytelling secured coverage in top-tier publications and generated massive buzz. The campaign exceeded all our KPIs and set a new standard for our future launches."</blockquote>
                 <div class="flex items-center">
                     <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-4.jpg' ); ?>" alt="James Wilson" class="w-12 h-12 rounded-full object-cover mr-4">
                     <div>

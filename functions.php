@@ -33,6 +33,14 @@ if ( ! function_exists( 'portfolio_setup' ) ) {
         // Add support for custom units.
         add_theme_support( 'custom-units' );
         
+        // Add support for custom logo
+        add_theme_support( 'custom-logo', array(
+            'height'      => 250,
+            'width'       => 250,
+            'flex-height' => true,
+            'flex-width'  => true,
+        ) );
+        
         // Register navigation menus
         register_nav_menus(
             array(
@@ -40,6 +48,7 @@ if ( ! function_exists( 'portfolio_setup' ) ) {
                 'footer'  => esc_html__( 'Footer Menu', 'portfolio' ),
             )
         );
+        
     }
 }
 add_action( 'after_setup_theme', 'portfolio_setup' );
@@ -63,6 +72,16 @@ function portfolio_enqueue_styles() {
         array(),
         null
     );
+    
+    // Enqueue custom logo styles
+    if (file_exists(get_template_directory() . '/assets/css/custom-logo.css')) {
+        wp_enqueue_style(
+            'portfolio-custom-logo',
+            get_theme_file_uri( 'assets/css/custom-logo.css' ),
+            array(),
+            filemtime(get_template_directory() . '/assets/css/custom-logo.css')
+        );
+    }
     
     // Enqueue theme stylesheet.
     wp_enqueue_style(
@@ -170,4 +189,63 @@ if ( ! function_exists( 'portfolio_comment_callback' ) ) {
             </article>
         <?php
     }
+}
+
+/**
+ * Register theme customizer settings for global name and profile image
+ */
+function portfolio_customize_register( $wp_customize ) {
+    $wp_customize->add_section( 'portfolio_identity', array(
+        'title'    => __( 'Portfolio Identity', 'portfolio' ),
+        'priority' => 30,
+    ) );
+
+    // Owner name setting
+    $wp_customize->add_setting( 'portfolio_owner_name', array(
+        'default'           => 'Evelyn Kanyua',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ) );
+
+    $wp_customize->add_control( 'portfolio_owner_name_control', array(
+        'label'    => __( 'Portfolio owner name', 'portfolio' ),
+        'section'  => 'portfolio_identity',
+        'settings' => 'portfolio_owner_name',
+        'type'     => 'text',
+    ) );
+    
+    // About image setting
+    $wp_customize->add_setting( 'portfolio_about_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'refresh',
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'portfolio_about_image_control', array(
+        'label'    => __( 'About section image', 'portfolio' ),
+        'description' => __( 'Select an image to display in the About section', 'portfolio' ),
+        'section'  => 'portfolio_identity',
+        'settings' => 'portfolio_about_image',
+    ) ) );
+}
+add_action( 'customize_register', 'portfolio_customize_register' );
+
+/**
+ * Get the portfolio owner name (theme mod) with fallback
+ */
+function portfolio_get_owner_name() {
+    $name = get_theme_mod( 'portfolio_owner_name', 'Evelyn Kanyua' );
+    return esc_html( $name );
+}
+
+/**
+ * Get the portfolio about image URL (theme mod) with fallback to default image
+ */
+function portfolio_get_about_image() {
+    $image_url = get_theme_mod( 'portfolio_about_image' );
+    if ( empty( $image_url ) ) {
+        // Return the default image path if no custom image is set
+        return get_template_directory_uri() . '/assets/images/about-me.jpg';
+    }
+    return $image_url;
 }
