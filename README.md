@@ -2,6 +2,10 @@
 
 A modern portfolio theme for WordPress inspired by Next.js Tailwind CSS Portfolio Template.
 
+## Documentation
+
+- [Campaigns & Projects Guide](docs/campaigns-guide.md) - How to set up and manage your campaigns page
+
 ## Features
 
 - Clean, modern design
@@ -10,6 +14,10 @@ A modern portfolio theme for WordPress inspired by Next.js Tailwind CSS Portfoli
 - Mobile-friendly navigation
 - Tailwind CSS styling
 - Block patterns for easy customization
+- Custom post types for campaigns and projects
+- Featured campaign functionality
+- Contact form with AJAX submission
+- Newsletter signup form
 
 ## Installation
 

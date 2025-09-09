@@ -214,121 +214,24 @@ get_header();
     </div>
 </section>
 
-<!-- Portfolio Section -->
+<!-- Portfolio Section - Recent Campaigns & Projects -->
 <section id="portfolio" class="section bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
             <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Portfolio</span>
             <h2 class="heading-lg mb-6">Recent Campaigns & Projects</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Showcasing successful PR campaigns, brand launches, and communication strategies that delivered measurable results.</p>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Showcasing successful PR campaigns, brand launches, social media posts, and communication strategies that delivered measurable results.</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1 -->
-            <div class="card overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-1.jpg' ); ?>" alt="Tech Startup Launch Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Tech Startup Launch</h4>
-                            <p class="text-gray-200 mb-4">Integrated campaign that secured 150+ media placements and 50M+ media impressions within 3 months.</p>
-                            <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Results</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 2 -->
-            <div class="card overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-2.jpg' ); ?>" alt="Crisis Communication Management" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Crisis Communication</h4>
-                            <p class="text-gray-200 mb-4">Successfully managed reputation crisis with strategic messaging, reducing negative sentiment by 80%.</p>
-                            <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Strategy</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 3 -->
-            <div class="card overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-3.jpg' ); ?>" alt="Non-Profit Awareness Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Non-Profit Campaign</h4>
-                            <p class="text-gray-200 mb-4">Awareness campaign that increased donations by 200% and volunteer sign-ups by 150%.</p>
-                            <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Impact</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 4 -->
-            <div class="card overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-4.jpg' ); ?>" alt="Corporate Rebrand Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Corporate Rebrand</h4>
-                            <p class="text-gray-200 mb-4">Complete rebrand communication strategy that improved brand perception by 60% across all demographics.</p>
-                            <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Results</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 5 -->
-            <div class="card overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-5.jpg' ); ?>" alt="Product Launch Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Product Launch</h4>
-                            <p class="text-gray-200 mb-4">Multi-channel campaign generating 10M+ social impressions and exceeding sales targets by 40%.</p>
-                            <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Metrics</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 6 -->
-            <div class="card overflow-hidden group">
-                <div class="relative overflow-hidden">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/project-6.jpg' ); ?>" alt="Thought Leadership Campaign" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-end p-6">
-                        <div>
-                            <h4 class="text-white font-semibold text-xl mb-2">Thought Leadership</h4>
-                            <p class="text-gray-200 mb-4">Executive positioning campaign resulting in 50+ speaking opportunities and industry recognition.</p>
-                            <div class="flex space-x-2">
-                                <a href="#" class="bg-white text-gray-900 px-3 py-1 rounded-full text-sm font-medium">View Case Study</a>
-                                <a href="#" class="bg-transparent border border-white text-white px-3 py-1 rounded-full text-sm font-medium">Awards</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="campaigns-wrapper">
+            <?php 
+            // Display recent campaigns using our new shortcode
+            echo do_shortcode('[portfolio_campaigns count="6" orderby="date" order="DESC"]'); 
+            ?>
         </div>
         
         <div class="text-center mt-12">
-            <a href="#" class="btn btn-primary">View All Case Studies</a>
+            <a href="<?php echo esc_url(portfolio_get_campaigns_page_url()); ?>" class="btn btn-primary">View All Campaigns & Projects</a>
         </div>
     </div>
 </section>
@@ -536,7 +439,7 @@ get_header();
             <div class="card p-8">
                 <h3 class="heading-md mb-6">Send Me a Message</h3>
                 
-                <form class="space-y-4" action="#" method="post">
+                <form id="contact-form" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
@@ -559,9 +462,61 @@ get_header();
                     </div>
                     
                     <div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="button-link py-3 px-6">Send Message</button>
                     </div>
+                    
+                    <!-- Form response message will appear here -->
+                    <div id="contact-form-response" class="mt-4"></div>
                 </form>
+                
+                <script>
+                jQuery(document).ready(function($) {
+                    $('#contact-form').on('submit', function(e) {
+                        e.preventDefault();
+                        
+                        const $form = $(this);
+                        const $submit = $form.find('button[type="submit"]');
+                        const $response = $('#contact-form-response');
+                        
+                        const formData = {
+                            action: 'portfolio_contact_form',
+                            nonce: '<?php echo wp_create_nonce('portfolio_form_nonce'); ?>',
+                            name: $form.find('input[name="name"]').val(),
+                            email: $form.find('input[name="email"]').val(),
+                            subject: $form.find('input[name="subject"]').val(),
+                            message: $form.find('textarea[name="message"]').val()
+                        };
+                        
+                        // Disable submit button
+                        $submit.prop('disabled', true).addClass('opacity-70');
+                        
+                        // Show loading message
+                        $response.html('<div class="text-gray-600">Sending your message...</div>');
+                        
+                        $.ajax({
+                            url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                            type: 'POST',
+                            data: formData,
+                            success: function(response) {
+                                if (response.success) {
+                                    $response.html('<div class="text-green-600 font-medium">Thank you! Your message has been sent successfully.</div>');
+                                    $form.trigger('reset');
+                                } else {
+                                    $response.html('<div class="text-red-600 font-medium">' + (response.data || 'Something went wrong. Please try again.') + '</div>');
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error:', error);
+                                $response.html('<div class="text-red-600 font-medium">Something went wrong. Please try again.</div>');
+                            },
+                            complete: function() {
+                                // Re-enable submit button
+                                $submit.prop('disabled', false).removeClass('opacity-70');
+                            }
+                        });
+                    });
+                });
+                </script>
             </div>
             
             <!-- Newsletter and Contact Info -->
@@ -571,7 +526,12 @@ get_header();
                     <h3 class="heading-md text-white mb-4">Subscribe to My Newsletter</h3>
                     <p class="mb-6">Stay updated with my latest projects, articles, and insights. No spam, just valuable content.</p>
                     
-                    <form class="space-y-4" action="#" method="post">
+                    <form id="newsletter-form" class="space-y-4">
+                        <div>
+                            <label for="newsletter-name" class="sr-only">Your Name</label>
+                            <input type="text" id="newsletter-name" name="name" placeholder="Your name" class="w-full px-4 py-3 border-0 rounded-md focus:ring-2 focus:ring-white text-gray-900 mb-3" required>
+                        </div>
+                        
                         <div>
                             <label for="newsletter-email" class="sr-only">Email</label>
                             <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" class="w-full px-4 py-3 border-0 rounded-md focus:ring-2 focus:ring-white text-gray-900" required>
@@ -580,7 +540,58 @@ get_header();
                         <button type="submit" class="w-full py-3 bg-white text-primary-600 font-medium rounded-md hover:bg-gray-100 transition-colors">
                             Subscribe Now
                         </button>
+                        
+                        <!-- Form response message will appear here -->
+                        <div id="newsletter-form-response" class="mt-4"></div>
                     </form>
+                    
+                    <script>
+                    jQuery(document).ready(function($) {
+                        $('#newsletter-form').on('submit', function(e) {
+                            e.preventDefault();
+                            
+                            const $form = $(this);
+                            const $submit = $form.find('button[type="submit"]');
+                            const $response = $('#newsletter-form-response');
+                            
+                            const formData = {
+                                action: 'portfolio_newsletter_form',
+                                nonce: '<?php echo wp_create_nonce('portfolio_form_nonce'); ?>',
+                                name: $form.find('input[name="name"]').val(),
+                                email: $form.find('input[name="email"]').val()
+                            };
+                            
+                            // Disable submit button
+                            $submit.prop('disabled', true).addClass('opacity-70');
+                            
+                            // Show loading message
+                            $response.html('<div class="text-white opacity-80">Processing your subscription...</div>');
+                            
+                            $.ajax({
+                                url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                                type: 'POST',
+                                data: formData,
+                                success: function(response) {
+                                    if (response.success) {
+                                        $response.html('<div class="text-white font-medium">Thank you for subscribing to our newsletter!</div>');
+                                        $form.trigger('reset');
+                                    } else {
+                                        $response.html('<div class="text-white bg-opacity-25 bg-red-600 p-2 rounded font-medium">' + 
+                                            (response.data || 'Something went wrong. Please try again.') + '</div>');
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Error:', error);
+                                    $response.html('<div class="text-white bg-opacity-25 bg-red-600 p-2 rounded font-medium">Something went wrong. Please try again.</div>');
+                                },
+                                complete: function() {
+                                    // Re-enable submit button
+                                    $submit.prop('disabled', false).removeClass('opacity-70');
+                                }
+                            });
+                        });
+                    });
+                    </script>
                 </div>
                 
                 <!-- Contact Information -->

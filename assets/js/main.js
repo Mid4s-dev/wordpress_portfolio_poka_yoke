@@ -75,6 +75,15 @@
             });
         }
         
+        // Close menu when clicking the close button
+        const mobileMenuCloseBtn = document.querySelector('.mobile-menu-close');
+        if (mobileMenuCloseBtn) {
+            mobileMenuCloseBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeMobileMenu();
+            });
+        }
+        
         // Close menu when clicking nav links
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
         mobileNavLinks.forEach(link => {
@@ -215,7 +224,7 @@
             setTimeout(() => {
                 if (newsletterResponse) {
                     newsletterResponse.classList.remove('hidden');
-                    newsletterResponse.innerHTML = '<p class="text-green-600 font-medium">Thank you for subscribing!</p>';
+                    newsletterResponse.innerHTML = '<p class="bg-white text-primary-600 py-2 px-4 rounded-md shadow-md inline-block font-medium">Thank you for subscribing!</p>';
                 }
                 
                 this.reset();

@@ -84,26 +84,29 @@
         <!-- wp:group {"className":"contact-form"} -->
         <div class="wp-block-group contact-form">
           <!-- wp:html -->
-          <form>
+          <form class="contact-form">
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
                 <label for="name" class="sr-only">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Full Name" required>
+                <input type="text" id="name" name="name" placeholder="Full Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
               </div>
               <div>
                 <label for="email" class="sr-only">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                <input type="email" id="email" name="email" placeholder="Email Address" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
               </div>
             </div>
-            <div>
+            <div class="mt-4">
               <label for="subject" class="sr-only">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Subject" required>
+              <input type="text" id="subject" name="subject" placeholder="Subject" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
             </div>
-            <div>
+            <div class="mt-4">
               <label for="message" class="sr-only">Message</label>
-              <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+              <textarea id="message" name="message" placeholder="Your Message" required rows="5" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <div class="mt-6">
+              <button type="submit" class="button-link py-3 px-6">Send Message</button>
+            </div>
+            <div class="form-response mt-4"></div>
           </form>
           <!-- /wp:html -->
         </div>

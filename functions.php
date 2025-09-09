@@ -4,7 +4,7 @@
  *
  * @package WordPress
  * @subpackage Portfolio
- * @since Portfolio 1.0
+ * @since 1.0
  */
 
 if ( ! function_exists( 'portfolio_setup' ) ) {
@@ -24,28 +24,40 @@ if ( ! function_exists( 'portfolio_setup' ) ) {
         // Add support for Block Styles.
         add_theme_support( 'wp-block-styles' );
 
+        // Add support for full and wide align images.
+        add_theme_support( 'align-wide' );
+
         // Add support for editor styles.
         add_theme_support( 'editor-styles' );
 
-        // Add support for responsive embedded content.
-        add_theme_support( 'responsive-embeds' );
-
-        // Add support for custom units.
-        add_theme_support( 'custom-units' );
-        
-        // Add support for custom logo
-        add_theme_support( 'custom-logo', array(
-            'height'      => 250,
-            'width'       => 250,
-            'flex-height' => true,
-            'flex-width'  => true,
-        ) );
-        
-        // Register navigation menus
-        register_nav_menus(
+        // Add custom editor font sizes.
+        add_theme_support(
+            'editor-font-sizes',
             array(
-                'primary' => esc_html__( 'Primary Menu', 'portfolio' ),
-                'footer'  => esc_html__( 'Footer Menu', 'portfolio' ),
+                array(
+                    'name'      => __( 'Small', 'portfolio' ),
+                    'shortName' => __( 'S', 'portfolio' ),
+                    'size'      => 14,
+                    'slug'      => 'small',
+                ),
+                array(
+                    'name'      => __( 'Normal', 'portfolio' ),
+                    'shortName' => __( 'M', 'portfolio' ),
+                    'size'      => 16,
+                    'slug'      => 'normal',
+                ),
+                array(
+                    'name'      => __( 'Large', 'portfolio' ),
+                    'shortName' => __( 'L', 'portfolio' ),
+                    'size'      => 24,
+                    'slug'      => 'large',
+                ),
+                array(
+                    'name'      => __( 'Extra Large', 'portfolio' ),
+                    'shortName' => __( 'XL', 'portfolio' ),
+                    'size'      => 36,
+                    'slug'      => 'extra-large',
+                ),
             )
         );
         
@@ -83,6 +95,19 @@ function portfolio_enqueue_styles() {
         );
     }
     
+    // Enqueue campaigns styles
+    if (file_exists(get_template_directory() . '/assets/css/campaigns.css')) {
+        wp_enqueue_style(
+            'portfolio-campaigns',
+            get_theme_file_uri( 'assets/css/campaigns.css' ),
+            array(),
+            filemtime(get_template_directory() . '/assets/css/campaigns.css')
+        );
+    }
+    
+    // Enqueue dashicons on the frontend for social icons
+    wp_enqueue_style('dashicons');
+    
     // Enqueue theme stylesheet.
     wp_enqueue_style(
         'portfolio-style',
@@ -91,14 +116,44 @@ function portfolio_enqueue_styles() {
         filemtime(get_template_directory() . '/style.css')
     );
     
+    // Enqueue jQuery
+    wp_enqueue_script('jquery');
+    
     // Enqueue theme JavaScript.
     wp_enqueue_script(
         'portfolio-main-js',
         get_theme_file_uri( 'assets/js/main.js' ),
-        array(),
+        array('jquery'),
         filemtime(get_template_directory() . '/assets/js/main.js'),
         true
     );
+    
+    // Enqueue campaigns JavaScript
+    if (file_exists(get_template_directory() . '/assets/js/campaigns.js')) {
+        wp_enqueue_script(
+            'portfolio-campaigns-js',
+            get_theme_file_uri( 'assets/js/campaigns.js' ),
+            array('jquery'),
+            filemtime(get_template_directory() . '/assets/js/campaigns.js'),
+            true
+        );
+    }
+    
+    // Enqueue campaigns template JavaScript on campaigns template
+    if (file_exists(get_template_directory() . '/assets/js/campaigns-template.js')) {
+        // Only load on the campaigns template
+        if (is_page_template('templates/template-campaigns.php')) {
+            wp_enqueue_script(
+                'portfolio-campaigns-template',
+                get_theme_file_uri( 'assets/js/campaigns-template.js' ),
+                array('jquery'),
+                filemtime(get_template_directory() . '/assets/js/campaigns-template.js'),
+                true
+            );
+        }
+    }
+    
+    // The forms.js file is enqueued in the Portfolio_Form_Handler class
 }
 add_action( 'wp_enqueue_scripts', 'portfolio_enqueue_styles' );
 
@@ -124,111 +179,153 @@ add_action( 'init', 'portfolio_register_pattern_categories' );
 if ( ! function_exists( 'portfolio_comment_callback' ) ) {
     function portfolio_comment_callback( $comment, $args, $depth ) {
         $tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
-        ?>
-        <<?php echo esc_attr( $tag ); ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( 'comment-body bg-gray-50 rounded-lg p-6', empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
+?>
+        <<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $args['has_children'] ? 'parent' : '', $comment ); ?>>
             <article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
-                <footer class="comment-meta mb-4">
-                    <div class="flex items-center">
-                        <div class="comment-author vcard mr-4">
-                            <?php
-                            if ( 0 !== $args['avatar_size'] ) {
-                                echo '<div class="w-12 h-12 rounded-full overflow-hidden">';
-                                echo get_avatar( $comment, $args['avatar_size'] );
-                                echo '</div>';
-                            }
-                            ?>
-                        </div>
+                <footer class="comment-meta">
+                    <div class="comment-author vcard">
+                        <?php
+                        if ( 0 != $args['avatar_size'] ) {
+                            echo get_avatar( $comment, $args['avatar_size'], '', '', array( 'class' => 'comment-avatar' ) );
+                        }
+                        ?>
+                        <?php
+                        printf(
+                            /* translators: %s: comment author link */
+                            __( '%s <span class="says">says:</span>', 'portfolio' ),
+                            sprintf( '<b class="fn">%s</b>', get_comment_author_link( $comment ) )
+                        );
+                        ?>
+                    </div><!-- .comment-author -->
 
-                        <div>
-                            <div class="comment-author-name font-medium">
+                    <div class="comment-metadata">
+                        <a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
+                            <time datetime="<?php comment_time( 'c' ); ?>">
                                 <?php
                                 printf(
-                                    '<span>%s</span>',
-                                    get_comment_author_link( $comment )
+                                    /* translators: 1: comment date, 2: comment time */
+                                    __( '%1$s at %2$s', 'portfolio' ),
+                                    get_comment_date( '', $comment ),
+                                    get_comment_time()
                                 );
                                 ?>
-                            </div>
-                            <div class="comment-metadata text-sm text-gray-500 mt-1">
-                                <?php
-                                printf(
-                                    '<time datetime="%1$s">%2$s</time>',
-                                    esc_attr( get_comment_time( 'c' ) ),
-                                    esc_html( sprintf( _x( '%1$s at %2$s', '1: date, 2: time', 'portfolio' ), get_comment_date(), get_comment_time() ) )
-                                );
-                                ?>
-                                <?php edit_comment_link( __( 'Edit', 'portfolio' ), '<span class="edit-link ml-2">', '</span>' ); ?>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <?php if ( '0' === $comment->comment_approved ) : ?>
-                        <p class="comment-awaiting-moderation text-yellow-600 mt-2"><?php esc_html_e( 'Your comment is awaiting moderation.', 'portfolio' ); ?></p>
+                            </time>
+                        </a>
+                        <?php
+                        edit_comment_link( __( 'Edit', 'portfolio' ), '<span class="edit-link">', '</span>' );
+                        ?>
+                    </div><!-- .comment-metadata -->
+
+                    <?php if ( '0' == $comment->comment_approved ) : ?>
+                    <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'portfolio' ); ?></p>
                     <?php endif; ?>
-                </footer>
+                </footer><!-- .comment-meta -->
 
-                <div class="comment-content prose prose-sm">
+                <div class="comment-content">
                     <?php comment_text(); ?>
-                </div>
+                </div><!-- .comment-content -->
 
-                <div class="reply mt-4">
-                    <?php
-                    comment_reply_link(
-                        array_merge(
-                            $args,
-                            array(
-                                'add_below' => 'div-comment',
-                                'depth'     => $depth,
-                                'max_depth' => $args['max_depth'],
-                                'before'    => '<div class="reply-link text-sm text-primary-600 hover:underline">',
-                                'after'     => '</div>',
-                            )
-                        )
-                    );
-                    ?>
-                </div>
-            </article>
-        <?php
+                <?php
+                if ( '1' == $comment->comment_approved || $comment->comment_type === 'pingback' || $comment->comment_type === 'trackback' ) {
+                    comment_reply_link( array_merge( $args, array(
+                        'add_below' => 'div-comment',
+                        'depth'     => $depth,
+                        'max_depth' => $args['max_depth'],
+                        'before'    => '<div class="reply">',
+                        'after'     => '</div>'
+                    ) ) );
+                }
+                ?>
+            </article><!-- .comment-body -->
+<?php
     }
 }
 
 /**
- * Register theme customizer settings for global name and profile image
+ * Prints HTML with meta information for the current post-date/time and author.
  */
-function portfolio_customize_register( $wp_customize ) {
-    $wp_customize->add_section( 'portfolio_identity', array(
-        'title'    => __( 'Portfolio Identity', 'portfolio' ),
-        'priority' => 30,
-    ) );
+if ( ! function_exists( 'portfolio_posted_on' ) ) {
+    function portfolio_posted_on() {
+        // Post date/time
+        $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+        if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+            $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+        }
 
-    // Owner name setting
-    $wp_customize->add_setting( 'portfolio_owner_name', array(
-        'default'           => 'Evelyn Kanyua',
-        'sanitize_callback' => 'sanitize_text_field',
-        'transport'         => 'refresh',
-    ) );
+        $time_string = sprintf(
+            $time_string,
+            esc_attr( get_the_date( 'c' ) ),
+            esc_html( get_the_date() ),
+            esc_attr( get_the_modified_date( 'c' ) ),
+            esc_html( get_the_modified_date() )
+        );
 
-    $wp_customize->add_control( 'portfolio_owner_name_control', array(
-        'label'    => __( 'Portfolio owner name', 'portfolio' ),
-        'section'  => 'portfolio_identity',
-        'settings' => 'portfolio_owner_name',
-        'type'     => 'text',
-    ) );
-    
-    // About image setting
-    $wp_customize->add_setting( 'portfolio_about_image', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_url_raw',
-        'transport'         => 'refresh',
-    ) );
+        $posted_on = sprintf(
+            /* translators: %s: post date. */
+            esc_html_x( 'Posted on %s', 'post date', 'portfolio' ),
+            '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+        );
 
-    $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'portfolio_about_image_control', array(
-        'label'    => __( 'About section image', 'portfolio' ),
-        'description' => __( 'Select an image to display in the About section', 'portfolio' ),
-        'section'  => 'portfolio_identity',
-        'settings' => 'portfolio_about_image',
-    ) ) );
+        // Author
+        $byline = sprintf(
+            /* translators: %s: post author. */
+            esc_html_x( 'by %s', 'post author', 'portfolio' ),
+            '<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+        );
+
+        echo '<span class="posted-on">' . $posted_on . '</span> <span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    }
 }
-add_action( 'customize_register', 'portfolio_customize_register' );
+
+/**
+ * Outputs content for the default featured image fallback.
+ */
+function portfolio_default_featured_image() {
+    if ( is_singular() && ! has_post_thumbnail() && ! is_attachment() ) {
+        return get_template_directory_uri() . '/assets/images/about-me.jpg';
+    }
+}
+add_filter( 'post_thumbnail_html', 'portfolio_default_featured_image' );
+
+// Include simple mailer class
+require_once get_template_directory() . '/inc/simple-mailer.php';
+
+// Include form handler class
+require_once get_template_directory() . '/inc/form-handler.php';
+
+// Include campaigns functionality
+require_once get_template_directory() . '/inc/campaigns.php';
+
+// Include widgets
+require_once get_template_directory() . '/inc/widgets/recent-campaigns-widget.php';
+
+// Include campaigns dashboard page
+require_once get_template_directory() . '/inc/campaigns-dashboard.php';
+
+// Include quick social posts functionality
+require_once get_template_directory() . '/inc/quick-social-posts.php';
+
+// Include Gmail API integration
+require_once get_template_directory() . '/inc/gmail-api.php';
+
+/**
+ * Get the campaigns page URL (preferring custom template page over archive)
+ */
+function portfolio_get_campaigns_page_url() {
+    // First check if a page using the campaigns template exists
+    $pages = get_pages(array(
+        'meta_key' => '_wp_page_template',
+        'meta_value' => 'templates/template-campaigns.php',
+        'number' => 1,
+    ));
+
+    if (!empty($pages)) {
+        return get_permalink($pages[0]->ID);
+    }
+
+    // Fall back to archive if no template page exists
+    return get_post_type_archive_link('portfolio_campaign');
+}
 
 /**
  * Get the portfolio owner name (theme mod) with fallback
@@ -249,3 +346,11 @@ function portfolio_get_about_image() {
     }
     return $image_url;
 }
+
+// Register custom homepage template
+function portfolio_add_homepage_template($templates) {
+    $templates['templates/template-home.php'] = 'Portfolio Home';
+    $templates['templates/template-campaigns.php'] = 'Campaigns & Projects Showcase';
+    return $templates;
+}
+add_filter('theme_page_templates', 'portfolio_add_homepage_template');
