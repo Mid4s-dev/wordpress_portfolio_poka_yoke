@@ -113,7 +113,7 @@ echo '</table>';
 echo '<h2>Testimonial Data Structure</h2>';
 
 // Check if post type exists
-$testimonial_post_type = 'portfolio_testimonial';
+
 if (post_type_exists($testimonial_post_type)) {
     echo "<p>The testimonial post type <code>$testimonial_post_type</code> is registered in your WordPress site.</p>";
     

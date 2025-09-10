@@ -1,8 +1,4 @@
 <?php
-// Super Priority Fix for Testimonials
-require_once get_template_directory() . '/testimonials-super-priority-fix.php';
-
-
 /**
  * Portfolio functions and definitions
  *
@@ -10,118 +6,6 @@ require_once get_template_directory() . '/testimonials-super-priority-fix.php';
  * @subpackage Portfolio
  * @since 1.0
  */
-
-// Include emergency fix for testimonials post type
-require_once get_template_directory() . '/inc/testimonials-emergency-fix.php';
-
-// Register core post types early
-require_once get_template_directory() . '/inc/testimonials-core.php';
-
-/**
- * Direct testimonial post type registration with highest priority
- * This guarantees the post type is registered regardless of any other code
- */
-function portfolio_testimonials_direct_registration() {
-    // Only register if it doesn't already exist
-    if (!post_type_exists('portfolio_testimonial')) {
-        $labels = array(
-            'name'                  => 'Testimonials',
-            'singular_name'         => 'Testimonial',
-            'menu_name'             => 'Testimonials',
-            'name_admin_bar'        => 'Testimonial',
-            'add_new'               => 'Add New',
-            'add_new_item'          => 'Add New Testimonial',
-            'new_item'              => 'New Testimonial',
-            'edit_item'             => 'Edit Testimonial',
-            'view_item'             => 'View Testimonial',
-            'all_items'             => 'All Testimonials',
-            'search_items'          => 'Search Testimonials',
-            'not_found'             => 'No testimonials found.',
-            'not_found_in_trash'    => 'No testimonials found in Trash.',
-            'featured_image'        => 'Client Image',
-            'set_featured_image'    => 'Set client image',
-            'remove_featured_image' => 'Remove client image',
-            'use_featured_image'    => 'Use as client image',
-            'archives'              => 'Testimonial archives',
-        );
-        
-        $args = array(
-            'labels'             => $labels,
-            'public'             => true,
-            'publicly_queryable' => true,
-            'show_ui'            => true,
-            'show_in_menu'       => true,
-            'query_var'          => true,
-            'rewrite'            => array('slug' => 'testimonials'),
-            'capability_type'    => 'post',
-            'has_archive'        => true,
-            'hierarchical'       => false,
-            'menu_position'      => 22,
-            'menu_icon'          => 'dashicons-format-quote',
-            'supports'           => array('title', 'editor', 'thumbnail'),
-            'show_in_rest'       => true,
-        );
-        
-        register_post_type('portfolio_testimonial', $args);
-        update_option('portfolio_testimonials_directly_registered', true);
-    }
-    
-    // Then try to call the core function too
-    if (function_exists('portfolio_testimonials_register_core')) {
-        portfolio_testimonials_register_core();
-    }
-}
-add_action('init', 'portfolio_testimonials_direct_registration', -9999); // Ultra high priority
-
-// Add a notice when permalinks need to be updated
-function portfolio_admin_testimonials_notice() {
-    // Only show to admins
-    if (!current_user_can('manage_options')) {
-        return;
-    }
-    
-    $testimonial_exists = post_type_exists('portfolio_testimonial');
-    $direct_registered = get_option('portfolio_testimonials_directly_registered', false);
-    $core_registered = get_option('portfolio_testimonials_core_registered', false);
-    $permalinks_updated = get_option('portfolio_permalinks_updated_for_testimonials', false);
-    
-    // If the post type exists but permalinks haven't been updated
-    if ($testimonial_exists && !$permalinks_updated) {
-        ?>
-        <div class="notice notice-success is-dismissible">
-            <h3>✅ Testimonials Post Type Registered Successfully</h3>
-            <p><strong>Final Step:</strong> Please visit <a href="<?php echo admin_url('options-permalink.php'); ?>">Settings > Permalinks</a> and click "Save Changes" to update the permalink structure.</p>
-            <p>After updating permalinks, this notice will disappear.</p>
-        </div>
-        <?php
-    } 
-    // If the post type doesn't exist, show a more detailed debug notice
-    else if (!$testimonial_exists && (defined('WP_DEBUG') && WP_DEBUG)) {
-        $registered = get_post_types([], 'names');
-        ?>
-        <div class="notice notice-error is-dismissible">
-            <h3>❌ Testimonials Post Type Not Registered</h3>
-            <p><strong>Registration Status:</strong></p>
-            <ul>
-                <li>Post Type Exists: <?php echo $testimonial_exists ? 'YES' : 'NO'; ?></li>
-                <li>Emergency Fix Active: <?php echo $direct_registered ? 'YES' : 'NO'; ?></li>
-                <li>Core Registration Called: <?php echo $core_registered ? 'YES' : 'NO'; ?></li>
-            </ul>
-            <p><strong>Registered post types:</strong> <?php echo esc_html(implode(', ', array_slice($registered, 0, 10))); ?>...</p>
-            <p><a href="<?php echo home_url('/wp-content/themes/portfolio/testimonials-diagnostic.php'); ?>" class="button">Run Diagnostic Tool</a></p>
-        </div>
-        <?php
-    }
-}
-add_action('admin_notices', 'portfolio_admin_testimonials_notice');
-
-// Mark permalinks as updated when the permalink settings page is saved
-function portfolio_mark_permalinks_updated() {
-    if (isset($_GET['settings-updated']) && $_GET['settings-updated'] == 'true') {
-        update_option('portfolio_permalinks_updated_for_testimonials', true);
-    }
-}
-add_action('load-options-permalink.php', 'portfolio_mark_permalinks_updated');
 
 if ( ! function_exists( 'portfolio_setup' ) ) {
     /**
@@ -221,15 +105,7 @@ function portfolio_enqueue_styles() {
         );
     }
     
-    // Enqueue testimonials styles
-    if (file_exists(get_template_directory() . '/assets/css/testimonials.css')) {
-        wp_enqueue_style(
-            'portfolio-testimonials',
-            get_theme_file_uri( 'assets/css/testimonials.css' ),
-            array(),
-            filemtime(get_template_directory() . '/assets/css/testimonials.css')
-        );
-    }
+
     
     // Enqueue services styles
     if (file_exists(get_template_directory() . '/assets/css/services.css')) {
@@ -309,13 +185,13 @@ function portfolio_enqueue_styles() {
         }
     }
     
-    // Enqueue testimonials and services JavaScript
-    if (file_exists(get_template_directory() . '/assets/js/testimonials-services.js')) {
+    // Enqueue services JavaScript
+    if (file_exists(get_template_directory() . '/assets/js/services.js')) {
         wp_enqueue_script(
-            'portfolio-testimonials-services-js',
-            get_theme_file_uri( 'assets/js/testimonials-services.js' ),
+            'portfolio-services-js',
+            get_theme_file_uri( 'assets/js/services.js' ),
             array('jquery'),
-            filemtime(get_template_directory() . '/assets/js/testimonials-services.js'),
+            filemtime(get_template_directory() . '/assets/js/services.js'),
             true
         );
     }
@@ -474,19 +350,11 @@ require_once get_template_directory() . '/inc/campaigns-dashboard.php';
 // Include quick social posts functionality
 require_once get_template_directory() . '/inc/quick-social-posts.php';
 
-// Testimonials functionality is now in testimonials-core.php (included earlier)
-
-// Include testimonials admin menu
-require_once get_template_directory() . '/inc/testimonials-admin.php';
-
 // Include services functionality 
 require_once get_template_directory() . '/inc/services.php';
 
 // Include services widget
 require_once get_template_directory() . '/inc/widgets/services-widget.php';
-
-// Include testimonials widget
-require_once get_template_directory() . '/inc/widgets/testimonials-widget.php';
 
 
 // Include Gmail API integration
@@ -509,75 +377,14 @@ update_option('portfolio_flush_rewrite_rules_flag', true);
  * This function runs during theme activation to set up default content for the portfolio
  */
 function portfolio_setup_theme_defaults() {
-    // Make sure the post types are registered before creating content
-    if (function_exists('portfolio_testimonials_register_core')) {
-        portfolio_testimonials_register_core();
-    }
-    
-    // Create sample testimonials and services
-    portfolio_create_sample_testimonials();
+    // Create sample services
     portfolio_create_sample_services();
     
     // Flush rewrite rules
     flush_rewrite_rules();
 }
 
-/**
- * Generate sample testimonials if none exist
- */
-function portfolio_create_sample_testimonials() {
-    $existing_testimonials = get_posts(array(
-        'post_type' => 'portfolio_testimonial',
-        'posts_per_page' => 1,
-    ));
-    
-    // Only generate sample testimonials if none exist
-    if (empty($existing_testimonials)) {
-        $sample_testimonials = array(
-            array(
-                'title' => 'Excellent Web Development Work',
-                'content' => 'Working with Joshua has been an absolute pleasure. He delivered our website ahead of schedule and exceeded all our expectations. His attention to detail and creative solutions made our project stand out.',
-                'client_name' => 'Sarah Johnson',
-                'client_title' => 'Marketing Director',
-                'client_company' => 'TechVision Inc.',
-                'rating' => 5
-            ),
-            array(
-                'title' => 'Outstanding Mobile App Development',
-                'content' => 'Joshua helped us create a mobile app that has transformed our business. His technical expertise combined with an eye for design resulted in an intuitive, beautiful app that our customers love using.',
-                'client_name' => 'Michael Chen',
-                'client_title' => 'CEO',
-                'client_company' => 'InnovateTech',
-                'rating' => 5
-            ),
-            array(
-                'title' => 'Reliable and Creative Partner',
-                'content' => 'I have worked with many developers, but Joshua stands out for his reliability and creativity. He not only solved our complex technical challenges but also proposed innovative features that enhanced our product.',
-                'client_name' => 'Lisa Omondi',
-                'client_title' => 'Product Manager',
-                'client_company' => 'Savannah Solutions',
-                'rating' => 5
-            ),
-        );
-        
-        foreach ($sample_testimonials as $testimonial) {
-            $post_id = wp_insert_post(array(
-                'post_title' => $testimonial['title'],
-                'post_content' => $testimonial['content'],
-                'post_type' => 'portfolio_testimonial',
-                'post_status' => 'publish',
-            ));
-            
-            if ($post_id) {
-                // Add testimonial meta
-                update_post_meta($post_id, '_portfolio_testimonial_client_name', $testimonial['client_name']);
-                update_post_meta($post_id, '_portfolio_testimonial_client_title', $testimonial['client_title']);
-                update_post_meta($post_id, '_portfolio_testimonial_client_company', $testimonial['client_company']);
-                update_post_meta($post_id, '_portfolio_testimonial_rating', $testimonial['rating']);
-            }
-        }
-    }
-}
+
 
 /**
  * Generate sample services if none exist
@@ -694,7 +501,7 @@ function portfolio_add_homepage_template($templates) {
     $templates['templates/template-home.php'] = 'Portfolio Home';
     $templates['templates/template-campaigns.php'] = 'Campaigns & Projects Showcase';
     $templates['templates/template-joshua-portfolio.php'] = 'Joshua Lugaya Portfolio';
-    $templates['templates/template-services-testimonials.php'] = 'Services & Testimonials';
+    $templates['templates/template-services.php'] = 'Services';
     return $templates;
 }
 add_filter('theme_page_templates', 'portfolio_add_homepage_template');

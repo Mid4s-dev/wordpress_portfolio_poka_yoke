@@ -138,25 +138,7 @@ get_header();
     </div>
 </section>
 
-<!-- Testimonials Section -->
-<section id="testimonials" class="section bg-gray-50">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Testimonials</span>
-            <h2 class="heading-lg mb-6">Client Success Stories</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear from brands and organizations I've helped achieve their communication goals.</p>
-        </div>
-        
-        <?php 
-        // Use our testimonials shortcode with grid layout
-        echo do_shortcode('[portfolio_testimonials count="4" layout="grid"]'); 
-        ?>
-        
-        <div class="text-center mt-12">
-            <a href="<?php echo esc_url(get_post_type_archive_link('portfolio_testimonial')); ?>" class="btn btn-primary">View All Testimonials</a>
-        </div>
-    </div>
-</section>
+
 
 <!-- Blog Section -->
 <section id="blog" class="section bg-white">
