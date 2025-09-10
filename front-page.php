@@ -108,108 +108,10 @@ get_header();
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive PR and communications solutions tailored to your brand's unique needs.</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Service 1 -->
-            <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
-                <div class="text-primary-600 mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15" />
-                    </svg>
-                </div>
-                <h3 class="heading-sm mb-3">Media Relations</h3>
-                <p class="text-gray-600 mb-4">Building strong relationships with journalists and securing strategic media coverage that amplifies your brand message and credibility.</p>
-                <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-            
-            <!-- Service 2 -->
-            <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
-                <div class="text-primary-600 mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                    </svg>
-                </div>
-                <h3 class="heading-sm mb-3">Crisis Communication</h3>
-                <p class="text-gray-600 mb-4">Managing reputation during challenging times with strategic crisis communication plans and rapid response protocols.</p>
-                <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-            
-            <!-- Service 3 -->
-            <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
-                <div class="text-primary-600 mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                </div>
-                <h3 class="heading-sm mb-3">Content Strategy</h3>
-                <p class="text-gray-600 mb-4">Developing compelling content strategies that engage your target audience across multiple channels and platforms.</p>
-                <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
-                <div class="text-primary-600 mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                </div>
-                <h3 class="heading-sm mb-3">Stakeholder Engagement</h3>
-                <p class="text-gray-600 mb-4">Creating meaningful connections with key stakeholders through targeted communication and relationship-building strategies.</p>
-                <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-
-            <!-- Service 5 -->
-            <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
-                <div class="text-primary-600 mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
-                    </svg>
-                </div>
-                <h3 class="heading-sm mb-3">Social Media Strategy</h3>
-                <p class="text-gray-600 mb-4">Developing and executing comprehensive social media strategies that build community and drive engagement.</p>
-                <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-
-            <!-- Service 6 -->
-            <div class="card p-6 hover:shadow-xl transition-shadow duration-300">
-                <div class="text-primary-600 mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                </div>
-                <h3 class="heading-sm mb-3">Event Management</h3>
-                <p class="text-gray-600 mb-4">Planning and executing memorable corporate events, press conferences, and brand activations that create lasting impact.</p>
-                <a href="#" class="text-primary-600 hover:underline font-medium inline-flex items-center">
-                    Learn More
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
+        <?php echo do_shortcode('[portfolio_services count="6" layout="grid" columns="3"]'); ?>
+        
+        <div class="text-center mt-12">
+            <a href="<?php echo esc_url(get_permalink(get_page_by_path('services'))); ?>" class="btn btn-primary">View All Services</a>
         </div>
     </div>
 </section>
@@ -245,102 +147,13 @@ get_header();
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear from brands and organizations I've helped achieve their communication goals.</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Testimonial 1 -->
-            <div class="card p-8">
-                <div class="flex items-center mb-6">
-                    <div class="text-primary-600">
-                        <!-- 5 Stars -->
-                        <div class="flex">
-                            <?php for ($i = 0; $i < 5; $i++): ?>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            <?php endfor; ?>
-                        </div>
-                    </div>
-                </div>
-                <blockquote class="text-gray-600 mb-6">"<?php echo esc_html( portfolio_get_owner_name() ); ?>'s strategic communication expertise was instrumental in our successful market expansion. Her ability to craft compelling narratives and build relationships with key stakeholders resulted in unprecedented media coverage and brand awareness. She's a true professional who delivers exceptional results."</blockquote>
-                <div class="flex items-center">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-1.jpg' ); ?>" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover mr-4">
-                    <div>
-                        <p class="font-medium">Sarah Johnson</p>
-                        <p class="text-sm text-gray-500">CEO, InnovateX Technologies</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Testimonial 2 -->
-            <div class="card p-8">
-                <div class="flex items-center mb-6">
-                    <div class="text-primary-600">
-                        <!-- 5 Stars -->
-                        <div class="flex">
-                            <?php for ($i = 0; $i < 5; $i++): ?>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            <?php endfor; ?>
-                        </div>
-                    </div>
-                </div>
-                <blockquote class="text-gray-600 mb-6">"During our organization's most challenging crisis, <?php echo esc_html( portfolio_get_owner_name() ); ?> provided exceptional crisis communication leadership. Her calm approach, strategic thinking, and media expertise helped us navigate the situation with transparency and integrity. Our stakeholder trust actually increased post-crisis."</blockquote>
-                <div class="flex items-center">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-2.jpg' ); ?>" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover mr-4">
-                    <div>
-                        <p class="font-medium">Michael Chen</p>
-                        <p class="text-sm text-gray-500">Director, Global Impact Foundation</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="card p-8">
-                <div class="flex items-center mb-6">
-                    <div class="text-primary-600">
-                        <!-- 5 Stars -->
-                        <div class="flex">
-                            <?php for ($i = 0; $i < 5; $i++): ?>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            <?php endfor; ?>
-                        </div>
-                    </div>
-                </div>
-                <blockquote class="text-gray-600 mb-6">"<?php echo esc_html( portfolio_get_owner_name() ); ?> transformed our brand's communication strategy completely. Her integrated approach to PR and digital communications increased our brand visibility by 300% and established us as thought leaders in our industry. She's a strategic communicator with exceptional execution skills."</blockquote>
-                <div class="flex items-center">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-3.jpg' ); ?>" alt="Lisa Rodriguez" class="w-12 h-12 rounded-full object-cover mr-4">
-                    <div>
-                        <p class="font-medium">Lisa Rodriguez</p>
-                        <p class="text-sm text-gray-500">VP Marketing, EcoSolutions Inc.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial 4 -->
-            <div class="card p-8">
-                <div class="flex items-center mb-6">
-                    <div class="text-primary-600">
-                        <!-- 5 Stars -->
-                        <div class="flex">
-                            <?php for ($i = 0; $i < 5; $i++): ?>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            <?php endfor; ?>
-                        </div>
-                    </div>
-                </div>
-                <blockquote class="text-gray-600 mb-6">"Working with <?php echo esc_html( portfolio_get_owner_name() ); ?> was a game-changer for our product launch. Her media relations expertise and strategic storytelling secured coverage in top-tier publications and generated massive buzz. The campaign exceeded all our KPIs and set a new standard for our future launches."</blockquote>
-                <div class="flex items-center">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/testimonial-4.jpg' ); ?>" alt="James Wilson" class="w-12 h-12 rounded-full object-cover mr-4">
-                    <div>
-                        <p class="font-medium">James Wilson</p>
-                        <p class="text-sm text-gray-500">Head of Product, FutureTech Labs</p>
-                    </div>
-                </div>
-            </div>
+        <?php 
+        // Use our testimonials shortcode with grid layout
+        echo do_shortcode('[portfolio_testimonials count="4" layout="grid"]'); 
+        ?>
+        
+        <div class="text-center mt-12">
+            <a href="<?php echo esc_url(get_post_type_archive_link('portfolio_testimonial')); ?>" class="btn btn-primary">View All Testimonials</a>
         </div>
     </div>
 </section>

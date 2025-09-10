@@ -1,8 +1,4 @@
 <?php
-// Super Priority Fix for Testimonials
-require_once get_template_directory() . '/testimonials-super-priority-fix.php';
-
-
 /**
  * Portfolio functions and definitions
  *
@@ -11,117 +7,32 @@ require_once get_template_directory() . '/testimonials-super-priority-fix.php';
  * @since 1.0
  */
 
-// Include emergency fix for testimonials post type
-require_once get_template_directory() . '/inc/testimonials-emergency-fix.php';
-
 // Register core post types early
 require_once get_template_directory() . '/inc/testimonials-core.php';
 
-/**
- * Direct testimonial post type registration with highest priority
- * This guarantees the post type is registered regardless of any other code
- */
-function portfolio_testimonials_direct_registration() {
-    // Only register if it doesn't already exist
-    if (!post_type_exists('portfolio_testimonial')) {
-        $labels = array(
-            'name'                  => 'Testimonials',
-            'singular_name'         => 'Testimonial',
-            'menu_name'             => 'Testimonials',
-            'name_admin_bar'        => 'Testimonial',
-            'add_new'               => 'Add New',
-            'add_new_item'          => 'Add New Testimonial',
-            'new_item'              => 'New Testimonial',
-            'edit_item'             => 'Edit Testimonial',
-            'view_item'             => 'View Testimonial',
-            'all_items'             => 'All Testimonials',
-            'search_items'          => 'Search Testimonials',
-            'not_found'             => 'No testimonials found.',
-            'not_found_in_trash'    => 'No testimonials found in Trash.',
-            'featured_image'        => 'Client Image',
-            'set_featured_image'    => 'Set client image',
-            'remove_featured_image' => 'Remove client image',
-            'use_featured_image'    => 'Use as client image',
-            'archives'              => 'Testimonial archives',
-        );
-        
-        $args = array(
-            'labels'             => $labels,
-            'public'             => true,
-            'publicly_queryable' => true,
-            'show_ui'            => true,
-            'show_in_menu'       => true,
-            'query_var'          => true,
-            'rewrite'            => array('slug' => 'testimonials'),
-            'capability_type'    => 'post',
-            'has_archive'        => true,
-            'hierarchical'       => false,
-            'menu_position'      => 22,
-            'menu_icon'          => 'dashicons-format-quote',
-            'supports'           => array('title', 'editor', 'thumbnail'),
-            'show_in_rest'       => true,
-        );
-        
-        register_post_type('portfolio_testimonial', $args);
-        update_option('portfolio_testimonials_directly_registered', true);
-    }
-    
-    // Then try to call the core function too
-    if (function_exists('portfolio_testimonials_register_core')) {
-        portfolio_testimonials_register_core();
-    }
-}
-add_action('init', 'portfolio_testimonials_direct_registration', -9999); // Ultra high priority
-
-// Add a notice when permalinks need to be updated
-function portfolio_admin_testimonials_notice() {
-    // Only show to admins
+// Add a debug notice to help troubleshoot post type registration
+function portfolio_admin_post_type_debug_notice() {
     if (!current_user_can('manage_options')) {
         return;
     }
     
-    $testimonial_exists = post_type_exists('portfolio_testimonial');
-    $direct_registered = get_option('portfolio_testimonials_directly_registered', false);
-    $core_registered = get_option('portfolio_testimonials_core_registered', false);
-    $permalinks_updated = get_option('portfolio_permalinks_updated_for_testimonials', false);
+    $exists = post_type_exists('portfolio_testimonial') ? 'YES' : 'NO';
+    $registered = get_post_types([], 'names');
     
-    // If the post type exists but permalinks haven't been updated
-    if ($testimonial_exists && !$permalinks_updated) {
-        ?>
-        <div class="notice notice-success is-dismissible">
-            <h3>✅ Testimonials Post Type Registered Successfully</h3>
-            <p><strong>Final Step:</strong> Please visit <a href="<?php echo admin_url('options-permalink.php'); ?>">Settings > Permalinks</a> and click "Save Changes" to update the permalink structure.</p>
-            <p>After updating permalinks, this notice will disappear.</p>
-        </div>
-        <?php
-    } 
-    // If the post type doesn't exist, show a more detailed debug notice
-    else if (!$testimonial_exists && (defined('WP_DEBUG') && WP_DEBUG)) {
-        $registered = get_post_types([], 'names');
-        ?>
-        <div class="notice notice-error is-dismissible">
-            <h3>❌ Testimonials Post Type Not Registered</h3>
-            <p><strong>Registration Status:</strong></p>
-            <ul>
-                <li>Post Type Exists: <?php echo $testimonial_exists ? 'YES' : 'NO'; ?></li>
-                <li>Emergency Fix Active: <?php echo $direct_registered ? 'YES' : 'NO'; ?></li>
-                <li>Core Registration Called: <?php echo $core_registered ? 'YES' : 'NO'; ?></li>
-            </ul>
-            <p><strong>Registered post types:</strong> <?php echo esc_html(implode(', ', array_slice($registered, 0, 10))); ?>...</p>
-            <p><a href="<?php echo home_url('/wp-content/themes/portfolio/testimonials-diagnostic.php'); ?>" class="button">Run Diagnostic Tool</a></p>
-        </div>
-        <?php
-    }
+    ?>
+    <div class="notice notice-info is-dismissible">
+        <p><strong>Debug:</strong> portfolio_testimonial registered? <?php echo $exists; ?></p>
+        <p><strong>Registered post types (partial):</strong> <?php echo esc_html(implode(', ', array_slice($registered, 0, 25))); ?><?php if (count($registered) > 25) echo '...'; ?></p>
+        <?php if ($exists === 'NO'): ?>
+            <p><strong>Action needed:</strong> Please visit Settings > Permalinks and click Save Changes.</p>
+        <?php endif; ?>
+    </div>
+    <?php
 }
-add_action('admin_notices', 'portfolio_admin_testimonials_notice');
-
-// Mark permalinks as updated when the permalink settings page is saved
-function portfolio_mark_permalinks_updated() {
-    if (isset($_GET['settings-updated']) && $_GET['settings-updated'] == 'true') {
-        update_option('portfolio_permalinks_updated_for_testimonials', true);
-    }
+// Only show this notice if there's a problem or in development mode
+if (defined('WP_DEBUG') && WP_DEBUG || !post_type_exists('portfolio_testimonial')) {
+    add_action('admin_notices', 'portfolio_admin_post_type_debug_notice');
 }
-add_action('load-options-permalink.php', 'portfolio_mark_permalinks_updated');
 
 if ( ! function_exists( 'portfolio_setup' ) ) {
     /**

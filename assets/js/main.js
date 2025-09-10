@@ -109,27 +109,6 @@
         });
     }
 
-    // Sticky header effects
-    function setupStickyHeader() {
-        const header = document.querySelector('.site-header');
-        if (!header) return;
-
-        let lastScrollY = window.scrollY;
-        
-        window.addEventListener('scroll', function() {
-            const currentScrollY = window.scrollY;
-            
-            // Add shadow when scrolling down
-            if (currentScrollY > 50) {
-                header.classList.add('shadow-md');
-            } else {
-                header.classList.remove('shadow-md');
-            }
-            
-            lastScrollY = currentScrollY;
-        });
-    }
-
     // Smooth scrolling for anchor links
     function setupSmoothScroll() {
         const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, a[href^="#"]');
@@ -188,9 +167,14 @@
             });
             
             navLinks.forEach(link => {
+                // Remove any previous active classes
                 link.classList.remove('text-primary-600');
+                link.classList.remove('text-shuka-yellow');
+                
+                // Add appropriate active class based on the current section
                 if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('text-primary-600');
+                    // Use Maasai theme color
+                    link.classList.add('text-shuka-yellow');
                 }
             });
             

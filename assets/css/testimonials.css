@@ -1,0 +1,232 @@
+/**
+ * Testimonials CSS
+ *
+ * @package WordPress
+ * @subpackage Portfolio
+ * @since 1.0
+ */
+
+/* Testimonials Grid Layout */
+.portfolio-testimonials {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.portfolio-testimonials-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.testimonials-columns-1 {
+    grid-template-columns: 1fr;
+}
+
+.testimonials-columns-2 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.testimonials-columns-3 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.testimonials-columns-4 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+/* Responsive grid */
+@media (min-width: 640px) {
+    .testimonials-columns-2,
+    .testimonials-columns-3,
+    .testimonials-columns-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .testimonials-columns-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .testimonials-columns-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Individual testimonial styling */
+.portfolio-testimonial {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.portfolio-testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-content {
+    padding: 2rem;
+    position: relative;
+    flex-grow: 1;
+    background-color: #f9fafb;
+}
+
+.testimonial-quote-icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    opacity: 0.1;
+}
+
+.testimonial-quote-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+}
+
+.testimonial-text {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: #4b5563;
+}
+
+.testimonial-text p {
+    margin-bottom: 0.75rem;
+}
+
+.testimonial-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Star rating */
+.testimonial-rating {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-rating .star {
+    color: #f59e0b;
+    margin-right: 0.15rem;
+    font-size: 1.25rem;
+}
+
+.testimonial-rating .star-empty {
+    opacity: 0.5;
+}
+
+/* Client info section */
+.testimonial-meta {
+    padding: 1.5rem 2rem;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #f3f4f6;
+}
+
+.testimonial-image {
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.testimonial-image .client-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonial-client-info {
+    flex-grow: 1;
+}
+
+.client-name {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 1rem;
+    margin: 0 0 0.25rem;
+}
+
+.client-position {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* Slider/Carousel styles */
+.portfolio-testimonials-slider,
+.portfolio-testimonials-carousel {
+    position: relative;
+    padding: 0 40px; /* Space for navigation buttons */
+}
+
+.portfolio-testimonials-slider .portfolio-testimonial,
+.portfolio-testimonials-carousel .portfolio-testimonial {
+    display: none;
+    width: 100%;
+}
+
+.portfolio-testimonials-slider .portfolio-testimonial.active,
+.portfolio-testimonials-carousel .portfolio-testimonial.active {
+    display: block;
+}
+
+/* Slider navigation */
+.testimonial-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.testimonial-prev,
+.testimonial-next {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 9999px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.testimonial-prev:hover,
+.testimonial-next:hover {
+    background: #f9fafb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-prev:focus,
+.testimonial-next:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Admin styles */
+.testimonial-client-placeholder {
+    width: 50px;
+    height: 50px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-client-placeholder .dashicons {
+    color: #9ca3af;
+}
+
+.testimonial-client-thumbnail {
+    border-radius: 50%;
+}

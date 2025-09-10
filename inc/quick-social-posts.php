@@ -120,11 +120,15 @@ class Portfolio_Quick_Social_Posts {
         $description = isset($_POST['post_description']) ? wp_kses_post($_POST['post_description']) : '';
         $image_id = isset($_POST['post_image_id']) ? absint($_POST['post_image_id']) : 0;
         $embed_code = isset($_POST['post_embed_code']) ? wp_kses_post($_POST['post_embed_code']) : '';
+        $post_id = isset($_POST['post_id']) ? absint($_POST['post_id']) : 0;
+        
+        // Check if we're editing an existing post
+        $is_edit = ($post_id > 0);
         
         // Validate required fields
         if (empty($title) || empty($url) || empty($platform)) {
             // Store form data for repopulation
-            set_transient('portfolio_quick_post_data', array(
+            $form_data = array(
                 'title' => $title,
                 'url' => $url,
                 'platform' => $platform,
@@ -132,20 +136,34 @@ class Portfolio_Quick_Social_Posts {
                 'image_id' => $image_id,
                 'embed_code' => $embed_code,
                 'error' => __('Please fill in all required fields.', 'portfolio')
-            ), 60);
+            );
+            
+            if ($is_edit) {
+                $form_data['edit_id'] = $post_id;
+            }
+            
+            set_transient('portfolio_quick_post_data', $form_data, 60);
             
             // Redirect back to form
-            wp_redirect(admin_url('admin.php?page=portfolio-quick-post&error=1'));
+            if ($is_edit) {
+                wp_redirect(admin_url('admin.php?page=portfolio-quick-post&edit=' . $post_id . '&error=1'));
+            } else {
+                wp_redirect(admin_url('admin.php?page=portfolio-quick-post&error=1'));
+            }
             exit;
         }
         
-        // Create new campaign post
+        // Create new or update existing campaign post
         $post_data = array(
             'post_title' => $title,
             'post_content' => $description,
             'post_status' => 'publish',
             'post_type' => 'portfolio_campaign',
         );
+        
+        if ($is_edit) {
+            $post_data['ID'] = $post_id;
+        }
         
         $post_id = wp_insert_post($post_data);
         
@@ -199,7 +217,11 @@ class Portfolio_Quick_Social_Posts {
         }
         
         // Redirect to success page
-        wp_redirect(admin_url('admin.php?page=portfolio-quick-post&success=1'));
+        if ($is_edit) {
+            wp_redirect(admin_url('admin.php?page=portfolio-quick-post&edit=' . $post_id . '&success=1'));
+        } else {
+            wp_redirect(admin_url('admin.php?page=portfolio-quick-post&success=1'));
+        }
         exit;
     }
     
@@ -210,19 +232,38 @@ class Portfolio_Quick_Social_Posts {
         // Check for messages
         $success = isset($_GET['success']) ? true : false;
         $error = isset($_GET['error']) ? true : false;
+        $edit_id = isset($_GET['edit']) ? intval($_GET['edit']) : 0;
         $form_data = get_transient('portfolio_quick_post_data');
         
+        // Check if we're editing an existing post
+        if ($edit_id > 0 && empty($form_data)) {
+            $post = get_post($edit_id);
+            
+            if ($post && $post->post_type === 'portfolio_campaign') {
+                // Get post data for editing
+                $form_data = array(
+                    'title' => $post->post_title,
+                    'description' => $post->post_content,
+                    'url' => get_post_meta($edit_id, '_campaign_url', true),
+                    'platform' => get_post_meta($edit_id, '_campaign_platform', true),
+                    'image_id' => get_post_thumbnail_id($edit_id),
+                    'embed_code' => get_post_meta($edit_id, '_campaign_embed_code', true),
+                    'edit_id' => $edit_id
+                );
+            }
+        }
+        
         // Clear transient
-        if ($form_data) {
+        if ($form_data && !isset($form_data['edit_id'])) {
             delete_transient('portfolio_quick_post_data');
         }
         ?>
         <div class="wrap quick-social-post-wrap">
-            <h1><?php _e('Quick Add Social Post', 'portfolio'); ?></h1>
+            <h1><?php echo isset($form_data['edit_id']) ? __('Edit Social Post', 'portfolio') : __('Quick Add Social Post', 'portfolio'); ?></h1>
             
             <?php if ($success) : ?>
                 <div class="notice notice-success is-dismissible">
-                    <p><?php _e('Social post added successfully!', 'portfolio'); ?></p>
+                    <p><?php _e('Social post saved successfully!', 'portfolio'); ?></p>
                 </div>
             <?php endif; ?>
             
@@ -235,8 +276,8 @@ class Portfolio_Quick_Social_Posts {
             <div class="quick-post-container">
                 <div class="quick-post-form-wrap">
                     <div class="quick-post-header">
-                        <h2><?php _e('Add a social media post to your portfolio', 'portfolio'); ?></h2>
-                        <p class="description"><?php _e('Quickly add a LinkedIn, Instagram, or Twitter post to display on your portfolio homepage.', 'portfolio'); ?></p>
+                        <h2><?php echo isset($form_data['edit_id']) ? __('Edit social media post', 'portfolio') : __('Add a social media post to your portfolio', 'portfolio'); ?></h2>
+                        <p class="description"><?php _e('Quickly add or edit a LinkedIn, Instagram, or Twitter post to display on your portfolio homepage.', 'portfolio'); ?></p>
                     </div>
                     
                     <form method="post" action="" class="quick-post-form">
@@ -294,9 +335,16 @@ class Portfolio_Quick_Social_Posts {
                             <p class="description"><?php _e('If you have an embed code from the platform, paste it here (optional). This will create an interactive embed.', 'portfolio'); ?></p>
                         </div>
                         
+                        <?php if (isset($form_data['edit_id'])) : ?>
+                            <input type="hidden" name="post_id" value="<?php echo esc_attr($form_data['edit_id']); ?>" />
+                        <?php endif; ?>
+                        
                         <div class="form-actions">
                             <button type="button" id="preview-button" class="button button-secondary"><?php _e('Preview Post', 'portfolio'); ?></button>
-                            <input type="submit" name="portfolio_quick_post_submit" class="button button-primary" value="<?php esc_attr_e('Add to Portfolio', 'portfolio'); ?>" />
+                            <input type="submit" name="portfolio_quick_post_submit" class="button button-primary" value="<?php echo isset($form_data['edit_id']) ? esc_attr__('Update Post', 'portfolio') : esc_attr__('Add to Portfolio', 'portfolio'); ?>" />
+                            <?php if (isset($form_data['edit_id'])) : ?>
+                                <a href="<?php echo esc_url(admin_url('edit.php?post_type=portfolio_campaign')); ?>" class="button"><?php esc_html_e('Cancel', 'portfolio'); ?></a>
+                            <?php endif; ?>
                         </div>
                     </form>
                 </div>
@@ -425,6 +473,20 @@ class Portfolio_Quick_Social_Posts {
         
         // Don't show on our quick add page
         if ($screen->id === 'campaigns_page_portfolio-quick-post') {
+            return;
+        }
+        
+        // Show on campaign related pages, dashboard, and site management
+        $show_on_screens = array(
+            'edit-portfolio_campaign',
+            'portfolio_campaign',
+            'toplevel_page_portfolio-campaigns',
+            'dashboard',
+            'toplevel_page_portfolio-site-management'
+        );
+        
+        // Only show on selected screens
+        if (!in_array($screen->id, $show_on_screens) && $screen->post_type !== 'portfolio_campaign') {
             return;
         }
         

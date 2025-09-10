@@ -60,10 +60,11 @@ class Portfolio_Campaigns_Dashboard {
         
         add_submenu_page(
             'portfolio-campaigns',
-            __('Add New Campaign', 'portfolio'),
-            __('Add New', 'portfolio'),
+            __('Add Social Post', 'portfolio'),
+            __('Add Social Post', 'portfolio'),
             'edit_posts',
-            'post-new.php?post_type=portfolio_campaign'
+            'portfolio-quick-post',
+            null
         );
         
         add_submenu_page(
@@ -165,8 +166,8 @@ class Portfolio_Campaigns_Dashboard {
         
         $admin_bar->add_node(array(
             'id'    => 'portfolio-add-campaign',
-            'title' => __('Add Campaign', 'portfolio'),
-            'href'  => admin_url('post-new.php?post_type=portfolio_campaign'),
+            'title' => __('Add Social Post', 'portfolio'),
+            'href'  => admin_url('admin.php?page=portfolio-quick-post'),
             'parent' => 'new-content',
         ));
     }
@@ -257,7 +258,7 @@ class Portfolio_Campaigns_Dashboard {
         ?>
         <div class="wrap campaigns-dashboard">
             <h1 class="wp-heading-inline"><?php _e('Campaigns & Projects Dashboard', 'portfolio'); ?></h1>
-            <a href="<?php echo esc_url(admin_url('post-new.php?post_type=portfolio_campaign')); ?>" class="page-title-action"><?php _e('Add New', 'portfolio'); ?></a>
+            <a href="<?php echo esc_url(admin_url('admin.php?page=portfolio-quick-post')); ?>" class="page-title-action"><?php _e('Add Social Post', 'portfolio'); ?></a>
             <hr class="wp-header-end">
             
             <div class="dashboard-header">
@@ -332,6 +333,13 @@ class Portfolio_Campaigns_Dashboard {
                                         <a href="<?php echo esc_url(get_edit_post_link($campaign->ID)); ?>">
                                             <?php echo esc_html($campaign->post_title); ?>
                                         </a>
+                                        <div class="row-actions">
+                                            <span class="edit">
+                                                <a href="<?php echo esc_url(admin_url('admin.php?page=portfolio-quick-post&edit=' . $campaign->ID)); ?>" aria-label="<?php esc_attr_e('Edit with Quick Post', 'portfolio'); ?>">
+                                                    <?php _e('Quick Edit', 'portfolio'); ?>
+                                                </a>
+                                            </span>
+                                        </div>
                                         <span class="meta">
                                             <?php 
                                             printf(
@@ -347,7 +355,7 @@ class Portfolio_Campaigns_Dashboard {
                             <a href="<?php echo esc_url(admin_url('edit.php?post_type=portfolio_campaign')); ?>" class="button button-secondary button-small view-all"><?php _e('View All Campaigns', 'portfolio'); ?></a>
                         <?php else : ?>
                             <p class="no-items"><?php _e('No campaigns have been created yet.', 'portfolio'); ?></p>
-                            <a href="<?php echo esc_url(admin_url('post-new.php?post_type=portfolio_campaign')); ?>" class="button button-primary button-small"><?php _e('Add Your First Campaign', 'portfolio'); ?></a>
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=portfolio-quick-post')); ?>" class="button button-primary button-small"><?php _e('Add Your First Social Post', 'portfolio'); ?></a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -456,7 +464,7 @@ class Portfolio_Campaigns_Dashboard {
             <?php endif; ?>
             
             <p class="campaigns-actions">
-                <a href="<?php echo esc_url(admin_url('post-new.php?post_type=portfolio_campaign')); ?>" class="button button-secondary button-small"><?php _e('Add New', 'portfolio'); ?></a>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=portfolio-quick-post')); ?>" class="button button-secondary button-small"><?php _e('Add Social Post', 'portfolio'); ?></a>
                 <a href="<?php echo esc_url(admin_url('edit.php?post_type=portfolio_campaign')); ?>" class="button button-link button-small"><?php _e('Manage All', 'portfolio'); ?></a>
             </p>
         </div>

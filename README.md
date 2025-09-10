@@ -5,6 +5,7 @@ A modern portfolio theme for WordPress inspired by Next.js Tailwind CSS Portfoli
 ## Documentation
 
 - [Campaigns & Projects Guide](docs/campaigns-guide.md) - How to set up and manage your campaigns page
+- [Testimonials Guide](docs/testimonials-guide.md) - How to manage and display client testimonials
 
 ## Features
 
@@ -14,8 +15,9 @@ A modern portfolio theme for WordPress inspired by Next.js Tailwind CSS Portfoli
 - Mobile-friendly navigation
 - Tailwind CSS styling
 - Block patterns for easy customization
-- Custom post types for campaigns and projects
+- Custom post types for campaigns, projects, and testimonials
 - Featured campaign functionality
+- Client testimonials with ratings
 - Contact form with AJAX submission
 - Newsletter signup form
 

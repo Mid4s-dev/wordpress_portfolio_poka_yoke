@@ -167,7 +167,7 @@ get_header();
                 <h2 class="text-2xl font-medium text-gray-600 mb-2"><?php _e('No Campaigns Found', 'portfolio'); ?></h2>
                 <p class="text-gray-500 mb-6"><?php _e('No campaigns or projects have been added yet.', 'portfolio'); ?></p>
                 <?php if (current_user_can('edit_posts')) : ?>
-                    <a href="<?php echo esc_url(admin_url('post-new.php?post_type=portfolio_campaign')); ?>" class="inline-block px-5 py-3 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition"><?php _e('Add Your First Campaign', 'portfolio'); ?></a>
+                    <a href="<?php echo esc_url(admin_url('admin.php?page=portfolio-quick-post')); ?>" class="inline-block px-5 py-3 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition"><?php _e('Add Your First Social Post', 'portfolio'); ?></a>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
