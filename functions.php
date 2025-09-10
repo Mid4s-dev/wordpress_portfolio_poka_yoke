@@ -117,6 +117,16 @@ function portfolio_enqueue_styles() {
         );
     }
     
+    // Enqueue simple testimonials styles
+    if (file_exists(get_template_directory() . '/assets/css/simple-testimonials.css')) {
+        wp_enqueue_style(
+            'simple-testimonials',
+            get_theme_file_uri( 'assets/css/simple-testimonials.css' ),
+            array(),
+            filemtime(get_template_directory() . '/assets/css/simple-testimonials.css')
+        );
+    }
+    
     // Enqueue dashicons on the frontend for social icons
     wp_enqueue_style('dashicons');
     
@@ -356,6 +366,8 @@ require_once get_template_directory() . '/inc/services.php';
 // Include services widget
 require_once get_template_directory() . '/inc/widgets/services-widget.php';
 
+// Include simple testimonials functionality
+require_once get_template_directory() . '/inc/simple-testimonials.php';
 
 // Include Gmail API integration
 require_once get_template_directory() . '/inc/gmail-api.php';
@@ -380,8 +392,68 @@ function portfolio_setup_theme_defaults() {
     // Create sample services
     portfolio_create_sample_services();
     
+    // Create sample testimonials
+    portfolio_create_sample_testimonials();
+    
     // Flush rewrite rules
     flush_rewrite_rules();
+}
+
+/**
+ * Generate sample testimonials if none exist
+ */
+function portfolio_create_sample_testimonials() {
+    $existing_testimonials = get_posts(array(
+        'post_type' => 'simple_testimonial',
+        'posts_per_page' => 1,
+    ));
+    
+    // Only generate sample testimonials if none exist
+    if (empty($existing_testimonials)) {
+        $sample_testimonials = array(
+            array(
+                'title' => 'Excellent PR Strategy',
+                'content' => 'Working with this PR professional has been an absolute pleasure. They delivered our campaign ahead of schedule and exceeded all our expectations. Their attention to detail and creative solutions made our project stand out.',
+                'client_name' => 'Sarah Johnson',
+                'client_position' => 'Marketing Director',
+                'client_company' => 'TechVision Inc.',
+                'rating' => 5
+            ),
+            array(
+                'title' => 'Outstanding Media Relations',
+                'content' => 'The media coverage we received thanks to their PR strategy was phenomenal. Their network of contacts and ability to craft compelling stories resulted in features in publications we had been targeting for years.',
+                'client_name' => 'Michael Chen',
+                'client_position' => 'CEO',
+                'client_company' => 'InnovateTech',
+                'rating' => 5
+            ),
+            array(
+                'title' => 'Reliable Crisis Management',
+                'content' => 'When our company faced a potential PR crisis, their quick thinking and strategic communication plan helped us navigate through it with minimal impact. Their guidance was invaluable during a challenging time for our organization.',
+                'client_name' => 'Lisa Omondi',
+                'client_position' => 'Product Manager',
+                'client_company' => 'Savannah Solutions',
+                'rating' => 5
+            ),
+        );
+        
+        foreach ($sample_testimonials as $testimonial) {
+            $post_id = wp_insert_post(array(
+                'post_title' => $testimonial['title'],
+                'post_content' => $testimonial['content'],
+                'post_type' => 'simple_testimonial',
+                'post_status' => 'publish',
+            ));
+            
+            if ($post_id) {
+                // Add testimonial meta
+                update_post_meta($post_id, '_simple_testimonial_client_name', $testimonial['client_name']);
+                update_post_meta($post_id, '_simple_testimonial_client_position', $testimonial['client_position']);
+                update_post_meta($post_id, '_simple_testimonial_client_company', $testimonial['client_company']);
+                update_post_meta($post_id, '_simple_testimonial_rating', $testimonial['rating']);
+            }
+        }
+    }
 }
 
 
