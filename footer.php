@@ -2,42 +2,42 @@
 
     <!-- Newsletter Section before footer -->
     <section class="bg-shuka-black text-white py-16 relative">
-        <div class="absolute top-0 left-0 right-0 h-3 from-shuka-red to-shuka-yellow bg-shuka-pattern"></div>
+        <div class="absolute top-0 left-0 right-0 h-3 from-maroon to-shuka-yellow bg-shuka-pattern"></div>
         
        
         
-        <div class="absolute bottom-0 left-0 right-0 h-3 from-shuka-yellow to-shuka-blue bg-shuka-pattern"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-3 from-shuka-yellow to-maroon bg-shuka-pattern"></div>
     </section>
 
-    <footer id="colophon" class="site-footer bg-shuka-earth text-white py-16 relative">
-        <div class="bg-shuka-pattern-large from-shuka-earth to-shuka-black opacity-20 absolute inset-0"></div>
+    <footer id="colophon" class="site-footer bg-shuka-black text-white py-16 relative">
+        <div class="bg-shuka-pattern-large from-maroon to-shuka-black opacity-20 absolute inset-0"></div>
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="footer-heading text-xl font-bold mb-6 text-shuka-yellow border-b border-shuka-red/30 pb-2">
+                    <h3 class="footer-heading text-xl font-bold mb-6 text-shuka-yellow border-b border-maroon/30 pb-2">
                         <?php esc_html_e( 'About', 'portfolio' ); ?>
                     </h3>
                     <p class="mb-6 text-white/80"><?php echo get_bloginfo( 'description' ); ?></p>
                     
                     <?php if ( has_custom_logo() ) : ?>
-                        <div class="w-32 bg-white p-2 rounded-lg border border-shuka-yellow/30">
+                        <div class="w-32 bg-white p-2 rounded-lg border border-maroon hover:border-shuka-yellow transition-colors">
                             <?php the_custom_logo(); ?>
                         </div>
                     <?php else : ?>
-                        <h4 class="text-xl font-bold text-shuka-yellow">
+                        <h4 class="text-xl font-bold text-maroon hover:text-shuka-yellow transition-colors">
                             <?php bloginfo( 'name' ); ?>
                         </h4>
                     <?php endif; ?>
                 </div>
                 
                 <div>
-                    <h3 class="footer-heading text-xl font-bold mb-6 text-shuka-yellow border-b border-shuka-red/30 pb-2">
+                    <h3 class="footer-heading text-xl font-bold mb-6 text-shuka-yellow border-b border-maroon/30 pb-2">
                         <?php esc_html_e( 'Navigation', 'portfolio' ); ?>
                     </h3>
                     <div class="footer-links flex flex-col space-y-3">
                         <a href="#about" class="text-white/80 hover:text-shuka-yellow transition-colors flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-maroon"><polyline points="9 18 15 12 9 6"></polyline></svg>
                             <?php esc_html_e( 'About', 'portfolio' ); ?>
                         </a>
                         <a href="#skills" class="text-white/80 hover:text-shuka-yellow transition-colors flex items-center gap-2">

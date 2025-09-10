@@ -17,17 +17,17 @@ get_header();
             <div class="hero-content">
                 <h1 class="heading-xl text-gray-900 mb-6">
                     <?php esc_html_e( 'Hi, I\'m ', 'portfolio' ); ?>
-                    <span class="text-primary-600"><?php echo portfolio_get_owner_name(); ?></span>
+                    <span class="text-maroon"><?php echo portfolio_get_owner_name(); ?></span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl text-gray-600 font-semibold mb-6"><?php bloginfo( 'description' ); ?></h2>
                 <p class="text-xl text-gray-600 mb-8 leading-relaxed">
                     <?php esc_html_e( 'I create compelling narratives, build strong brand relationships, and drive strategic communication campaigns that engage audiences and deliver measurable results.', 'portfolio' ); ?>
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contact" class="btn btn-primary btn-lg">
+                    <a href="#contact" class="btn btn-primary btn-lg bg-maroon hover:bg-shuka-yellow hover:text-maroon transition-colors">
                         <?php esc_html_e( 'Let\'s Connect', 'portfolio' ); ?>
                     </a>
-                    <a href="#portfolio" class="btn btn-outline btn-lg">
+                    <a href="#portfolio" class="btn btn-outline btn-lg border-maroon text-maroon hover:bg-maroon hover:text-white transition-colors">
                         <?php esc_html_e( 'View My Work', 'portfolio' ); ?>
                     </a>
                 </div>
@@ -36,7 +36,7 @@ get_header();
                 <div class="relative">
                     <?php if ( has_custom_logo() ) : ?>
                         <div class="relative">
-                            <div class="absolute inset-0 bg-primary-600 rounded-full transform translate-x-4 translate-y-4"></div>
+                            <div class="absolute inset-0 bg-maroon rounded-full transform translate-x-4 translate-y-4"></div>
                             <div class="hero-avatar relative z-10 bg-white rounded-full border-4 border-white shadow-lg">
                                 <?php the_custom_logo(); ?>
                             </div>

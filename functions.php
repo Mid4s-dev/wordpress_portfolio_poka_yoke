@@ -127,6 +127,16 @@ function portfolio_enqueue_styles() {
         );
     }
     
+    // Enqueue custom theme styles
+    if (file_exists(get_template_directory() . '/assets/css/custom-theme.css')) {
+        wp_enqueue_style(
+            'portfolio-custom-theme',
+            get_theme_file_uri( 'assets/css/custom-theme.css' ),
+            array(),
+            filemtime(get_template_directory() . '/assets/css/custom-theme.css')
+        );
+    }
+    
     // Enqueue dashicons on the frontend for social icons
     wp_enqueue_style('dashicons');
     

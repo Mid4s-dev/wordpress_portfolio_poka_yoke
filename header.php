@@ -21,23 +21,23 @@
     <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'portfolio' ); ?></a>
 
     <header id="masthead" class="site-header sticky top-0 z-50 bg-shuka-black text-white shadow-lg backdrop-blur-sm">
-        <div class="absolute top-0 left-0 right-0 h-2 from-shuka-red to-shuka-yellow bg-shuka-pattern"></div>
+        <div class="absolute top-0 left-0 right-0 h-2 from-maroon to-shuka-yellow bg-shuka-pattern"></div>
         <div class="container mx-auto flex items-center justify-between px-4 py-4 sm:px-6">
             <div class="site-branding flex-shrink-0">
                 <?php if ( has_custom_logo() ) : ?>
-                    <div class="custom-logo-container bg-white p-1 rounded-full border-2 border-shuka-yellow">
+                    <div class="custom-logo-container bg-white p-1 rounded-full border-2 border-shuka-yellow hover:border-maroon transition-colors">
                         <?php the_custom_logo(); ?>
                     </div>
                 <?php else : ?>
                     <h1 class="site-title text-xl sm:text-2xl font-bold truncate">
-                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="text-shuka-yellow hover:text-shuka-red transition-colors">
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="text-maroon hover:text-shuka-yellow transition-colors">
                             <?php bloginfo( 'name' ); ?>
                         </a>
                     </h1>
                 <?php endif; ?>
             </div>
 
-            <button class="mobile-menu-toggle md:hidden p-2 rounded-md bg-shuka-red/80 hover:bg-shuka-red text-white transition-colors shadow-md border border-shuka-yellow/20" aria-controls="primary-menu" aria-expanded="false">
+            <button class="mobile-menu-toggle md:hidden p-2 rounded-md bg-maroon hover:bg-shuka-yellow hover:text-maroon text-white transition-colors shadow-md border border-shuka-yellow/20" aria-controls="primary-menu" aria-expanded="false">
                 <span class="screen-reader-text"><?php esc_html_e( 'Menu', 'portfolio' ); ?></span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white hamburger-icon">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -53,12 +53,12 @@
             <nav id="site-navigation" class="main-navigation">
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex md:items-center md:gap-4">
-                    <a href="#about" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-shuka-red/60"><?php esc_html_e( 'About', 'portfolio' ); ?></a>
-                    <a href="#skills" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-shuka-red/60"><?php esc_html_e( 'Skills', 'portfolio' ); ?></a>
-                    <a href="#experience" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-shuka-red/60"><?php esc_html_e( 'Experience', 'portfolio' ); ?></a>
-                    <a href="#projects" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-shuka-red/60"><?php esc_html_e( 'Projects', 'portfolio' ); ?></a>
+                    <a href="#about" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'About', 'portfolio' ); ?></a>
+                    <a href="#skills" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'Skills', 'portfolio' ); ?></a>
+                    <a href="#experience" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'Experience', 'portfolio' ); ?></a>
+                    <a href="#projects" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'Projects', 'portfolio' ); ?></a>
 
-                    <a href="#contact" class="shuka-button bg-shuka-red hover:bg-shuka-red-600"><?php esc_html_e( 'Contact', 'portfolio' ); ?></a>
+                    <a href="#contact" class="shuka-button bg-maroon hover:bg-shuka-yellow hover:text-maroon text-white font-medium py-2 px-4 rounded-md transition-colors"><?php esc_html_e( 'Contact', 'portfolio' ); ?></a>
                     
                     <?php
                     // Fallback to WordPress menu if exists
