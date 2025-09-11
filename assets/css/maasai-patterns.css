@@ -13,6 +13,40 @@
   --shuka-black: #1A1A1A;
   --shuka-white: #FFFFFF;
   --shuka-orange: #ea580c;
+  --maroon: #800020;
+}
+
+/* Profile Image Container with Rounded Shapes */
+.profile-image-container {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Rounded Corner Accents */
+.profile-image-container > div[class*="-top-12"][class*="-left-12"],
+.profile-image-container > div[class*="-top-12"][class*="-right-12"],
+.profile-image-container > div[class*="-bottom-12"][class*="-right-12"],
+.profile-image-container > div[class*="-bottom-12"][class*="-left-12"] {
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-image-container:hover > div[class*="-top-12"][class*="-left-12"] {
+  transform: scale(1.1) rotate(-10deg);
+}
+
+.profile-image-container:hover > div[class*="-top-12"][class*="-right-12"] {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.profile-image-container:hover > div[class*="-bottom-12"][class*="-right-12"] {
+  transform: scale(1.1) rotate(-10deg);
+}
+
+.profile-image-container:hover > div[class*="-bottom-12"][class*="-left-12"] {
+  transform: scale(1.1) rotate(10deg);
 }
 
 /* Maasai Shuka Pattern - The traditional plaid-like pattern */
@@ -159,4 +193,41 @@
 
 .animated-beadwork {
   animation: beadGlow 4s infinite alternate;
+}
+
+/* Header Profile Image Styling */
+.header-profile-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--shuka-yellow);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-profile-container::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--shuka-red), var(--shuka-yellow), var(--shuka-red));
+  z-index: -1;
+  animation: rotate 3s linear infinite;
+}
+
+.header-profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

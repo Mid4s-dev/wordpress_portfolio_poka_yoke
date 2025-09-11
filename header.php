@@ -41,17 +41,13 @@
                 <?php endif; ?>
             </div>
 
-            <button class="mobile-menu-toggle md:hidden p-2 rounded-md bg-maroon hover:bg-shuka-yellow hover:text-maroon text-white transition-colors shadow-md border border-shuka-yellow/20" aria-controls="primary-menu" aria-expanded="false">
+            <button class="mobile-menu-toggle md:hidden p-2 rounded-full bg-maroon hover:bg-shuka-yellow hover:text-maroon text-white transition-all duration-300 shadow-md border border-shuka-yellow/20 fixed top-4 right-4 z-50" aria-controls="primary-menu" aria-expanded="false">
                 <span class="screen-reader-text"><?php esc_html_e( 'Menu', 'portfolio' ); ?></span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white hamburger-icon">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white close-icon hidden">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
+                <div class="hamburger-menu w-6 h-6 relative">
+                    <span class="hamburger-line block absolute h-0.5 w-full bg-current transform transition-all duration-300 ease-in-out rounded-full"></span>
+                    <span class="hamburger-line block absolute h-0.5 w-full bg-current transform transition-all duration-300 ease-in-out rounded-full mt-2"></span>
+                    <span class="hamburger-line block absolute h-0.5 w-full bg-current transform transition-all duration-300 ease-in-out rounded-full mt-4"></span>
+                </div>
             </button>
 
             <nav id="site-navigation" class="main-navigation">
@@ -59,9 +55,9 @@
                 <div class="hidden md:flex md:items-center md:gap-4">
                     <a href="#about" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'About', 'portfolio' ); ?></a>
                     <a href="#skills" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'Skills', 'portfolio' ); ?></a>
-                    <a href="#experience" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'Experience', 'portfolio' ); ?></a>
-                    <a href="#projects" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'Projects', 'portfolio' ); ?></a>
-
+                    <a href="#portfolio" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'Portfolio', 'portfolio' ); ?></a>
+                    <a href="#testimonials" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'Testimonials', 'portfolio' ); ?></a>
+                    <a href="#blog" class="nav-link text-white hover:text-shuka-yellow font-medium py-2 px-3 rounded-md transition-all hover:bg-maroon"><?php esc_html_e( 'Blog', 'portfolio' ); ?></a>
                     <a href="#contact" class="shuka-button bg-maroon hover:bg-shuka-yellow hover:text-maroon text-white font-medium py-2 px-4 rounded-md transition-colors"><?php esc_html_e( 'Contact', 'portfolio' ); ?></a>
                     
                     <?php
@@ -82,13 +78,13 @@
                 </div>
 
                 <!-- Mobile Menu -->
-                <div id="mobile-menu" class="mobile-menu-overlay fixed inset-0 bg-black bg-opacity-80 z-40 hidden md:hidden">
-                    <div class="mobile-menu-content fixed top-0 right-0 h-full w-full max-w-sm bg-shuka-black text-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out">
-                        <div class="flex flex-col h-full">
+                <div id="mobile-menu" class="mobile-menu-overlay z-40 hidden md:hidden">
+                    <div class="mobile-menu-content">
+                        <div class="flex flex-col h-full w-full">
                             <!-- Header section with branding -->
-                            <div class="flex items-center justify-between p-6 border-b border-shuka-red/30 bg-shuka-pattern-small from-shuka-black to-shuka-earth/80">
+                            <div class="flex items-center justify-between p-6 border-b border-shuka-red/30 bg-gradient-to-r from-maroon to-shuka-black sticky top-0 z-10 w-full">
                                 <h2 class="text-xl font-bold text-shuka-yellow"><?php echo portfolio_get_owner_name(); ?></h2>
-                                <button class="mobile-menu-close p-2 rounded-full hover:bg-shuka-red/50 text-white">
+                                <button class="mobile-menu-close p-2 rounded-full hover:bg-shuka-yellow hover:text-maroon text-white transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <line x1="18" y1="6" x2="6" y2="18"></line>
                                         <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -96,11 +92,11 @@
                                 </button>
                             </div>
                             
-                            <!-- Navigation links -->
-                            <div class="flex-1 flex flex-col justify-center px-6 overflow-y-auto bg-shuka-pattern-large from-shuka-black to-shuka-earth/30 bg-opacity-5">
+                            <!-- Navigation links - full width with proper spacing -->
+                            <div class="flex-1 flex flex-col justify-start w-full overflow-y-auto bg-gradient-to-b from-shuka-black to-shuka-black/90">
                                 <div class="space-y-1">
                                     <a href="#about" class="mobile-nav-link font-medium text-white hover:text-shuka-yellow transition-colors py-4 border-b border-shuka-red/30 hover:border-shuka-yellow -mx-6 px-6 flex items-center">
-                                        <div class="mr-4 p-2 bg-shuka-red rounded-full">
+                                        <div class="mr-4 p-2 bg-maroon rounded-full">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
                                         </div>
                                         <?php esc_html_e( 'About', 'portfolio' ); ?>
@@ -111,21 +107,26 @@
                                         </div>
                                         <?php esc_html_e( 'Skills', 'portfolio' ); ?>
                                     </a>
-                                    <a href="#experience" class="mobile-nav-link font-medium text-white hover:text-shuka-yellow transition-colors py-4 border-b border-shuka-red/30 hover:border-shuka-yellow -mx-6 px-6 flex items-center">
+                                    <a href="#portfolio" class="mobile-nav-link font-medium text-white hover:text-shuka-yellow transition-colors py-4 border-b border-shuka-red/30 hover:border-shuka-yellow -mx-6 px-6 flex items-center">
                                         <div class="mr-4 p-2 bg-shuka-yellow rounded-full">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"></circle><path d="M3 21h18a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path></svg>
                                         </div>
-                                        <?php esc_html_e( 'Experience', 'portfolio' ); ?>
+                                        <?php esc_html_e( 'Portfolio', 'portfolio' ); ?>
                                     </a>
-                                    <a href="#projects" class="mobile-nav-link font-medium text-white hover:text-shuka-yellow transition-colors py-4 border-b border-shuka-red/30 hover:border-shuka-yellow -mx-6 px-6 flex items-center">
+                                    <a href="#testimonials" class="mobile-nav-link font-medium text-white hover:text-shuka-yellow transition-colors py-4 border-b border-shuka-red/30 hover:border-shuka-yellow -mx-6 px-6 flex items-center">
                                         <div class="mr-4 p-2 bg-shuka-earth rounded-full">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
                                         </div>
-                                        <?php esc_html_e( 'Projects', 'portfolio' ); ?>
+                                        <?php esc_html_e( 'Testimonials', 'portfolio' ); ?>
                                     </a>
-
+                                    <a href="#blog" class="mobile-nav-link font-medium text-white hover:text-shuka-yellow transition-colors py-4 border-b border-shuka-red/30 hover:border-shuka-yellow -mx-6 px-6 flex items-center">
+                                        <div class="mr-4 p-2 bg-shuka-blue rounded-full">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                                        </div>
+                                        <?php esc_html_e( 'Blog', 'portfolio' ); ?>
+                                    </a>
                                     <a href="#contact" class="mobile-nav-link font-medium text-white hover:text-shuka-yellow transition-colors py-4 border-b border-shuka-red/30 hover:border-shuka-yellow -mx-6 px-6 flex items-center">
-                                        <div class="mr-4 p-2 bg-shuka-red rounded-full">
+                                        <div class="mr-4 p-2 bg-maroon rounded-full">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
                                         </div>
                                         <?php esc_html_e( 'Contact', 'portfolio' ); ?>

@@ -147,6 +147,26 @@ function portfolio_enqueue_styles() {
         );
     }
     
+    // Enqueue unified Mobile Menu styles (consolidated September 11, 2025)
+    if (file_exists(get_template_directory() . '/assets/css/mobile-menu-unified.css')) {
+        wp_enqueue_style(
+            'mobile-menu-unified',
+            get_theme_file_uri( 'assets/css/mobile-menu-unified.css' ),
+            array('portfolio-tailwind', 'portfolio-style'),
+            time() // Force refresh by using current time
+        );
+    }
+    
+    // Enqueue layout fixes (added September 11, 2025)
+    if (file_exists(get_template_directory() . '/assets/css/layout-fix.css')) {
+        wp_enqueue_style(
+            'layout-fix',
+            get_theme_file_uri( 'assets/css/layout-fix.css' ),
+            array('portfolio-tailwind', 'portfolio-style', 'mobile-menu-unified'),
+            time() // Force refresh by using current time
+        );
+    }
+    
     // Enqueue dashicons on the frontend for social icons
     wp_enqueue_style('dashicons');
     
@@ -189,6 +209,8 @@ function portfolio_enqueue_styles() {
         filemtime(get_template_directory() . '/assets/js/main.js'),
         true
     );
+    
+    // Debug tools have been consolidated into main.js
     
     // Enqueue campaigns JavaScript
     if (file_exists(get_template_directory() . '/assets/js/campaigns.js')) {

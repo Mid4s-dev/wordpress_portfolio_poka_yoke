@@ -36,23 +36,23 @@ get_header();
                 <div class="relative">
                     <!-- Maasai Shuka-styled Profile Container -->
                     <div class="profile-image-container relative">
-                        <!-- Corner Accents - Diamond shapes common in Maasai art -->
-                        <div class="absolute -top-12 -left-12 w-16 h-16 bg-maroon transform rotate-45 z-10"></div>
-                        <div class="absolute -top-12 -right-12 w-16 h-16 bg-shuka-yellow transform rotate-45 z-10"></div>
-                        <div class="absolute -bottom-12 -right-12 w-16 h-16 bg-maroon transform rotate-45 z-10"></div>
-                        <div class="absolute -bottom-12 -left-12 w-16 h-16 bg-shuka-yellow transform rotate-45 z-10"></div>
+                        <!-- Corner Accents - Rounded shapes common in Maasai art -->
+                        <div class="absolute -top-12 -left-12 w-16 h-16 bg-maroon rounded-full z-10"></div>
+                        <div class="absolute -top-12 -right-12 w-16 h-16 bg-shuka-yellow rounded-full z-10"></div>
+                        <div class="absolute -bottom-12 -right-12 w-16 h-16 bg-maroon rounded-full z-10"></div>
+                        <div class="absolute -bottom-12 -left-12 w-16 h-16 bg-shuka-yellow rounded-full z-10"></div>
                         
                         <!-- Outer Maasai Pattern Border - Based on Shuka cloth patterns -->
-                        <div class="absolute -inset-8 bg-shuka-pattern from-maroon to-shuka-yellow rounded-lg">
+                        <div class="absolute -inset-8 bg-shuka-pattern from-maroon to-shuka-yellow rounded-3xl overflow-hidden">
                             <!-- Stripes on edges - resembling traditional Maasai Shuka cloth -->
-                            <div class="absolute top-0 left-0 right-0 h-8 bg-shuka-pattern from-maroon to-shuka-yellow"></div>
-                            <div class="absolute bottom-0 left-0 right-0 h-8 bg-shuka-pattern from-shuka-yellow to-maroon"></div>
-                            <div class="absolute left-0 top-0 bottom-0 w-8 bg-shuka-vertical from-maroon to-shuka-yellow"></div>
-                            <div class="absolute right-0 top-0 bottom-0 w-8 bg-shuka-vertical from-shuka-yellow to-maroon"></div>
+                            <div class="absolute top-0 left-0 right-0 h-8 bg-shuka-pattern from-maroon to-shuka-yellow rounded-t-3xl"></div>
+                            <div class="absolute bottom-0 left-0 right-0 h-8 bg-shuka-pattern from-shuka-yellow to-maroon rounded-b-3xl"></div>
+                            <div class="absolute left-0 top-0 bottom-0 w-8 bg-shuka-vertical from-maroon to-shuka-yellow rounded-l-3xl"></div>
+                            <div class="absolute right-0 top-0 bottom-0 w-8 bg-shuka-vertical from-shuka-yellow to-maroon rounded-r-3xl"></div>
                         </div>
                         
                         <!-- Profile Image -->
-                        <div class="relative z-20 bg-white p-3 border-4 border-maroon shadow-2xl overflow-hidden">
+                        <div class="relative z-20 bg-white p-3 border-4 border-maroon shadow-2xl overflow-hidden rounded-2xl">
                             <?php 
                             // Get profile image from theme customizer
                             $profile_image = '';
@@ -63,7 +63,7 @@ get_header();
                             
                             // Display the profile image
                             if ($profile_image) : ?>
-                                <img src="<?php echo esc_url($profile_image); ?>" alt="<?php echo esc_attr(portfolio_get_owner_name()); ?>" class="w-full h-full object-cover">
+                                <img src="<?php echo esc_url($profile_image); ?>" alt="<?php echo esc_attr(portfolio_get_owner_name()); ?>" class="w-full h-full object-cover rounded-xl">
                             <?php 
                             // Fall back to custom logo
                             elseif (has_custom_logo()) : ?>
@@ -71,7 +71,7 @@ get_header();
                             <?php 
                             // Default fallback to placeholder
                             else : ?>
-                                <div class="w-full h-full flex items-center justify-center bg-gray-100">
+                                <div class="w-full h-full flex items-center justify-center bg-gray-100 rounded-xl">
                                     <svg class="w-1/3 h-1/3 text-maroon" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
                                     </svg>
@@ -79,13 +79,19 @@ get_header();
                             <?php endif; ?>
                         </div>
                         
-                        <!-- Inner Maasai Pattern - Decorative Overlay -->
+                        <!-- Inner Maasai Pattern - Decorative Overlay with beadwork circles -->
                         <div class="absolute inset-0 z-30 maasai-inner-pattern pointer-events-none">
-                            <!-- Traditional Maasai beaded cross pattern overlay -->
-                            <div class="absolute top-0 left-1/3 right-1/3 h-4 bg-shuka-pattern from-shuka-yellow to-maroon opacity-60"></div>
-                            <div class="absolute bottom-0 left-1/3 right-1/3 h-4 bg-shuka-pattern from-maroon to-shuka-yellow opacity-60"></div>
-                            <div class="absolute left-0 top-1/3 bottom-1/3 w-4 bg-shuka-vertical from-maroon to-shuka-yellow opacity-60"></div>
-                            <div class="absolute right-0 top-1/3 bottom-1/3 w-4 bg-shuka-vertical from-shuka-yellow to-maroon opacity-60"></div>
+                            <!-- Traditional Maasai beaded pattern overlay -->
+                            <div class="absolute top-0 left-1/3 right-1/3 h-4 bg-shuka-pattern from-shuka-yellow to-maroon opacity-60 rounded-full"></div>
+                            <div class="absolute bottom-0 left-1/3 right-1/3 h-4 bg-shuka-pattern from-maroon to-shuka-yellow opacity-60 rounded-full"></div>
+                            <div class="absolute left-0 top-1/3 bottom-1/3 w-4 bg-shuka-vertical from-maroon to-shuka-yellow opacity-60 rounded-full"></div>
+                            <div class="absolute right-0 top-1/3 bottom-1/3 w-4 bg-shuka-vertical from-shuka-yellow to-maroon opacity-60 rounded-full"></div>
+                            
+                            <!-- Circular beadwork patterns in corners -->
+                            <div class="absolute top-4 left-4 w-8 h-8 border-2 border-white rounded-full opacity-40"></div>
+                            <div class="absolute top-4 right-4 w-8 h-8 border-2 border-white rounded-full opacity-40"></div>
+                            <div class="absolute bottom-4 right-4 w-8 h-8 border-2 border-white rounded-full opacity-40"></div>
+                            <div class="absolute bottom-4 left-4 w-8 h-8 border-2 border-white rounded-full opacity-40"></div>
                         </div>
                     </div>
                 </div>
@@ -99,7 +105,7 @@ get_header();
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
 
-            <h2 class="heading-lg mb-6">Strategic Communications Professional</h2>
+      <h2 class="heading-lg mb-6">skills</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Experienced PR and Communications Lead with a passion for storytelling and brand building.</p>
         </div>
         
