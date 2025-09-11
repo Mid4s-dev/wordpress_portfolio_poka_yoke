@@ -1,0 +1,37 @@
+{
+  "name": "wordpress-heroku",
+  "description": "WordPress on Heroku",
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "wordpress/wordpress",
+        "type": "webroot",
+        "version": "6.4.3",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/WordPress/WordPress/archive/6.4.3.zip"
+        },
+        "require": {
+          "fancyguy/webroot-installer": "^1.0"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": "^8.0.0",
+    "wordpress/wordpress": "6.4.3",
+    "fancyguy/webroot-installer": "^1.0",
+    "ext-gd": "*",
+    "ext-mysql": "*",
+    "ext-mbstring": "*"
+  },
+  "extra": {
+    "webroot-dir": "wp",
+    "webroot-package": "wordpress/wordpress",
+    "installer-paths": {
+      "wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "wp-content/themes/{$name}/": ["type:wordpress-theme"]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "require": {
+    "php": "^8.0",
+    "ext-gd": "*",
+    "ext-mbstring": "*"
+  },
+  "require-dev": {
+    "heroku/heroku-buildpack-php": "*"
+  },
+  "extra": {
+    "paas": {
+      "nginx-includes": [
+        "nginx.conf"
+      ]
+    }
+  }
+}

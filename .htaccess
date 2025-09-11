@@ -1,0 +1,10 @@
+# PHP app configuration for Heroku
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value memory_limit 128M
+php_value max_execution_time 180
+
+# Redirects all non-SSL to SSL
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
