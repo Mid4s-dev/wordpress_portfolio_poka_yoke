@@ -6,84 +6,99 @@
 
     // Mobile menu toggle
     function setupMobileMenu() {
-        const mobileToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuContent = document.querySelector('.mobile-menu-content');
+        // Debug - log all IDs that start with mobile
+        document.querySelectorAll('[id^="mobile"]').forEach(el => {
+            console.log('Found mobile element:', el.id);
+        });
+        
+        const menuButton = document.getElementById('mobile-menu-button');
+        console.log('Mobile menu button found:', menuButton);
+        
+        const mobileDrawer = document.getElementById('mobile-menu-drawer');
+        console.log('Mobile drawer found:', mobileDrawer);
+        
         const body = document.body;
         
-        if (!mobileToggle || !mobileMenu) {
-            console.error('Mobile menu elements not found');
+        if (!menuButton || !mobileDrawer) {
+            console.error('Mobile menu elements not found. menuButton:', menuButton, 'mobileDrawer:', mobileDrawer);
             return;
         }
         
-        console.log('Mobile menu setup initialized');
+        console.log('Mobile menu initialized successfully.');
 
+        // Function to open mobile menu
         function openMobileMenu() {
             console.log('Opening mobile menu');
             
-            // First make the menu visible but without transitions
-            mobileMenu.classList.remove('hidden');
+            // Make drawer visible first
+            mobileDrawer.style.display = 'block';
+            mobileDrawer.style.visibility = 'visible';
             
-            // Force a reflow to ensure the removal of hidden takes effect before adding active
-            void mobileMenu.offsetWidth;
+            // Force a reflow to ensure display change takes effect
+            void mobileDrawer.offsetWidth;
             
-            // Apply direct styling to ensure it works
-            if (mobileMenuContent) {
-                // Reset any inline styles that might be interfering
-                mobileMenuContent.style.width = '85%';
-                mobileMenuContent.style.maxWidth = '320px';
-                mobileMenuContent.style.height = '100%';
-                
-                // Ensure menu stays in place on smaller screens
-                if (window.innerWidth <= 480) {
-                    mobileMenuContent.style.width = '90%';
-                    mobileMenuContent.style.maxWidth = '280px';
-                }
+            // Apply active class to show menu with animation
+            mobileDrawer.classList.add('open');
+            
+            // Update button state
+            menuButton.classList.add('active');
+            menuButton.setAttribute('aria-expanded', 'true');
+            
+            // Prevent body scrolling
+            body.style.overflow = 'hidden';
+            
+            // Toggle icons visibility
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (hamburgerIcon && closeIcon) {
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                console.log('Icon state updated - hamburger hidden, close icon visible');
+            } else {
+                console.error('Could not toggle icon visibility!');
             }
             
-            // Now add the active class to trigger the animation
-            requestAnimationFrame(() => {
-                mobileMenu.classList.add('active');
-                body.classList.add('overflow-hidden');
-                
-                // Toggle button class for X animation
-                mobileToggle.classList.add('is-active');
-                mobileToggle.setAttribute('aria-expanded', 'true');
-                
-                // Force the transform to be applied correctly after a small delay
-                setTimeout(() => {
-                    if (mobileMenuContent) {
-                        // Log for debugging
-                        console.log('Menu content transform:', window.getComputedStyle(mobileMenuContent).transform);
-                        
-                        // Force transform to 0
-                        mobileMenuContent.style.transform = 'translateX(0)';
-                        console.log('Forcing transform reset');
-                    }
-                }, 50);
-            });
+            console.log('Mobile menu opened');
         }
 
+        // Function to close mobile menu
         function closeMobileMenu() {
             console.log('Closing mobile menu');
             
-            // Remove active class first to trigger the slide-out animation
-            mobileMenu.classList.remove('active');
-            mobileToggle.classList.remove('is-active');
-            mobileToggle.setAttribute('aria-expanded', 'false');
+            // Remove open class to trigger animation
+            mobileDrawer.classList.remove('open');
             
-            // Wait for the animation to complete before hiding completely
-            setTimeout(() => {
-                mobileMenu.classList.add('hidden');
-                body.classList.remove('overflow-hidden');
+            // Update button state
+            menuButton.classList.remove('active');
+            menuButton.setAttribute('aria-expanded', 'false');
+            
+            // Restore body scrolling
+            body.style.overflow = '';
+            
+            // Toggle icons visibility
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (hamburgerIcon && closeIcon) {
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                console.log('Icon state updated - hamburger visible, close icon hidden');
+            }
+            
+            // Wait for animation to complete before hiding
+            setTimeout(function() {
+                mobileDrawer.style.display = 'none';
+                mobileDrawer.style.visibility = 'hidden';
+                console.log('Mobile menu closed and hidden');
             }, 300);
         }
 
-        // Toggle menu on hamburger click
-        mobileToggle.addEventListener('click', function(e) {
+        // Toggle menu on button click
+        menuButton.addEventListener('click', function(e) {
             e.preventDefault();
             
-            const isOpen = mobileMenu.classList.contains('active');
+            const isOpen = mobileDrawer.classList.contains('open');
             
             if (isOpen) {
                 closeMobileMenu();
@@ -92,37 +107,25 @@
             }
         });
         
-        // Close menu when clicking overlay
-        if (mobileMenu) {
-            mobileMenu.addEventListener('click', function(e) {
-                if (e.target === mobileMenu) {
-                    closeMobileMenu();
-                }
-            });
-        }
-        
-        // Close menu when clicking the close button
-        const mobileMenuCloseBtn = document.querySelector('.mobile-menu-close');
-        if (mobileMenuCloseBtn) {
-            mobileMenuCloseBtn.addEventListener('click', function(e) {
-                e.preventDefault();
+        // Close menu when clicking outside of it
+        mobileDrawer.addEventListener('click', function(e) {
+            // If clicking on the dark overlay (not the menu content)
+            if (e.target === mobileDrawer) {
                 closeMobileMenu();
-            });
-        }
+            }
+        });
         
         // Close menu when clicking nav links
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-item');
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('active')) {
-                    closeMobileMenu();
-                }
+                closeMobileMenu();
             });
         });
         
         // Close menu on escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
                 closeMobileMenu();
             }
         });
@@ -130,17 +133,8 @@
         // Handle window resize
         window.addEventListener('resize', function() {
             // Close mobile menu if screen gets larger
-            if (window.innerWidth >= 768 && mobileMenu.classList.contains('active')) {
+            if (window.innerWidth >= 768 && mobileDrawer.classList.contains('open')) {
                 closeMobileMenu();
-            }
-            
-            // Ensure toggle button visibility is correct based on screen size
-            if (window.innerWidth >= 768) {
-                // On desktop/tablet, force hide the toggle
-                mobileToggle.style.display = 'none';
-            } else {
-                // On mobile, allow CSS to control display
-                mobileToggle.style.display = '';
             }
         });
     }
@@ -262,17 +256,57 @@
 
     // Initialize when the DOM is fully loaded
     document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM content loaded - initializing menu components');
+        
+        // Debug check for mobile menu drawer and ensure it's properly hidden initially
+        const mobileDrawer = document.getElementById('mobile-menu-drawer');
+        if (mobileDrawer) {
+            console.log('Mobile menu drawer found, initializing...');
+            
+            // Make sure it's hidden initially
+            mobileDrawer.style.display = 'none';
+            mobileDrawer.classList.remove('open');
+            mobileDrawer.style.visibility = 'hidden';
+        } else {
+            console.error('Mobile menu drawer not found!');
+        }
+        
+        // Ensure mobile menu button is properly set up
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (mobileMenuButton) {
+            console.log('Mobile menu button found');
+            
+            // Make sure aria-expanded is initially false
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            
+            // Show/hide button based on screen width
+            if (window.innerWidth >= 768) {
+                mobileMenuButton.style.display = 'none';
+            } else {
+                mobileMenuButton.style.display = 'flex';
+                console.log('Mobile view detected - hamburger should be visible');
+            }
+            
+            // Ensure proper icon visibility
+            const hamburgerIcon = document.getElementById('hamburger-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (hamburgerIcon && closeIcon) {
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                console.log('Icons initialized - hamburger visible, close icon hidden');
+            } else {
+                console.error('Mobile menu icons not found!');
+            }
+        } else {
+            console.error('Mobile menu button not found!');
+        }
+        
         // Set up all components
         setupMobileMenu();
         setupSmoothScroll();
         setupStickyHeader();
         setupNewsletterForm();
-        
-        // Additional check to ensure hamburger menu is hidden on desktop
-        const mobileToggle = document.querySelector('.mobile-menu-toggle');
-        if (mobileToggle && window.innerWidth >= 768) {
-            mobileToggle.style.display = 'none';
-        }
     });
 
 })();

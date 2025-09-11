@@ -9,7 +9,32 @@
 
 if ( ! function_exists( 'portfolio_setup' ) ) {
     /**
-     * Sets up theme defaults and registers support for various WordPress features.
+     * Sets up theme defaults and regis    // Enqueue theme JavaScript.
+    wp_enqueue_script(
+        'portfolio-main-js',
+        get_theme_file_uri( 'assets/js/main.js' ),
+        array('jquery'),
+        filemtime(get_template_directory() . '/assets/js/main.js'),
+        true
+    );
+    
+    // Enqueue mobile menu fix script
+    wp_enqueue_script(
+        'mobile-menu-fix',
+        get_theme_file_uri( 'assets/js/mobile-menu-fix.js' ),
+        array('jquery', 'portfolio-main-js'),
+        filemtime(get_template_directory() . '/assets/js/mobile-menu-fix.js'),
+        true
+    );
+    
+    // Disable header.js since functionality is now in main.js
+    // wp_enqueue_script(
+    //     'portfolio-header-js',
+    //     get_theme_file_uri( 'assets/js/header.js' ),
+    //     array('jquery'),
+    //     filemtime(get_template_directory() . '/assets/js/header.js'),
+    //     true
+    // );various WordPress features.
      */
     function portfolio_setup() {
         // Add default posts and comments RSS feed links to head.
@@ -147,11 +172,11 @@ function portfolio_enqueue_styles() {
         );
     }
     
-    // Enqueue unified Mobile Menu styles (consolidated September 11, 2025)
-    if (file_exists(get_template_directory() . '/assets/css/mobile-menu-unified.css')) {
+    // Enqueue new header styles (added September 11, 2025)
+    if (file_exists(get_template_directory() . '/assets/css/new-header.css')) {
         wp_enqueue_style(
-            'mobile-menu-unified',
-            get_theme_file_uri( 'assets/css/mobile-menu-unified.css' ),
+            'new-header',
+            get_theme_file_uri( 'assets/css/new-header.css' ),
             array('portfolio-tailwind', 'portfolio-style'),
             time() // Force refresh by using current time
         );
@@ -162,7 +187,27 @@ function portfolio_enqueue_styles() {
         wp_enqueue_style(
             'layout-fix',
             get_theme_file_uri( 'assets/css/layout-fix.css' ),
-            array('portfolio-tailwind', 'portfolio-style', 'mobile-menu-unified'),
+            array('portfolio-tailwind', 'portfolio-style', 'new-header'),
+            time() // Force refresh by using current time
+        );
+    }
+    
+    // Enqueue theme enhancements (added September 11, 2025)
+    if (file_exists(get_template_directory() . '/assets/css/theme-enhancements.css')) {
+        wp_enqueue_style(
+            'theme-enhancements',
+            get_theme_file_uri( 'assets/css/theme-enhancements.css' ),
+            array('portfolio-tailwind', 'portfolio-style', 'new-header', 'layout-fix'),
+            time() // Force refresh by using current time
+        );
+    }
+    
+    // Enqueue hamburger menu icon fix (added September 11, 2025)
+    if (file_exists(get_template_directory() . '/assets/css/hamburger-fix.css')) {
+        wp_enqueue_style(
+            'hamburger-fix',
+            get_theme_file_uri( 'assets/css/hamburger-fix.css' ),
+            array('portfolio-tailwind', 'portfolio-style', 'new-header', 'theme-enhancements'),
             time() // Force refresh by using current time
         );
     }
@@ -201,7 +246,7 @@ function portfolio_enqueue_styles() {
     // Enqueue jQuery
     wp_enqueue_script('jquery');
     
-    // Enqueue theme JavaScript.
+    // Enqueue theme JavaScript first
     wp_enqueue_script(
         'portfolio-main-js',
         get_theme_file_uri( 'assets/js/main.js' ),
@@ -209,6 +254,15 @@ function portfolio_enqueue_styles() {
         filemtime(get_template_directory() . '/assets/js/main.js'),
         true
     );
+    
+    // Disable header.js since functionality is now in main.js
+    // wp_enqueue_script(
+    //     'portfolio-header-js',
+    //     get_theme_file_uri( 'assets/js/header.js' ),
+    //     array('jquery'),
+    //     filemtime(get_template_directory() . '/assets/js/header.js'),
+    //     true
+    // );
     
     // Debug tools have been consolidated into main.js
     

@@ -43,11 +43,11 @@ body.overflow-hidden {
 /* Mobile Menu Button */
 .mobile-menu-toggle {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   z-index: 9999;
   /* Display is controlled in the responsive section */
-  display: none !important;
+  display: flex; /* Default to flex but will be overridden by media queries */
   align-items: center;
   justify-content: center;
   width: 48px;
@@ -150,20 +150,24 @@ body.overflow-hidden {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 9900;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   pointer-events: none;
+  overflow: hidden;
+  display: none; /* Hide initially */
 }
 
+/* When active, show the menu */
 .mobile-menu-overlay.active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  display: block !important; /* Force display when active */
 }
 
 /* Mobile Menu Content */
@@ -180,6 +184,7 @@ body.overflow-hidden {
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
   border-radius: 20px 0 0 20px;
   overflow-y: auto;
+  overflow-x: hidden;
   z-index: 9950;
   display: flex;
   flex-direction: column;
@@ -189,6 +194,8 @@ body.overflow-hidden {
 .mobile-menu-overlay.active .mobile-menu-content,
 #mobile-menu.active .mobile-menu-content {
   transform: translateX(0) !important;
+  width: 85% !important;
+  max-width: 320px !important;
 }
 
 /* =========================================================
@@ -251,28 +258,48 @@ body.overflow-hidden {
    RESPONSIVE DESIGN
    ========================================================= */
 
-/* By default, hide the mobile menu toggle on all screen sizes */
+/* Mobile menu toggle visibility */
 .mobile-menu-toggle {
-  display: none !important;
+  display: none; /* Hide by default */
 }
 
 /* Only show the mobile menu toggle on mobile screens */
 @media (max-width: 767.98px) {
   .mobile-menu-toggle {
-    display: flex !important;
+    display: flex !important; /* Force display on mobile */
+  }
+  
+  /* Hide desktop menu on mobile */
+  .main-navigation .hidden.md\:flex {
+    display: none !important;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 768px) {
+  .mobile-menu-toggle {
+    display: none !important;
   }
 }
 
 /* Adjustments for very small screens */
 @media (max-width: 480px) {
   .mobile-menu-content {
-    width: 90%;
-    max-width: 280px;
+    width: 85% !important;
+    max-width: 280px !important;
   }
   
   /* Prevent overflow outside the menu */
   .mobile-menu-content {
     overflow-x: hidden;
+  }
+  
+  /* Ensure mobile toggle button is positioned correctly */
+  .mobile-menu-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 44px;
+    height: 44px;
   }
 }
 
@@ -318,7 +345,16 @@ body.overflow-hidden {
 .mobile-menu-overlay { z-index: 9900; }
 
 /* Desktop navigation visibility */
-.main-navigation .md\:flex {
-  /* Ensure desktop navigation shows on larger screens */
-  display: flex !important;
+@media (min-width: 768px) {
+  .main-navigation .md\:flex.desktop-menu {
+    /* Ensure desktop navigation shows on larger screens */
+    display: flex !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Ensure desktop menu is hidden on mobile */
+  .main-navigation .desktop-menu {
+    display: none !important;
+  }
 }

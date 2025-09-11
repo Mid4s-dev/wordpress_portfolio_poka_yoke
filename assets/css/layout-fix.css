@@ -9,6 +9,14 @@
   max-width: 100%;
   overflow-x: hidden;
   background-color: #ffffff;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Remove any unwanted space above header */
+body {
+  margin-top: 0;
+  padding-top: 0;
 }
 
 /* Container should be properly centered */
@@ -51,9 +59,24 @@
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+    width: 100%;
   }
   
   .grid {
+    width: 100%;
+  }
+  
+  /* Fix for content being squeezed to one corner */
+  .site-content {
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+  }
+  
+  /* Fix for UI squeezed to one corner */
+  .entry-content > *:not(.alignwide):not(.alignfull) {
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
   }
 }
