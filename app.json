@@ -1,0 +1,58 @@
+{
+  "name": "pokayoka-wordpress",
+  "description": "WordPress portfolio site deployment on Heroku",
+  "keywords": ["wordpress", "portfolio", "heroku"],
+  "website": "https://github.com/Mid4s-dev/portfolio",
+  "repository": "https://github.com/Mid4s-dev/portfolio",
+  "success_url": "/",
+  "env": {
+    "AUTH_KEY": {
+      "description": "WordPress auth key",
+      "generator": "secret"
+    },
+    "SECURE_AUTH_KEY": {
+      "description": "WordPress secure auth key",
+      "generator": "secret"
+    },
+    "LOGGED_IN_KEY": {
+      "description": "WordPress logged in key",
+      "generator": "secret"
+    },
+    "NONCE_KEY": {
+      "description": "WordPress nonce key",
+      "generator": "secret"
+    },
+    "AUTH_SALT": {
+      "description": "WordPress auth salt",
+      "generator": "secret"
+    },
+    "SECURE_AUTH_SALT": {
+      "description": "WordPress secure auth salt",
+      "generator": "secret"
+    },
+    "LOGGED_IN_SALT": {
+      "description": "WordPress logged in salt",
+      "generator": "secret"
+    },
+    "NONCE_SALT": {
+      "description": "WordPress nonce salt",
+      "generator": "secret"
+    },
+    "WP_HOME": {
+      "description": "WordPress home URL (include https:// and no trailing slash)",
+      "value": "https://your-app-name.herokuapp.com"
+    },
+    "WP_SITEURL": {
+      "description": "WordPress site URL (include https:// and no trailing slash)",
+      "value": "https://your-app-name.herokuapp.com"
+    }
+  },
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ]
+}
