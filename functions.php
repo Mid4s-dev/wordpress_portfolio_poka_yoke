@@ -137,6 +137,16 @@ function portfolio_enqueue_styles() {
         );
     }
     
+    // Enqueue Maasai patterns styles
+    if (file_exists(get_template_directory() . '/assets/css/maasai-patterns.css')) {
+        wp_enqueue_style(
+            'maasai-patterns',
+            get_theme_file_uri( 'assets/css/maasai-patterns.css' ),
+            array('portfolio-custom-theme'),
+            filemtime(get_template_directory() . '/assets/css/maasai-patterns.css')
+        );
+    }
+    
     // Enqueue dashicons on the frontend for social icons
     wp_enqueue_style('dashicons');
     
@@ -221,6 +231,30 @@ function portfolio_enqueue_styles() {
     // The forms.js file is enqueued in the Portfolio_Form_Handler class
 }
 add_action( 'wp_enqueue_scripts', 'portfolio_enqueue_styles' );
+
+/**
+ * Enqueue admin scripts and styles.
+ */
+function portfolio_admin_scripts() {
+    // Enqueue profile customizer styles and scripts when in the customizer
+    if (is_customize_preview()) {
+        wp_enqueue_style(
+            'portfolio-profile-customizer',
+            get_theme_file_uri('assets/css/profile-customizer.css'),
+            array(),
+            filemtime(get_template_directory() . '/assets/css/profile-customizer.css')
+        );
+        
+        wp_enqueue_script(
+            'portfolio-profile-customizer',
+            get_theme_file_uri('assets/js/profile-customizer.js'),
+            array('jquery', 'customize-preview'),
+            filemtime(get_template_directory() . '/assets/js/profile-customizer.js'),
+            true
+        );
+    }
+}
+add_action('admin_enqueue_scripts', 'portfolio_admin_scripts');
 
 /**
  * Register pattern categories.
@@ -381,6 +415,9 @@ require_once get_template_directory() . '/inc/simple-testimonials.php';
 
 // Include Gmail API integration
 require_once get_template_directory() . '/inc/gmail-api.php';
+
+// Include profile image functionality
+require_once get_template_directory() . '/inc/profile-image.php';
 
 // Manually flush rewrite rules on theme init to fix potential permalink issues
 function portfolio_manual_flush_rewrite_rules() {

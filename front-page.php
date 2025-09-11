@@ -34,23 +34,60 @@ get_header();
             </div>
             <div class="hero-image">
                 <div class="relative">
-                    <?php if ( has_custom_logo() ) : ?>
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-maroon rounded-full transform translate-x-4 translate-y-4"></div>
-                            <div class="hero-avatar relative z-10 bg-white rounded-full border-4 border-white shadow-lg">
+                    <!-- Maasai Shuka-styled Profile Container -->
+                    <div class="profile-image-container relative">
+                        <!-- Corner Accents - Diamond shapes common in Maasai art -->
+                        <div class="absolute -top-12 -left-12 w-16 h-16 bg-maroon transform rotate-45 z-10"></div>
+                        <div class="absolute -top-12 -right-12 w-16 h-16 bg-shuka-yellow transform rotate-45 z-10"></div>
+                        <div class="absolute -bottom-12 -right-12 w-16 h-16 bg-maroon transform rotate-45 z-10"></div>
+                        <div class="absolute -bottom-12 -left-12 w-16 h-16 bg-shuka-yellow transform rotate-45 z-10"></div>
+                        
+                        <!-- Outer Maasai Pattern Border - Based on Shuka cloth patterns -->
+                        <div class="absolute -inset-8 bg-shuka-pattern from-maroon to-shuka-yellow rounded-lg">
+                            <!-- Stripes on edges - resembling traditional Maasai Shuka cloth -->
+                            <div class="absolute top-0 left-0 right-0 h-8 bg-shuka-pattern from-maroon to-shuka-yellow"></div>
+                            <div class="absolute bottom-0 left-0 right-0 h-8 bg-shuka-pattern from-shuka-yellow to-maroon"></div>
+                            <div class="absolute left-0 top-0 bottom-0 w-8 bg-shuka-vertical from-maroon to-shuka-yellow"></div>
+                            <div class="absolute right-0 top-0 bottom-0 w-8 bg-shuka-vertical from-shuka-yellow to-maroon"></div>
+                        </div>
+                        
+                        <!-- Profile Image -->
+                        <div class="relative z-20 bg-white p-3 border-4 border-maroon shadow-2xl overflow-hidden">
+                            <?php 
+                            // Get profile image from theme customizer
+                            $profile_image = '';
+                            
+                            if (function_exists('portfolio_get_profile_image')) {
+                                $profile_image = portfolio_get_profile_image();
+                            }
+                            
+                            // Display the profile image
+                            if ($profile_image) : ?>
+                                <img src="<?php echo esc_url($profile_image); ?>" alt="<?php echo esc_attr(portfolio_get_owner_name()); ?>" class="w-full h-full object-cover">
+                            <?php 
+                            // Fall back to custom logo
+                            elseif (has_custom_logo()) : ?>
                                 <?php the_custom_logo(); ?>
-                            </div>
+                            <?php 
+                            // Default fallback to placeholder
+                            else : ?>
+                                <div class="w-full h-full flex items-center justify-center bg-gray-100">
+                                    <svg class="w-1/3 h-1/3 text-maroon" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                                    </svg>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                    <?php else : ?>
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-primary-600 rounded-full transform translate-x-4 translate-y-4"></div>
-                            <div class="relative z-10 bg-white rounded-full border-4 border-white shadow-lg w-80 h-80 mx-auto flex items-center justify-center">
-                                <svg class="w-32 h-32 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                                </svg>
-                            </div>
+                        
+                        <!-- Inner Maasai Pattern - Decorative Overlay -->
+                        <div class="absolute inset-0 z-30 maasai-inner-pattern pointer-events-none">
+                            <!-- Traditional Maasai beaded cross pattern overlay -->
+                            <div class="absolute top-0 left-1/3 right-1/3 h-4 bg-shuka-pattern from-shuka-yellow to-maroon opacity-60"></div>
+                            <div class="absolute bottom-0 left-1/3 right-1/3 h-4 bg-shuka-pattern from-maroon to-shuka-yellow opacity-60"></div>
+                            <div class="absolute left-0 top-1/3 bottom-1/3 w-4 bg-shuka-vertical from-maroon to-shuka-yellow opacity-60"></div>
+                            <div class="absolute right-0 top-1/3 bottom-1/3 w-4 bg-shuka-vertical from-shuka-yellow to-maroon opacity-60"></div>
                         </div>
-                    <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,7 +98,7 @@ get_header();
 <section id="about" class="section bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">About Me</span>
+
             <h2 class="heading-lg mb-6">Strategic Communications Professional</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Experienced PR and Communications Lead with a passion for storytelling and brand building.</p>
         </div>
@@ -120,7 +157,7 @@ get_header();
 <section id="portfolio" class="section bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Portfolio</span>
+
             <h2 class="heading-lg mb-6">Recent Campaigns & Projects</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Showcasing successful PR campaigns, brand launches, social media posts, and communication strategies that delivered measurable results.</p>
         </div>
@@ -144,7 +181,7 @@ get_header();
 <section id="blog" class="section bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Blog</span>
+          
             <h2 class="heading-lg mb-6">Latest Articles</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Insights, tutorials, and updates from my blog.</p>
         </div>
@@ -224,7 +261,7 @@ get_header();
 <section id="testimonials" class="section bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Testimonials</span>
+            
             <h2 class="heading-lg mb-6">Client Success Stories</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear from brands and organizations I've helped achieve their communication goals.</p>
         </div>
@@ -244,7 +281,7 @@ get_header();
 <section id="contact" class="section bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Contact</span>
+
             <h2 class="heading-lg mb-6">Get In Touch</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Have a project in mind or just want to say hello? Feel free to reach out!</p>
         </div>

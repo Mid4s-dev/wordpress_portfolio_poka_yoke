@@ -838,6 +838,10 @@ a {
   border-width: 0;
 }
 
+.pointer-events-none {
+  pointer-events: none;
+}
+
 .collapse {
   visibility: collapse;
 }
@@ -862,16 +866,36 @@ a {
   position: sticky;
 }
 
+.-inset-8 {
+  inset: -2rem;
+}
+
 .inset-0 {
   inset: 0px;
+}
+
+.-bottom-12 {
+  bottom: -3rem;
 }
 
 .-bottom-16 {
   bottom: -4rem;
 }
 
+.-left-12 {
+  left: -3rem;
+}
+
 .-left-6 {
   left: -1.5rem;
+}
+
+.-right-12 {
+  right: -3rem;
+}
+
+.-top-12 {
+  top: -3rem;
 }
 
 .-top-6 {
@@ -882,20 +906,44 @@ a {
   bottom: 0px;
 }
 
+.bottom-1\/3 {
+  bottom: 33.333333%;
+}
+
 .left-0 {
   left: 0px;
+}
+
+.left-1\/3 {
+  left: 33.333333%;
 }
 
 .right-0 {
   right: 0px;
 }
 
+.right-1\/3 {
+  right: 33.333333%;
+}
+
 .top-0 {
   top: 0px;
 }
 
+.top-1\/3 {
+  top: 33.333333%;
+}
+
 .z-10 {
   z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.z-30 {
+  z-index: 30;
 }
 
 .z-40 {
@@ -1062,6 +1110,10 @@ a {
   display: none;
 }
 
+.h-1\/3 {
+  height: 33.333333%;
+}
+
 .h-16 {
   height: 4rem;
 }
@@ -1080,10 +1132,6 @@ a {
 
 .h-3 {
   height: 0.75rem;
-}
-
-.h-32 {
-  height: 8rem;
 }
 
 .h-4 {
@@ -1114,10 +1162,6 @@ a {
   height: 2rem;
 }
 
-.h-80 {
-  height: 20rem;
-}
-
 .h-auto {
   height: auto;
 }
@@ -1128,6 +1172,10 @@ a {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-1\/3 {
+  width: 33.333333%;
 }
 
 .w-16 {
@@ -1164,10 +1212,6 @@ a {
 
 .w-8 {
   width: 2rem;
-}
-
-.w-80 {
-  width: 20rem;
 }
 
 .w-full {
@@ -1236,18 +1280,13 @@ a {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.translate-x-4 {
-  --tw-translate-x: 1rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .translate-x-full {
   --tw-translate-x: 100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.translate-y-4 {
-  --tw-translate-y: 1rem;
+.rotate-45 {
+  --tw-rotate: 45deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1658,6 +1697,10 @@ a {
 
 .bg-shuka-pattern {
   background-image: repeating-linear-gradient(45deg, var(--tw-gradient-from) 0, var(--tw-gradient-from) 10px, var(--tw-gradient-to) 10px, var(--tw-gradient-to) 20px);
+}
+
+.bg-shuka-vertical {
+  background-image: repeating-linear-gradient(90deg, var(--tw-gradient-from) 0, var(--tw-gradient-from) 10px, var(--tw-gradient-to) 10px, var(--tw-gradient-to) 20px);
 }
 
 .from-gray-50 {
@@ -2106,6 +2149,11 @@ a {
   color: rgb(255 255 255 / 0.8);
 }
 
+.text-yellow-400 {
+  --tw-text-opacity: 1;
+  color: rgb(250 204 21 / var(--tw-text-opacity, 1));
+}
+
 .text-opacity-90 {
   --tw-text-opacity: 0.9;
 }
@@ -2122,6 +2170,10 @@ a {
   opacity: 0.2;
 }
 
+.opacity-60 {
+  opacity: 0.6;
+}
+
 .opacity-70 {
   opacity: 0.7;
 }
@@ -2133,6 +2185,12 @@ a {
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -2328,11 +2386,6 @@ a {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.hover\:border-maroon:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(128 0 32 / var(--tw-border-opacity, 1));
-}
-
 .hover\:border-shuka-yellow:hover {
   --tw-border-opacity: 1;
   border-color: rgb(251 191 36 / var(--tw-border-opacity, 1));
@@ -2340,6 +2393,11 @@ a {
 
 .hover\:border-transparent:hover {
   border-color: transparent;
+}
+
+.hover\:border-yellow-400:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(250 204 21 / var(--tw-border-opacity, 1));
 }
 
 .hover\:bg-blue-600:hover {

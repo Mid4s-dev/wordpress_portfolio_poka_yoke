@@ -24,13 +24,17 @@
         <div class="absolute top-0 left-0 right-0 h-2 from-maroon to-shuka-yellow bg-shuka-pattern"></div>
         <div class="container mx-auto flex items-center justify-between px-4 py-4 sm:px-6">
             <div class="site-branding flex-shrink-0">
-                <?php if ( has_custom_logo() ) : ?>
-                    <div class="custom-logo-container bg-white p-1 rounded-full border-2 border-shuka-yellow hover:border-maroon transition-colors">
+                <?php if ( portfolio_has_profile_image() ) : ?>
+                    <div class="header-profile-container">
+                        <img src="<?php echo esc_url( portfolio_get_profile_image() ); ?>" alt="<?php echo esc_attr( portfolio_get_owner_name() ); ?>" class="header-profile-image">
+                    </div>
+                <?php elseif ( has_custom_logo() ) : ?>
+                    <div class="custom-logo-container bg-white p-1 rounded-full border-2 border-maroon hover:border-yellow-400 transition-colors">
                         <?php the_custom_logo(); ?>
                     </div>
                 <?php else : ?>
                     <h1 class="site-title text-xl sm:text-2xl font-bold truncate">
-                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="text-maroon hover:text-shuka-yellow transition-colors">
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="text-yellow-400 hover:text-white transition-colors">
                             <?php bloginfo( 'name' ); ?>
                         </a>
                     </h1>
