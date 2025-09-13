@@ -110,151 +110,6 @@ function portfolio_enqueue_styles() {
         null
     );
     
-    // Enqueue custom logo styles
-    if (file_exists(get_template_directory() . '/assets/css/custom-logo.css')) {
-        wp_enqueue_style(
-            'portfolio-custom-logo',
-            get_theme_file_uri( 'assets/css/custom-logo.css' ),
-            array(),
-            filemtime(get_template_directory() . '/assets/css/custom-logo.css')
-        );
-    }
-    
-    // Enqueue logo link styles
-    if (file_exists(get_template_directory() . '/assets/css/logo-link.css')) {
-        wp_enqueue_style(
-            'portfolio-logo-link',
-            get_theme_file_uri( 'assets/css/logo-link.css' ),
-            array('portfolio-custom-logo'),
-            filemtime(get_template_directory() . '/assets/css/logo-link.css')
-        );
-    }
-    
-    // Enqueue campaigns styles
-    if (file_exists(get_template_directory() . '/assets/css/campaigns.css')) {
-        wp_enqueue_style(
-            'portfolio-campaigns',
-            get_theme_file_uri( 'assets/css/campaigns.css' ),
-            array(),
-            filemtime(get_template_directory() . '/assets/css/campaigns.css')
-        );
-    }
-    
-
-    
-    // Enqueue services styles
-    if (file_exists(get_template_directory() . '/assets/css/services.css')) {
-        wp_enqueue_style(
-            'portfolio-services',
-            get_theme_file_uri( 'assets/css/services.css' ),
-            array(),
-            filemtime(get_template_directory() . '/assets/css/services.css')
-        );
-    }
-    
-    // Enqueue simple testimonials styles
-    if (file_exists(get_template_directory() . '/assets/css/simple-testimonials.css')) {
-        wp_enqueue_style(
-            'simple-testimonials',
-            get_theme_file_uri( 'assets/css/simple-testimonials.css' ),
-            array(),
-            filemtime(get_template_directory() . '/assets/css/simple-testimonials.css')
-        );
-    }
-    
-    // Enqueue carousel styles
-    if (file_exists(get_template_directory() . '/assets/css/carousels.css')) {
-        wp_enqueue_style(
-            'portfolio-carousels',
-            get_theme_file_uri( 'assets/css/carousels.css' ),
-            array(),
-            filemtime(get_template_directory() . '/assets/css/carousels.css')
-        );
-    }
-    
-    // Enqueue campaigns carousel styles
-    if (file_exists(get_template_directory() . '/assets/css/campaigns-carousel.css')) {
-        wp_enqueue_style(
-            'portfolio-campaigns-carousel',
-            get_theme_file_uri( 'assets/css/campaigns-carousel.css' ),
-            array('portfolio-carousels'),
-            filemtime(get_template_directory() . '/assets/css/campaigns-carousel.css')
-        );
-    }
-    
-    // Enqueue unified carousel styles for consistent design
-    if (file_exists(get_template_directory() . '/assets/css/unified-carousels.css')) {
-        wp_enqueue_style(
-            'portfolio-unified-carousels',
-            get_theme_file_uri( 'assets/css/unified-carousels.css' ),
-            array('portfolio-carousels', 'portfolio-campaigns-carousel'),
-            filemtime(get_template_directory() . '/assets/css/unified-carousels.css')
-        );
-    }
-    
-    // Enqueue custom theme styles
-    if (file_exists(get_template_directory() . '/assets/css/custom-theme.css')) {
-        wp_enqueue_style(
-            'portfolio-custom-theme',
-            get_theme_file_uri( 'assets/css/custom-theme.css' ),
-            array(),
-            filemtime(get_template_directory() . '/assets/css/custom-theme.css')
-        );
-    }
-    
-    // Enqueue Maasai patterns styles
-    if (file_exists(get_template_directory() . '/assets/css/maasai-patterns.css')) {
-        wp_enqueue_style(
-            'maasai-patterns',
-            get_theme_file_uri( 'assets/css/maasai-patterns.css' ),
-            array('portfolio-custom-theme'),
-            filemtime(get_template_directory() . '/assets/css/maasai-patterns.css')
-        );
-    }
-    
-    // Enqueue new header styles (added September 11, 2025)
-    if (file_exists(get_template_directory() . '/assets/css/new-header.css')) {
-        wp_enqueue_style(
-            'new-header',
-            get_theme_file_uri( 'assets/css/new-header.css' ),
-            array('portfolio-tailwind', 'portfolio-style'),
-            time() // Force refresh by using current time
-        );
-    }
-    
-    // Enqueue layout fixes (added September 11, 2025)
-    if (file_exists(get_template_directory() . '/assets/css/layout-fix.css')) {
-        wp_enqueue_style(
-            'layout-fix',
-            get_theme_file_uri( 'assets/css/layout-fix.css' ),
-            array('portfolio-tailwind', 'portfolio-style', 'new-header'),
-            time() // Force refresh by using current time
-        );
-    }
-    
-    // Enqueue theme enhancements (added September 11, 2025)
-    if (file_exists(get_template_directory() . '/assets/css/theme-enhancements.css')) {
-        wp_enqueue_style(
-            'theme-enhancements',
-            get_theme_file_uri( 'assets/css/theme-enhancements.css' ),
-            array('portfolio-tailwind', 'portfolio-style', 'new-header', 'layout-fix'),
-            time() // Force refresh by using current time
-        );
-    }
-    
-    // Enqueue hamburger menu icon fix (added September 11, 2025)
-    if (file_exists(get_template_directory() . '/assets/css/hamburger-fix.css')) {
-        wp_enqueue_style(
-            'hamburger-fix',
-            get_theme_file_uri( 'assets/css/hamburger-fix.css' ),
-            array('portfolio-tailwind', 'portfolio-style', 'new-header', 'theme-enhancements'),
-            time() // Force refresh by using current time
-        );
-    }
-    
-    // Enqueue dashicons on the frontend for social icons
-    wp_enqueue_style('dashicons');
-    
     // Enqueue theme stylesheet.
     wp_enqueue_style(
         'portfolio-style',
@@ -263,25 +118,39 @@ function portfolio_enqueue_styles() {
         filemtime(get_template_directory() . '/style.css')
     );
     
-    // Enqueue Joshua's portfolio custom styles if the file exists
-    if (file_exists(get_template_directory() . '/assets/css/joshua-portfolio.css')) {
+    // Enqueue consolidated theme core styles
+    if (file_exists(get_template_directory() . '/assets/css/theme-core.css')) {
         wp_enqueue_style(
-            'joshua-portfolio',
-            get_theme_file_uri( 'assets/css/joshua-portfolio.css' ),
+            'portfolio-theme-core',
+            get_theme_file_uri( 'assets/css/theme-core.css' ),
             array('portfolio-style'),
-            filemtime(get_template_directory() . '/assets/css/joshua-portfolio.css')
+            filemtime(get_template_directory() . '/assets/css/theme-core.css')
         );
     }
     
-    // Enqueue Maasai Shuka theme CSS
-    if (file_exists(get_template_directory() . '/assets/css/maasai-theme.css')) {
+    // Enqueue consolidated component styles (carousels, cards, etc.)
+    if (file_exists(get_template_directory() . '/assets/css/components.css')) {
         wp_enqueue_style(
-            'maasai-theme',
-            get_theme_file_uri( 'assets/css/maasai-theme.css' ),
-            array('portfolio-style', 'joshua-portfolio'),
-            filemtime(get_template_directory() . '/assets/css/maasai-theme.css')
+            'portfolio-components',
+            get_theme_file_uri( 'assets/css/components.css' ),
+            array('portfolio-theme-core'),
+            filemtime(get_template_directory() . '/assets/css/components.css')
         );
     }
+    
+    // Enqueue dashicons on the frontend for social icons
+    wp_enqueue_style('dashicons');
+    
+    // Enqueue Maasai patterns styles (keeping separate as it's decorative)
+    if (file_exists(get_template_directory() . '/assets/css/maasai-patterns.css')) {
+        wp_enqueue_style(
+            'maasai-patterns',
+            get_theme_file_uri( 'assets/css/maasai-patterns.css' ),
+            array('portfolio-theme-core'),
+            filemtime(get_template_directory() . '/assets/css/maasai-patterns.css')
+        );
+    }
+}
     
     // Enqueue jQuery
     wp_enqueue_script('jquery');
@@ -390,15 +259,18 @@ add_action( 'wp_enqueue_scripts', 'portfolio_enqueue_styles' );
  * Enqueue admin scripts and styles.
  */
 function portfolio_admin_scripts() {
-    // Enqueue profile customizer styles and scripts when in the customizer
-    if (is_customize_preview()) {
+    // Enqueue consolidated admin styles
+    if (file_exists(get_template_directory() . '/assets/css/admin.css')) {
         wp_enqueue_style(
-            'portfolio-profile-customizer',
-            get_theme_file_uri('assets/css/profile-customizer.css'),
+            'portfolio-admin',
+            get_theme_file_uri('assets/css/admin.css'),
             array(),
-            filemtime(get_template_directory() . '/assets/css/profile-customizer.css')
+            filemtime(get_template_directory() . '/assets/css/admin.css')
         );
-        
+    }
+    
+    // Enqueue profile customizer scripts when in the customizer
+    if (is_customize_preview() && file_exists(get_template_directory() . '/assets/js/profile-customizer.js')) {
         wp_enqueue_script(
             'portfolio-profile-customizer',
             get_theme_file_uri('assets/js/profile-customizer.js'),
