@@ -441,5 +441,16 @@ function simple_testimonials_shortcode($atts) {
 }
 add_shortcode('simple_testimonials', 'simple_testimonials_shortcode');
 
-// Testimonial styles are now included in the consolidated components.css file
-// No need to enqueue separate styles
+// Enqueue testimonial styles from consolidated components CSS
+function simple_testimonials_enqueue_styles() {
+    // Use consolidated components CSS file instead of individual CSS file
+    if (file_exists(get_template_directory() . '/assets/css/components.css')) {
+        wp_enqueue_style(
+            'portfolio-components',
+            get_theme_file_uri('assets/css/components.css'),
+            array(),
+            filemtime(get_template_directory() . '/assets/css/components.css')
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'simple_testimonials_enqueue_styles');
