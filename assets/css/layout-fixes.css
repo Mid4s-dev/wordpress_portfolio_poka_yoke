@@ -1,0 +1,103 @@
+/**
+ * Layout fixes for mobile menu and carousels
+ */
+
+/* Mobile menu fixes */
+.mobile-menu-button {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .mobile-menu-button {
+        display: flex !important;
+    }
+}
+
+/* Transition animations for mobile drawer */
+.mobile-menu-drawer {
+    transition: transform 0.3s ease, visibility 0.3s, opacity 0.3s;
+    transform: translateX(100%);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.mobile-menu-drawer.open {
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Icon transition */
+.hamburger-icon,
+.close-icon {
+    transition: opacity 0.2s ease;
+}
+
+/* Additional carousel card styles to ensure images display properly */
+.swiper-slide img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Force gray background for all carousel cards */
+.swiper-slide .card,
+.swiper-slide .portfolio-campaign-item,
+.swiper-slide .blog-post-item,
+.swiper-slide .testimonial-item,
+.swiper-slide .portfolio-service {
+    background-color: #f3f4f6; /* Light gray background */
+    border: 1px solid #e5e7eb;
+}
+
+/* Different shades of gray for alternating cards */
+.swiper-slide:nth-child(2n) .card,
+.swiper-slide:nth-child(2n) .portfolio-campaign-item,
+.swiper-slide:nth-child(2n) .blog-post-item,
+.swiper-slide:nth-child(2n) .testimonial-item,
+.swiper-slide:nth-child(2n) .portfolio-service {
+    background-color: #ebedf0; /* Slightly darker gray */
+}
+
+.swiper-slide:nth-child(3n) .card,
+.swiper-slide:nth-child(3n) .portfolio-campaign-item,
+.swiper-slide:nth-child(3n) .blog-post-item,
+.swiper-slide:nth-child(3n) .testimonial-item,
+.swiper-slide:nth-child(3n) .portfolio-service {
+    background-color: #e5e7eb; /* Even darker gray */
+}
+
+/* Ensure equal height for carousel items */
+.swiper-container {
+    padding: 10px 5px 40px;
+    margin: 0 auto;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    height: auto !important; /* Prevent dynamic height changes */
+}
+
+/* Ensure all carousel containers maintain consistent dimensions */
+.services-carousel .swiper-container,
+.campaigns-carousel .swiper-container,
+.blog-carousel .swiper-container,
+.testimonials-carousel .swiper-container {
+    min-height: 450px; /* Set a minimum height to prevent jumping */
+}
+
+.swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+    height: auto !important; /* Prevent height changes during transition */
+}
+
+.swiper-slide {
+    height: auto !important;
+    display: flex;
+}
+
+.swiper-slide-active,
+.swiper-slide-next,
+.swiper-slide-prev {
+    height: auto !important;
+}

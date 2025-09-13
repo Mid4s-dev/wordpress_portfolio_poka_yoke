@@ -11,7 +11,7 @@ get_header();
 ?>
 
 <!-- Hero Section -->
-<section id="home" class="hero-section min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-white">
+<section id="js-home" class="hero-section min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-white">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="hero-content">
@@ -24,74 +24,55 @@ get_header();
                     <?php esc_html_e( 'I create compelling narratives, build strong brand relationships, and drive strategic communication campaigns that engage audiences and deliver measurable results.', 'portfolio' ); ?>
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contact" class="btn btn-primary btn-lg bg-maroon hover:bg-shuka-yellow hover:text-maroon transition-colors">
+                    <a href="#js-contact" class="btn btn-primary btn-lg bg-maroon hover:bg-shuka-yellow hover:text-maroon transition-colors">
                         <?php esc_html_e( 'Let\'s Connect', 'portfolio' ); ?>
                     </a>
-                    <a href="#portfolio" class="btn btn-outline btn-lg border-maroon text-maroon hover:bg-maroon hover:text-white transition-colors">
+                    <a href="#js-portfolio" class="btn btn-outline btn-lg border-maroon text-maroon hover:bg-maroon hover:text-white transition-colors">
                         <?php esc_html_e( 'View My Work', 'portfolio' ); ?>
                     </a>
                 </div>
             </div>
             <div class="hero-image">
                 <div class="relative">
-                    <!-- Maasai Shuka-styled Profile Container -->
-                    <div class="profile-image-container relative">
-                        <!-- Corner Accents - Rounded shapes common in Maasai art -->
-                        <div class="absolute -top-12 -left-12 w-16 h-16 bg-maroon rounded-full z-10"></div>
-                        <div class="absolute -top-12 -right-12 w-16 h-16 bg-shuka-yellow rounded-full z-10"></div>
-                        <div class="absolute -bottom-12 -right-12 w-16 h-16 bg-maroon rounded-full z-10"></div>
-                        <div class="absolute -bottom-12 -left-12 w-16 h-16 bg-shuka-yellow rounded-full z-10"></div>
+                    <!-- Maasai-styled Profile Container with enhanced frame styling -->
+                    <div class="maasai-image-frame">
+                        <!-- Corner medallions for Maasai styling -->
+                        <div class="frame-corner top-left"></div>
+                        <div class="frame-corner top-right"></div>
+                        <div class="frame-corner bottom-left"></div>
+                        <div class="frame-corner bottom-right"></div>
                         
-                        <!-- Outer Maasai Pattern Border - Based on Shuka cloth patterns -->
-                        <div class="absolute -inset-8 bg-shuka-pattern from-maroon to-shuka-yellow rounded-3xl overflow-hidden">
-                            <!-- Stripes on edges - resembling traditional Maasai Shuka cloth -->
-                            <div class="absolute top-0 left-0 right-0 h-8 bg-shuka-pattern from-maroon to-shuka-yellow rounded-t-3xl"></div>
-                            <div class="absolute bottom-0 left-0 right-0 h-8 bg-shuka-pattern from-shuka-yellow to-maroon rounded-b-3xl"></div>
-                            <div class="absolute left-0 top-0 bottom-0 w-8 bg-shuka-vertical from-maroon to-shuka-yellow rounded-l-3xl"></div>
-                            <div class="absolute right-0 top-0 bottom-0 w-8 bg-shuka-vertical from-shuka-yellow to-maroon rounded-r-3xl"></div>
-                        </div>
+                        <!-- Additional beadwork rows and columns -->
+                        <div class="bead-row top"></div>
+                        <div class="bead-row bottom"></div>
+                        <div class="bead-column left"></div>
+                        <div class="bead-column right"></div>
                         
-                        <!-- Profile Image -->
-                        <div class="relative z-20 bg-white p-3 border-4 border-maroon shadow-2xl overflow-hidden rounded-2xl">
-                            <?php 
-                            // Get profile image from theme customizer
-                            $profile_image = '';
-                            
-                            if (function_exists('portfolio_get_profile_image')) {
-                                $profile_image = portfolio_get_profile_image();
-                            }
-                            
-                            // Display the profile image
-                            if ($profile_image) : ?>
-                                <img src="<?php echo esc_url($profile_image); ?>" alt="<?php echo esc_attr(portfolio_get_owner_name()); ?>" class="w-full h-full object-cover rounded-xl">
-                            <?php 
-                            // Fall back to custom logo
-                            elseif (has_custom_logo()) : ?>
-                                <?php the_custom_logo(); ?>
-                            <?php 
-                            // Default fallback to placeholder
-                            else : ?>
-                                <div class="w-full h-full flex items-center justify-center bg-gray-100 rounded-xl">
-                                    <svg class="w-1/3 h-1/3 text-maroon" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                                    </svg>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                        <div class="maasai-image-frame-inner">
+                        <?php 
+                        // Get profile image from theme customizer
+                        $profile_image = '';
                         
-                        <!-- Inner Maasai Pattern - Decorative Overlay with beadwork circles -->
-                        <div class="absolute inset-0 z-30 maasai-inner-pattern pointer-events-none">
-                            <!-- Traditional Maasai beaded pattern overlay -->
-                            <div class="absolute top-0 left-1/3 right-1/3 h-4 bg-shuka-pattern from-shuka-yellow to-maroon opacity-60 rounded-full"></div>
-                            <div class="absolute bottom-0 left-1/3 right-1/3 h-4 bg-shuka-pattern from-maroon to-shuka-yellow opacity-60 rounded-full"></div>
-                            <div class="absolute left-0 top-1/3 bottom-1/3 w-4 bg-shuka-vertical from-maroon to-shuka-yellow opacity-60 rounded-full"></div>
-                            <div class="absolute right-0 top-1/3 bottom-1/3 w-4 bg-shuka-vertical from-shuka-yellow to-maroon opacity-60 rounded-full"></div>
-                            
-                            <!-- Circular beadwork patterns in corners -->
-                            <div class="absolute top-4 left-4 w-8 h-8 border-2 border-white rounded-full opacity-40"></div>
-                            <div class="absolute top-4 right-4 w-8 h-8 border-2 border-white rounded-full opacity-40"></div>
-                            <div class="absolute bottom-4 right-4 w-8 h-8 border-2 border-white rounded-full opacity-40"></div>
-                            <div class="absolute bottom-4 left-4 w-8 h-8 border-2 border-white rounded-full opacity-40"></div>
+                        if (function_exists('portfolio_get_profile_image')) {
+                            $profile_image = portfolio_get_profile_image();
+                        }
+                        
+                        // Display the profile image
+                        if ($profile_image) : ?>
+                            <img src="<?php echo esc_url($profile_image); ?>" alt="<?php echo esc_attr(portfolio_get_owner_name()); ?>" class="maasai-framed-image">
+                        <?php 
+                        // Fall back to custom logo
+                        elseif (has_custom_logo()) : ?>
+                            <?php the_custom_logo(); ?>
+                        <?php 
+                        // Default fallback to placeholder
+                        else : ?>
+                            <div class="w-full aspect-square flex items-center justify-center bg-gray-100 rounded-xl">
+                                <svg class="w-1/3 h-1/3 text-maroon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                                </svg>
+                            </div>
+                        <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -163,14 +144,14 @@ get_header();
         </div>
         <?php endif; ?>
         <div class="text-center mb-16">
-            <div class="text-center mb-16">
             <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Services</span>
-                            </div>
             <h2 class="heading-lg mb-6">How I Can Help Your Brand</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive PR and communications solutions tailored to your brand's unique needs.</p>
         </div>
         
-        <?php echo do_shortcode('[portfolio_services count="6" layout="grid" columns="3"]'); ?>
+        <div class="services-carousel section-carousel">
+            <?php echo do_shortcode('[portfolio_services count="6" layout="carousel" columns="3"]'); ?>
+        </div>
         
         <div class="text-center mt-12">
             <a href="<?php echo esc_url(get_permalink(get_page_by_path('services'))); ?>" class="btn btn-primary">View All Services</a>
@@ -226,7 +207,7 @@ get_header();
                 <div class="swiper-wrapper">
                 <?php while ( $latest_posts->have_posts() ) : $latest_posts->the_post(); ?>
                     <div class="swiper-slide">
-                        <article class="card h-full">
+                        <article id="js-blog-card-<?php echo get_the_ID(); ?>" class="h-full card">
                             <?php if ( has_post_thumbnail() ) : ?>
                                 <a href="<?php the_permalink(); ?>" class="block overflow-hidden">
                                     <?php the_post_thumbnail( 'medium_large', array( 'class' => 'w-full h-48 object-cover transition-transform duration-500 hover:scale-105' ) ); ?>
@@ -239,7 +220,7 @@ get_header();
                                     $categories = get_the_category();
                                     if ( $categories ) {
                                         $category = $categories[0];
-                                        echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" class="inline-block text-xs font-medium text-primary-600 bg-primary-50 px-2.5 py-0.5 rounded-full">' . esc_html( $category->name ) . '</a>';
+                                        echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium text-primary-600 bg-primary-50">' . esc_html( $category->name ) . '</a>';
                                     }
                                     ?>
                                 </div>
@@ -323,10 +304,10 @@ get_header();
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <!-- Contact Form -->
-            <div class="card p-8">
+            <div id="js-contact-card" class="p-8 card">
                 <h3 class="heading-md mb-6">Send Me a Message</h3>
                 
-                <form id="contact-form" class="space-y-4">
+                <form id="js-contact-form" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
@@ -353,17 +334,17 @@ get_header();
                     </div>
                     
                     <!-- Form response message will appear here -->
-                    <div id="contact-form-response" class="mt-4"></div>
+                    <div id="js-contact-form-response" class="mt-4"></div>
                 </form>
                 
                 <script>
                 jQuery(document).ready(function($) {
-                    $('#contact-form').on('submit', function(e) {
+                    $('#js-contact-form').on('submit', function(e) {
                         e.preventDefault();
                         
                         const $form = $(this);
                         const $submit = $form.find('button[type="submit"]');
-                        const $response = $('#contact-form-response');
+                        const $response = $('#js-contact-form-response');
                         
                         const formData = {
                             action: 'portfolio_contact_form',
@@ -409,19 +390,19 @@ get_header();
             <!-- Newsletter and Contact Info -->
             <div class="space-y-8">
                 <!-- Newsletter Signup -->
-                <div class="card p-8 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
+                <div id="js-newsletter-card" class="p-8 text-white bg-gradient-to-br from-maroon to-maroon-700 card">
                     <h3 class="heading-md text-white mb-4">Subscribe to My Newsletter</h3>
                     <p class="mb-6">Stay updated with my latest projects, articles, and insights. No spam, just valuable content.</p>
                     
-                    <form id="newsletter-form" class="space-y-4">
+                    <form id="js-newsletter-form" class="space-y-4">
                         <div>
-                            <label for="newsletter-name" class="sr-only">Your Name</label>
-                            <input type="text" id="newsletter-name" name="name" placeholder="Your name" class="w-full px-4 py-3 border-0 rounded-md focus:ring-2 focus:ring-white text-gray-900 mb-3" required>
+                            <label for="js-newsletter-name" class="sr-only">Your Name</label>
+                            <input type="text" id="js-newsletter-name" name="name" placeholder="Your name" class="w-full px-4 py-3 border-0 rounded-md focus:ring-2 focus:ring-white text-gray-900 mb-3" required>
                         </div>
                         
                         <div>
-                            <label for="newsletter-email" class="sr-only">Email</label>
-                            <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" class="w-full px-4 py-3 border-0 rounded-md focus:ring-2 focus:ring-white text-gray-900" required>
+                            <label for="js-newsletter-email" class="sr-only">Email</label>
+                            <input type="email" id="js-newsletter-email" name="email" placeholder="Enter your email" class="w-full px-4 py-3 border-0 rounded-md focus:ring-2 focus:ring-white text-gray-900" required>
                         </div>
                         
                         <button type="submit" class="w-full py-3 bg-white text-primary-600 font-medium rounded-md hover:bg-gray-100 transition-colors">
@@ -429,17 +410,17 @@ get_header();
                         </button>
                         
                         <!-- Form response message will appear here -->
-                        <div id="newsletter-form-response" class="mt-4"></div>
+                        <div id="js-newsletter-form-response" class="mt-4"></div>
                     </form>
                     
                     <script>
                     jQuery(document).ready(function($) {
-                        $('#newsletter-form').on('submit', function(e) {
+                        $('#js-newsletter-form').on('submit', function(e) {
                             e.preventDefault();
                             
                             const $form = $(this);
                             const $submit = $form.find('button[type="submit"]');
-                            const $response = $('#newsletter-form-response');
+                            const $response = $('#js-newsletter-form-response');
                             
                             const formData = {
                                 action: 'portfolio_newsletter_form',
@@ -482,7 +463,7 @@ get_header();
                 </div>
                 
                 <!-- Contact Information -->
-                <div class="card p-8">
+                <div id="js-contact-info-card" class="p-8 card">
                     <h3 class="heading-md mb-6">Contact Information</h3>
                     
                     <?php if (get_theme_mod('portfolio_contact_image')): ?>

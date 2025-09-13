@@ -133,7 +133,7 @@ function portfolio_enqueue_styles() {
         wp_enqueue_style(
             'portfolio-components',
             get_theme_file_uri( 'assets/css/components.css' ),
-            array('portfolio-theme-core'),
+            array(),
             filemtime(get_template_directory() . '/assets/css/components.css')
         );
     }
@@ -148,6 +148,56 @@ function portfolio_enqueue_styles() {
         array(),
         '8.0.0'
     );
+    
+    // Enqueue our theme variables CSS
+    if (file_exists(get_template_directory() . '/assets/css/theme-variables.css')) {
+        wp_enqueue_style(
+            'portfolio-theme-variables',
+            get_theme_file_uri('assets/css/theme-variables.css'),
+            array('portfolio-style'),
+            filemtime(get_template_directory() . '/assets/css/theme-variables.css')
+        );
+    }
+    
+    // Enqueue layout fixes CSS
+    if (file_exists(get_template_directory() . '/assets/css/layout-fixes.css')) {
+        wp_enqueue_style(
+            'portfolio-layout-fixes',
+            get_theme_file_uri('assets/css/layout-fixes.css'),
+            array('portfolio-style', 'portfolio-theme-variables'),
+            filemtime(get_template_directory() . '/assets/css/layout-fixes.css')
+        );
+    }
+    
+    // Enqueue modern header CSS
+    if (file_exists(get_template_directory() . '/assets/css/modern-header.css')) {
+        wp_enqueue_style(
+            'portfolio-modern-header',
+            get_theme_file_uri('assets/css/modern-header.css'),
+            array('portfolio-style', 'portfolio-theme-variables'),
+            filemtime(get_template_directory() . '/assets/css/modern-header.css')
+        );
+    }
+    
+    // Enqueue card image fixes CSS
+    if (file_exists(get_template_directory() . '/assets/css/card-image-fix.css')) {
+        wp_enqueue_style(
+            'portfolio-card-image-fix',
+            get_theme_file_uri('assets/css/card-image-fix.css'),
+            array('portfolio-style', 'portfolio-components', 'portfolio-unified-carousels'),
+            filemtime(get_template_directory() . '/assets/css/card-image-fix.css')
+        );
+    }
+    
+    // Enqueue Maasai hero frame CSS
+    if (file_exists(get_template_directory() . '/assets/css/maasai-hero-frame.css')) {
+        wp_enqueue_style(
+            'portfolio-maasai-hero-frame',
+            get_theme_file_uri('assets/css/maasai-hero-frame.css'),
+            array('portfolio-style'),
+            filemtime(get_template_directory() . '/assets/css/maasai-hero-frame.css')
+        );
+    }
 
     // Enqueue dashicons on the frontend for social icons
     wp_enqueue_style('dashicons');
@@ -191,6 +241,17 @@ function portfolio_enqueue_scripts() {
             get_theme_file_uri( 'assets/js/carousels.js' ),
             array('jquery', 'swiper-js'),
             filemtime(get_template_directory() . '/assets/js/carousels.js'),
+            true
+        );
+    }
+    
+    // Enqueue carousel height fix script
+    if (file_exists(get_template_directory() . '/assets/js/carousel-height-fix.js')) {
+        wp_enqueue_script(
+            'portfolio-carousel-height-fix-js',
+            get_theme_file_uri( 'assets/js/carousel-height-fix.js' ),
+            array('jquery', 'portfolio-carousels-js'),
+            filemtime(get_template_directory() . '/assets/js/carousel-height-fix.js'),
             true
         );
     }
@@ -242,11 +303,60 @@ function portfolio_enqueue_scripts() {
         );
     }
     
-
+    // Enqueue modern header JavaScript
+    if (file_exists(get_template_directory() . '/assets/js/modern-header.js')) {
+        wp_enqueue_script(
+            'portfolio-modern-header',
+            get_theme_file_uri( 'assets/js/modern-header.js' ),
+            array(),
+            filemtime(get_template_directory() . '/assets/js/modern-header.js'),
+            true
+        );
+    }
     
     // The forms.js file is enqueued in the Portfolio_Form_Handler class
 }
 add_action( 'wp_enqueue_scripts', 'portfolio_enqueue_scripts' );
+
+/**
+ * Add custom image sizes to ensure proper display in cards and carousels.
+ * This helps maintain consistency in image dimensions across the site.
+ */
+function portfolio_add_custom_image_sizes() {
+    // Standard card thumbnail size with a 16:9 aspect ratio
+    add_image_size('card-thumbnail', 800, 450, true);
+    
+    // Square thumbnail for profiles and circular elements
+    add_image_size('square-thumbnail', 400, 400, true);
+    
+    // Service card image size
+    add_image_size('service-thumbnail', 600, 340, true);
+    
+    // Campaign/portfolio thumb with wider aspect ratio
+    add_image_size('campaign-thumbnail', 900, 506, true);
+}
+add_action('after_setup_theme', 'portfolio_add_custom_image_sizes');
+
+/**
+ * Make custom image sizes available in the WordPress admin
+ */
+function portfolio_custom_image_sizes_names($sizes) {
+    return array_merge($sizes, array(
+        'card-thumbnail' => __('Card Thumbnail (16:9)', 'portfolio'),
+        'square-thumbnail' => __('Square Thumbnail', 'portfolio'),
+        'service-thumbnail' => __('Service Card Image', 'portfolio'),
+        'campaign-thumbnail' => __('Campaign/Portfolio Image', 'portfolio'),
+    ));
+}
+add_filter('image_size_names_choose', 'portfolio_custom_image_sizes_names');
+
+/**
+ * Add support for featured images in services
+ */
+function portfolio_add_service_thumbnail_support() {
+    add_post_type_support('portfolio_service', 'thumbnail');
+}
+add_action('init', 'portfolio_add_service_thumbnail_support');
 
 /**
  * Enqueue admin scripts and styles.

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
+            autoHeight: false, // Disable auto height to prevent resize during transitions
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
@@ -29,6 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 1024: {
                     slidesPerView: 3,
                     spaceBetween: 30,
+                }
+            },
+            on: {
+                init: function() {
+                    // Dispatch an event that our height fixer can listen to
+                    setTimeout(function() {
+                        document.dispatchEvent(new CustomEvent('swiperSlideChangeTransitionEnd'));
+                    }, 100);
+                },
+                slideChangeTransitionEnd: function() {
+                    // Dispatch an event when slide transition ends
+                    document.dispatchEvent(new CustomEvent('swiperSlideChangeTransitionEnd'));
                 }
             }
         });
@@ -59,6 +72,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 1024: {
                     slidesPerView: 3,
                 }
+            },
+            on: {
+                init: function() {
+                    // Dispatch an event that our height fixer can listen to
+                    setTimeout(function() {
+                        document.dispatchEvent(new CustomEvent('swiperSlideChangeTransitionEnd'));
+                    }, 100);
+                },
+                slideChangeTransitionEnd: function() {
+                    // Dispatch an event when slide transition ends
+                    document.dispatchEvent(new CustomEvent('swiperSlideChangeTransitionEnd'));
+                }
             }
         });
     }
@@ -69,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
+            autoHeight: false, // Disable auto height to prevent resize during transitions
             autoplay: {
                 delay: 5500,
                 disableOnInteraction: false,
@@ -89,6 +115,62 @@ document.addEventListener('DOMContentLoaded', function() {
                 1024: {
                     slidesPerView: 3,
                     spaceBetween: 30,
+                }
+            },
+            on: {
+                init: function() {
+                    // Dispatch an event that our height fixer can listen to
+                    setTimeout(function() {
+                        document.dispatchEvent(new CustomEvent('swiperSlideChangeTransitionEnd'));
+                    }, 100);
+                },
+                slideChangeTransitionEnd: function() {
+                    // Dispatch an event when slide transition ends
+                    document.dispatchEvent(new CustomEvent('swiperSlideChangeTransitionEnd'));
+                }
+            }
+        });
+    }
+    
+    // Initialize Services Carousel
+    if (document.querySelector('.services-carousel .swiper-container')) {
+        new Swiper('.services-carousel .swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoHeight: false, // Disable auto height to prevent resize during transitions
+            autoplay: {
+                delay: 4500,  // Different delay from other carousels
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.services-carousel .swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.services-carousel .swiper-button-next',
+                prevEl: '.services-carousel .swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                }
+            },
+            on: {
+                init: function() {
+                    // Dispatch an event that our height fixer can listen to
+                    setTimeout(function() {
+                        document.dispatchEvent(new CustomEvent('swiperSlideChangeTransitionEnd'));
+                    }, 100);
+                },
+                slideChangeTransitionEnd: function() {
+                    // Dispatch an event when slide transition ends
+                    document.dispatchEvent(new CustomEvent('swiperSlideChangeTransitionEnd'));
                 }
             }
         });

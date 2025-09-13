@@ -26,7 +26,7 @@
             </div>
             
             <div class="md:w-2/3 md:pl-12">
-                <div class="shuka-card p-8">
+                <div id="js-about-card" class="p-8 shuka-card">
                     <h3 class="text-2xl font-bold mb-6 text-shuka-red"><?php echo esc_html(portfolio_get_owner_name()); ?></h3>
                     
                     <div class="mb-8">

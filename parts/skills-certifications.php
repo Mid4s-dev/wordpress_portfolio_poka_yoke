@@ -16,7 +16,7 @@
         <div class="flex flex-col md:flex-row gap-8">
             <!-- Skills Column -->
             <div class="md:w-1/2">
-                <div class="shuka-card p-8 h-full">
+                <div id="js-skills-card" class="p-8 h-full shuka-card">
                     <h3 class="text-2xl font-bold mb-8 text-shuka-red">Technical Skills</h3>
                     
                     <div class="space-y-8">
@@ -104,7 +104,7 @@
             
             <!-- Certifications Column -->
             <div class="md:w-1/2 mt-8 md:mt-0">
-                <div class="shuka-card p-8 h-full">
+                <div id="js-certifications-card" class="p-8 h-full shuka-card">
                     <h3 class="text-2xl font-bold mb-8 text-shuka-red">Certifications & Education</h3>
                     
                     <!-- Certifications -->
