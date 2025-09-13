@@ -1,0 +1,43 @@
+/**
+ * Logo link styles
+ */
+
+.logo-link {
+    display: block;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.logo-link:focus {
+    outline: 2px solid var(--wp--preset--color--shuka-yellow);
+    outline-offset: 3px;
+    border-radius: 50%;
+}
+
+.logo-link .header-profile-container,
+.logo-link .custom-logo-container {
+    display: block;
+    overflow: hidden;
+}
+
+.logo-link .site-title {
+    position: relative;
+}
+
+/* Add a small arrow icon to indicate it's a link */
+.logo-link .site-title::after {
+    content: "⌂";
+    font-size: 0.75em;
+    margin-left: 5px;
+    vertical-align: super;
+    opacity: 0.8;
+}
+
+/* Remove default underline from text */
+.logo-link .site-title span {
+    text-decoration: none;
+}

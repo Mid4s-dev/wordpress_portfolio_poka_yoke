@@ -17,18 +17,18 @@ get_header();
             <div class="hero-content">
                 <h1 class="heading-xl text-gray-900 mb-6">
                     <?php esc_html_e( 'Hi, I\'m ', 'portfolio' ); ?>
-                    <span class="text-maroon"><?php echo portfolio_get_owner_name(); ?></span>
+                    <span class="text-maroon">Joshua Lugaya</span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl text-gray-600 font-semibold mb-6"><?php bloginfo( 'description' ); ?></h2>
+                <h2 class="text-2xl md:text-3xl text-gray-600 font-semibold mb-6">Cybersecurity, Web Development, and Cloud Enthusiast</h2>
                 <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                    <?php esc_html_e( 'I create compelling narratives, build strong brand relationships, and drive strategic communication campaigns that engage audiences and deliver measurable results.', 'portfolio' ); ?>
+                    <?php esc_html_e( 'Motivated and adaptable tech professional with a BSc in Information Security and Forensics, specializing in secure web applications, scalable cloud solutions, and robust cybersecurity strategies.', 'portfolio' ); ?>
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#js-contact" class="btn btn-primary btn-lg bg-maroon hover:bg-shuka-yellow hover:text-maroon transition-colors">
-                        <?php esc_html_e( 'Let\'s Connect', 'portfolio' ); ?>
+                        <?php esc_html_e( 'Let\'s Collaborate', 'portfolio' ); ?>
                     </a>
                     <a href="#js-portfolio" class="btn btn-outline btn-lg border-maroon text-maroon hover:bg-maroon hover:text-white transition-colors">
-                        <?php esc_html_e( 'View My Work', 'portfolio' ); ?>
+                        <?php esc_html_e( 'Explore My Projects', 'portfolio' ); ?>
                     </a>
                 </div>
             </div>
@@ -51,15 +51,9 @@ get_header();
                         <div class="maasai-image-frame-inner">
                         <?php 
                         // Get profile image from theme customizer
-                        $profile_image = '';
-                        
-                        if (function_exists('portfolio_get_profile_image')) {
-                            $profile_image = portfolio_get_profile_image();
-                        }
-                        
-                        // Display the profile image
+                        $profile_image = portfolio_get_profile_image();
                         if ($profile_image) : ?>
-                            <img src="<?php echo esc_url($profile_image); ?>" alt="<?php echo esc_attr(portfolio_get_owner_name()); ?>" class="maasai-framed-image">
+                            <img src="<?php echo esc_url($profile_image); ?>" alt="<?php echo esc_attr('Joshua Lugaya'); ?>" class="maasai-framed-image">
                         <?php 
                         // Fall back to custom logo
                         elseif (has_custom_logo()) : ?>
@@ -85,11 +79,9 @@ get_header();
 <section id="about" class="section bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-
-      <h2 class="heading-lg mb-6">skills</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Experienced PR and Communications Lead with a passion for storytelling and brand building.</p>
+            <h2 class="heading-lg mb-6">Skills & Competencies</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Leveraging technology to solve complex problems and create innovative solutions.</p>
         </div>
-        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
             <div class="col-span-1">
                 <div class="relative">
@@ -104,27 +96,28 @@ get_header();
                 </div>
                 <?php endif; ?>
             </div>
-            
             <div class="col-span-1 md:col-span-2">
-                <h3 class="heading-md mb-4">My Professional Journey</h3>
-                <p class="text-gray-600 mb-6">With over 7 years of experience in public relations and strategic communications, I specialize in building compelling brand narratives, managing crisis communications, and developing integrated campaigns that drive meaningful engagement across traditional and digital media channels.</p>
-                
-                <h4 class="heading-sm mb-3">Core Competencies</h4>
+                <h3 class="heading-md mb-4">Core Competencies</h3>
                 <div class="mb-6">
                     <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Media Relations</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Crisis Communication</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Content Strategy</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Brand Management</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Social Media Strategy</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Stakeholder Engagement</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Event Management</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Press Release Writing</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Campaign Management</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Cybersecurity</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Web Development</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Cloud Architecture</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Penetration Testing</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">DevOps</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">API Development</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Network Security</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Cloud Security</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Full-Stack Development</span>
                     </div>
                 </div>
-                
-                <a href="#" class="btn btn-primary">Download My CV</a>
+                <h4 class="heading-sm mb-3">Tech Projects & Events</h4>
+                <p class="text-gray-600 mb-6">I have contributed to various tech campaigns and events, focusing on secure web development, cloud solutions, and community engagement through social media initiatives.</p>
+                <ul class="list-disc list-inside text-gray-600">
+                    <li>Ajira Digital Programme: Developed portfolio websites and mobilized youth for digital skills training.</li>
+                    <li>Ministry of Lands: Supported digital migration of land records and ensured ICT security compliance.</li>
+                    <li>Hackathons & CTFs: Participated in events showcasing problem-solving and cybersecurity skills.</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -145,8 +138,8 @@ get_header();
         <?php endif; ?>
         <div class="text-center mb-16">
             <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Services</span>
-            <h2 class="heading-lg mb-6">How I Can Help Your Brand</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive PR and communications solutions tailored to your brand's unique needs.</p>
+            <h2 class="heading-lg mb-6">Tech Services</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Offering secure web development, scalable cloud solutions, and robust cybersecurity strategies tailored to your needs.</p>
         </div>
         
         <div class="services-carousel section-carousel">
@@ -154,7 +147,7 @@ get_header();
         </div>
         
         <div class="text-center mt-12">
-            <a href="<?php echo esc_url(get_permalink(get_page_by_path('services'))); ?>" class="btn btn-primary">View All Services</a>
+            <a href="<?php echo esc_url(get_permalink(get_page_by_path('services'))); ?>" class="btn btn-primary">Explore Tech Services</a>
         </div>
     </div>
 </section>
@@ -163,8 +156,8 @@ get_header();
 <section id="portfolio" class="section-carousel bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <h2 class="heading-lg mb-6">Recent Campaigns & Projects</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Showcasing successful PR campaigns, brand launches, social media posts, and communication strategies that delivered measurable results.</p>
+            <h2 class="heading-lg mb-6">Recent Tech Campaigns & Projects</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Showcasing innovative tech solutions, secure applications, and impactful cloud projects.</p>
         </div>
         
         <div class="campaigns-carousel">
@@ -175,7 +168,7 @@ get_header();
         </div>
         
         <div class="text-center mt-12">
-            <a href="<?php echo esc_url(portfolio_get_campaigns_page_url()); ?>" class="btn btn-primary">View All Campaigns & Projects</a>
+            <a href="<?php echo esc_url(portfolio_get_campaigns_page_url()); ?>" class="btn btn-primary">View All Tech Campaigns</a>
         </div>
     </div>
 </section>
@@ -186,8 +179,8 @@ get_header();
 <section id="blog" class="section-carousel bg-gray-50 py-16">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-            <h2 class="heading-xl mb-4">Latest Insights</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Stay up to date with the latest trends, strategies, and insights in the world of PR and communications.</p>
+            <h2 class="heading-xl mb-4">Latest Tech Insights</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Stay updated with the latest trends, strategies, and insights in technology and innovation.</p>
         </div>
         
         <div class="blog-carousel">
@@ -267,24 +260,7 @@ get_header();
             <a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>" class="btn btn-primary">View All Posts</a>
         </div>
     </div>
-</section><!-- Testimonials Section -->
-<section id="testimonials" class="section-carousel bg-gray-50">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="heading-lg mb-6">Client Success Stories</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear from brands and organizations I've helped achieve their communication goals.</p>
-        </div>
-        
-        <?php 
-        // Use our testimonials shortcode with enhanced styling
-        echo do_shortcode('[simple_testimonials count="6" layout="carousel" title="What Our Clients Say" subtitle="Discover the impact of our PR and communications services through our client testimonials" show_title="no"]'); 
-        ?>
-        
-        <div class="text-center mt-12">
-            <a href="<?php echo esc_url(get_post_type_archive_link('simple_testimonial')); ?>" class="btn btn-primary">View All Testimonials</a>
-        </div>
-    </div>
-</section>
+
 
 <!-- Contact Section with Newsletter -->
 <section id="contact" class="section bg-gray-50">
