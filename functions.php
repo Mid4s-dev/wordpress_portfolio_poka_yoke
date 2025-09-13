@@ -141,6 +141,14 @@ function portfolio_enqueue_styles() {
     // Enqueue dashicons on the frontend for social icons
     wp_enqueue_style('dashicons');
     
+    // Enqueue Swiper.js CSS for carousels
+    wp_enqueue_style(
+        'swiper-css',
+        'https://unpkg.com/swiper@8/swiper-bundle.min.css',
+        array(),
+        '8.0.0'
+    );
+    
     // Enqueue Maasai patterns styles (keeping separate as it's decorative)
     if (file_exists(get_template_directory() . '/assets/css/maasai-patterns.css')) {
         wp_enqueue_style(
@@ -150,12 +158,23 @@ function portfolio_enqueue_styles() {
             filemtime(get_template_directory() . '/assets/css/maasai-patterns.css')
         );
     }
+
+    // Enqueue dashicons on the frontend for social icons
+    wp_enqueue_style('dashicons');
 }
-    
-    // Enqueue jQuery
+add_action( 'wp_enqueue_scripts', 'portfolio_enqueue_styles' );
+
+/**
+ * Enqueue scripts for the theme.
+ * 
+ * This function handles all JavaScript files needed on the frontend,
+ * including libraries like jQuery and Swiper.js for carousels.
+ */
+function portfolio_enqueue_scripts() {
+    // Enqueue jQuery first as a dependency
     wp_enqueue_script('jquery');
     
-    // Enqueue theme JavaScript first
+    // Enqueue consolidated main JavaScript
     wp_enqueue_script(
         'portfolio-main-js',
         get_theme_file_uri( 'assets/js/main.js' ),
@@ -164,25 +183,9 @@ function portfolio_enqueue_styles() {
         true
     );
     
-    // Disable header.js since functionality is now in main.js
-    // wp_enqueue_script(
-    //     'portfolio-header-js',
-    //     get_theme_file_uri( 'assets/js/header.js' ),
-    //     array('jquery'),
-    //     filemtime(get_template_directory() . '/assets/js/header.js'),
-    //     true
-    // );
-    
     // Debug tools have been consolidated into main.js
     
-    // Enqueue Swiper.js for carousels
-    wp_enqueue_style(
-        'swiper-css',
-        'https://unpkg.com/swiper@8/swiper-bundle.min.css',
-        array(),
-        '8.0.0'
-    );
-    
+    // Enqueue Swiper.js script for carousels
     wp_enqueue_script(
         'swiper-js',
         'https://unpkg.com/swiper@8/swiper-bundle.min.js',
@@ -253,7 +256,7 @@ function portfolio_enqueue_styles() {
     
     // The forms.js file is enqueued in the Portfolio_Form_Handler class
 }
-add_action( 'wp_enqueue_scripts', 'portfolio_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'portfolio_enqueue_scripts' );
 
 /**
  * Enqueue admin scripts and styles.
