@@ -88,8 +88,8 @@
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-button" class="flex items-center p-2 rounded-md text-white hover:bg-maroon/20 focus:outline-none md:hidden" aria-label="<?php esc_attr_e('Toggle menu', 'portfolio'); ?>" aria-expanded="false">
                     <svg class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: white; stroke: white;">
-                        <path id="hamburger-icon" class="block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" style="stroke: white; stroke-width: 2.5;"></path>
-                        <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" style="stroke: white; stroke-width: 2.5;"></path>
+                        <path id="js-hamburger-icon" class="hamburger-icon block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" style="stroke: white; stroke-width: 2.5;"></path>
+                        <path id="js-close-icon" class="close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" style="stroke: white; stroke-width: 2.5;"></path>
                     </svg>
                 </button>
             </div>

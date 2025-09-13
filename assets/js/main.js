@@ -48,8 +48,8 @@
             body.style.overflow = 'hidden';
             
             // Toggle icons visibility
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const closeIcon = document.getElementById('close-icon');
+            const hamburgerIcon = document.getElementById('js-hamburger-icon');
+            const closeIcon = document.getElementById('js-close-icon');
             
             if (hamburgerIcon && closeIcon) {
                 hamburgerIcon.classList.add('hidden');
@@ -77,8 +77,8 @@
             body.style.overflow = '';
             
             // Toggle icons visibility
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const closeIcon = document.getElementById('close-icon');
+            const hamburgerIcon = document.getElementById('js-hamburger-icon');
+            const closeIcon = document.getElementById('js-close-icon');
             
             if (hamburgerIcon && closeIcon) {
                 hamburgerIcon.classList.remove('hidden');
@@ -288,8 +288,8 @@
             }
             
             // Ensure proper icon visibility
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const closeIcon = document.getElementById('close-icon');
+            const hamburgerIcon = document.getElementById('js-hamburger-icon');
+            const closeIcon = document.getElementById('js-close-icon');
             
             if (hamburgerIcon && closeIcon) {
                 hamburgerIcon.classList.remove('hidden');

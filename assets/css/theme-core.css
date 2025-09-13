@@ -111,7 +111,7 @@
 }
 
 /* Fix for hamburger menu icon */
-#hamburger-icon, #close-icon {
+.hamburger-icon, .close-icon {
   stroke: white !important;
 }
 
