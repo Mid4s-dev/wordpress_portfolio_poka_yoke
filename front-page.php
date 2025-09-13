@@ -146,7 +146,9 @@ get_header();
 <section id="services" class="section bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
+            <div class="text-center mb-16">
             <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Services</span>
+                            </div>
             <h2 class="heading-lg mb-6">How I Can Help Your Brand</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive PR and communications solutions tailored to your brand's unique needs.</p>
         </div>
