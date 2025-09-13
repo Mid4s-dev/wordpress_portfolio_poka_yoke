@@ -441,13 +441,5 @@ function simple_testimonials_shortcode($atts) {
 }
 add_shortcode('simple_testimonials', 'simple_testimonials_shortcode');
 
-// Enqueue styles
-function simple_testimonials_enqueue_styles() {
-    wp_enqueue_style(
-        'simple-testimonials-style',
-        get_template_directory_uri() . '/assets/css/simple-testimonials.css',
-        array(),
-        filemtime(get_template_directory() . '/assets/css/simple-testimonials.css')
-    );
-}
-add_action('wp_enqueue_scripts', 'simple_testimonials_enqueue_styles');
+// Testimonial styles are now included in the consolidated components.css file
+// No need to enqueue separate styles

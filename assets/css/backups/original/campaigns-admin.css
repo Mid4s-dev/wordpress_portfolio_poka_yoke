@@ -1,0 +1,267 @@
+/**
+ * Campaigns & Projects Admin CSS
+ */
+
+/* Dashboard layout */
+.campaigns-dashboard {
+    margin-top: 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-welcome h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.dashboard-welcome p {
+    margin-top: 0;
+    color: #646970;
+    font-size: 14px;
+}
+
+.dashboard-widgets {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.dashboard-column {
+    width: calc(50% - 20px);
+    margin: 0 10px 20px;
+    box-sizing: border-box;
+}
+
+.dashboard-widget {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.dashboard-widget h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f1;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Stats grid */
+.stats-grid {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.stat-box {
+    flex: 1;
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-box .dashicons {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.stat-box .dashicons-portfolio {
+    color: #3858e9;
+}
+
+.stat-box .dashicons-edit-page {
+    color: #ffb900;
+}
+
+.stat-box .dashicons-clock {
+    color: #f86368;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: 600;
+    display: block;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: #646970;
+    font-size: 13px;
+}
+
+/* Recent campaigns list */
+.recent-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.recent-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f1;
+    display: flex;
+    align-items: center;
+}
+
+.recent-list li:last-child {
+    border-bottom: none;
+}
+
+.recent-list .dashicons {
+    margin-right: 8px;
+    color: #3858e9;
+    width: 20px;
+    height: 20px;
+}
+
+.recent-list .dashicons-linkedin {
+    color: #0077b5;
+}
+
+.recent-list .dashicons-instagram {
+    color: #e4405f;
+}
+
+.recent-list .dashicons-twitter {
+    color: #1da1f2;
+}
+
+.recent-list .dashicons-portfolio {
+    color: #6366f1;
+}
+
+.recent-list .dashicons-megaphone {
+    color: #10b981;
+}
+
+.recent-list a {
+    text-decoration: none;
+    flex: 1;
+}
+
+.recent-list .meta {
+    color: #646970;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.view-all {
+    margin-top: 15px !important;
+    display: inline-block;
+}
+
+/* Chart containers */
+.chart-container {
+    height: 250px;
+    position: relative;
+}
+
+/* Help section */
+.dashboard-help {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.dashboard-help h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f1;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.help-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.help-box {
+    width: calc(33.333% - 20px);
+    margin: 0 10px 20px;
+    padding: 15px;
+    background: #f6f7f7;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.help-box h4 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.help-box h4 .dashicons {
+    margin-right: 8px;
+    color: #3858e9;
+}
+
+.help-box p {
+    margin-bottom: 0;
+    color: #646970;
+    font-size: 13px;
+}
+
+/* Dashboard widget in WP dashboard */
+.campaigns-widget .campaigns-count {
+    margin-top: 0;
+}
+
+.campaigns-widget .campaigns-list {
+    margin: 15px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.campaigns-widget .campaigns-list li {
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.campaigns-widget .campaigns-list .dashicons {
+    margin-right: 8px;
+    color: #3858e9;
+}
+
+.campaigns-widget .campaigns-actions {
+    margin-bottom: 0;
+}
+
+/* No items placeholder */
+.no-items, .no-campaigns {
+    padding: 15px 0;
+    text-align: center;
+    color: #646970;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 782px) {
+    .dashboard-column {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .help-box {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

@@ -148,16 +148,6 @@ function portfolio_enqueue_styles() {
         array(),
         '8.0.0'
     );
-    
-    // Enqueue Maasai patterns styles (keeping separate as it's decorative)
-    if (file_exists(get_template_directory() . '/assets/css/maasai-patterns.css')) {
-        wp_enqueue_style(
-            'maasai-patterns',
-            get_theme_file_uri( 'assets/css/maasai-patterns.css' ),
-            array('portfolio-theme-core'),
-            filemtime(get_template_directory() . '/assets/css/maasai-patterns.css')
-        );
-    }
 
     // Enqueue dashicons on the frontend for social icons
     wp_enqueue_style('dashicons');

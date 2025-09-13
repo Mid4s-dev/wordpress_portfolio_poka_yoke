@@ -1,0 +1,133 @@
+/**
+ * Custom styles for Joshua Lugaya's portfolio
+ */
+
+/* General theme enhancements */
+:root {
+  --primary-color: #1a56db;
+  --secondary-color: #1e429f;
+  --accent-color: #f59e0b;
+  --dark-color: #111827;
+  --light-color: #f9fafb;
+  --text-color: #374151;
+}
+
+body {
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero section styles */
+#hero {
+  position: relative;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(135deg, rgba(30, 64, 175, 0.6) 0%, rgba(37, 99, 235, 0.6) 100%);
+  z-index: 1;
+}
+
+#hero > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section headings */
+section h2 {
+  position: relative;
+  display: inline-block;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--accent-color);
+}
+
+/* Projects hover effects */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Skills badges */
+.skill-badge {
+  transition: all 0.2s ease;
+}
+
+.skill-badge:hover {
+  transform: scale(1.05);
+}
+
+/* Contact form enhancements */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.contact-form button {
+  transition: all 0.2s ease;
+}
+
+.contact-form button:hover {
+  transform: translateY(-1px);
+}
+
+/* Social media icons */
+.social-icon {
+  transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.15);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  #hero h2 {
+    font-size: 1.5rem;
+  }
+  
+  section h2::after {
+    width: 60px;
+  }
+}

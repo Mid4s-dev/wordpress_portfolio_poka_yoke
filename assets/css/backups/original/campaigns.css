@@ -1,0 +1,543 @@
+/* Campaigns & Projects Styling */
+
+/* Featured Campaign Section */
+.featured-campaign {
+    margin-bottom: 3rem;
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ankara-inspired featured campaign */
+.featured-campaign::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--wp--preset--color--primary, #4f46e5),
+        var(--wp--preset--color--primary, #4f46e5) 40px,
+        #f59e0b 40px,
+        #f59e0b 80px,
+        #10b981 80px,
+        #10b981 120px
+    );
+}
+
+.featured-label {
+    display: inline-block;
+    background: var(--wp--preset--color--primary, #4f46e5);
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 30px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.featured-campaign-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.featured-image {
+    flex: 0 0 calc(40% - 1rem);
+}
+
+.featured-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.featured-content {
+    flex: 0 0 calc(60% - 1rem);
+}
+
+.featured-content h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #1a202c;
+}
+
+.featured-content h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.featured-content h3 a:hover {
+    color: var(--wp--preset--color--primary);
+}
+
+.featured-excerpt {
+    color: #4a5568;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.featured-meta {
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: space-between;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.featured-platform {
+    display: flex;
+    align-items: center;
+}
+
+.featured-platform .dashicons {
+    margin-right: 0.5rem;
+}
+
+/* Campaigns Filter */
+.campaigns-filter {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.filter-title {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: #1a202c;
+    font-weight: 600;
+}
+
+.filter-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.filter-group {
+    min-width: 200px;
+}
+
+.filter-group h4 {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.filter-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    color: #1a202c;
+    background-color: white;
+}
+
+.filter-actions {
+    display: flex;
+    margin-top: 1.5rem;
+    gap: 1rem;
+}
+
+.filter-button {
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.filter-apply {
+    background: var(--wp--preset--color--primary, #4f46e5);
+    color: white;
+    border: none;
+}
+
+.filter-apply:hover {
+    background: var(--wp--preset--color--primary-dark, #4338ca);
+}
+
+.filter-reset {
+    background: #f1f5f9;
+    color: #4b5563;
+    border: 1px solid #cbd5e0;
+}
+
+.filter-reset:hover {
+    background: #e2e8f0;
+    color: #1a202c;
+}
+
+/* Pagination */
+.pagination-container {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.pagination-container .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    color: #4a5568;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pagination-container .page-numbers.current {
+    background-color: var(--wp--preset--color--primary, #4f46e5);
+    border-color: var(--wp--preset--color--primary, #4f46e5);
+    color: #fff;
+}
+
+.pagination-container .page-numbers:hover:not(.current) {
+    background-color: #f1f5f9;
+    border-color: #cbd5e0;
+}
+
+.pagination-container .page-numbers.prev,
+.pagination-container .page-numbers.next {
+    display: inline-flex;
+    align-items: center;
+}
+
+.pagination-container .page-numbers.prev .dashicons,
+.pagination-container .page-numbers.next .dashicons {
+    font-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.pagination-container .page-numbers.prev .dashicons {
+    margin-right: 0.25rem;
+}
+
+.pagination-container .page-numbers.next .dashicons {
+    margin-left: 0.25rem;
+}
+
+/* No Campaigns Message */
+.no-campaigns {
+    padding: 3rem;
+    text-align: center;
+    background: #f9fafb;
+    border-radius: 8px;
+    color: #6b7280;
+}
+
+.no-campaigns .dashicons {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 1rem;
+    color: #cbd5e0;
+}
+
+.no-campaigns p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Grid Layout */
+.portfolio-campaigns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Card Design */
+.portfolio-campaign-item {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-top: 4px solid var(--wp--preset--color--primary, #4f46e5);
+}
+
+.portfolio-campaign-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--wp--preset--color--primary, #4f46e5),
+        var(--wp--preset--color--primary, #4f46e5) 15px,
+        #f59e0b 15px,
+        #f59e0b 30px,
+        #10b981 30px,
+        #10b981 45px
+    );
+    opacity: 0.7;
+}
+
+.portfolio-campaign-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Content Area */
+.portfolio-campaign-content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+/* Thumbnail */
+.portfolio-campaign-thumbnail {
+    margin: -1.5rem -1.5rem 1rem;
+    overflow: hidden;
+    height: 200px;
+}
+
+.portfolio-campaign-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-campaign-item:hover .portfolio-campaign-thumbnail img {
+    transform: scale(1.05);
+}
+
+/* Title and Excerpt */
+.portfolio-campaign-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: #1a202c;
+}
+
+.portfolio-campaign-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.portfolio-campaign-title a:hover {
+    color: var(--wp--preset--color--primary);
+}
+
+.portfolio-campaign-excerpt p {
+    color: #4a5568;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Link Styling */
+.portfolio-campaign-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: #4a5568;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.portfolio-campaign-link:hover {
+    background: var(--wp--preset--color--primary);
+    color: white;
+    border-color: var(--wp--preset--color--primary);
+}
+
+/* Meta Information */
+.portfolio-campaign-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1.5rem;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: auto;
+}
+
+.portfolio-campaign-platform,
+.portfolio-campaign-date {
+    display: flex;
+    align-items: center;
+}
+
+.portfolio-campaign-meta .dashicons {
+    margin-right: 0.25rem;
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+}
+
+/* Platform-specific colors */
+.portfolio-campaign-platform .dashicons-linkedin {
+    color: #0077b5;
+}
+
+.portfolio-campaign-platform .dashicons-instagram {
+    color: #e4405f;
+}
+
+.portfolio-campaign-platform .dashicons-twitter {
+    color: #1da1f2;
+}
+
+.portfolio-campaign-platform .dashicons-portfolio {
+    color: #6366f1;
+}
+
+.portfolio-campaign-platform .dashicons-megaphone {
+    color: #10b981;
+}
+
+/* Embed Styling */
+.portfolio-campaign-embed {
+    margin: -1.5rem -1.5rem 1rem;
+}
+
+.portfolio-campaign-embed iframe {
+    width: 100%;
+    border: none;
+}
+
+/* Empty State */
+.portfolio-campaigns-empty {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    color: #6b7280;
+}
+
+/* View All Button */
+.view-all-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--wp--preset--color--primary, #4f46e5);
+    color: white;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.view-all-link:hover {
+    background: var(--wp--preset--color--primary-dark, #4338ca);
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .featured-campaign-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .featured-image, 
+    .featured-content {
+        flex: 0 0 100%;
+    }
+    
+    .filter-groups {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .portfolio-campaigns-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .portfolio-campaign-thumbnail {
+        height: 180px;
+    }
+    
+    .portfolio-campaign-title {
+        font-size: 1.1rem;
+    }
+    
+    .featured-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .featured-excerpt {
+        font-size: 1rem;
+    }
+    
+    .campaigns-filter {
+        padding: 1rem;
+    }
+    
+    .filter-title {
+        font-size: 1.1rem;
+    }
+    
+    .filter-actions {
+        flex-direction: column;
+    }
+    
+    .filter-button {
+        width: 100%;
+    }
+    
+    .pagination-container .page-numbers {
+        min-width: 2rem;
+        height: 2rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-campaigns-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-campaign-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .featured-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .featured-campaign {
+        padding: 1.5rem;
+    }
+}

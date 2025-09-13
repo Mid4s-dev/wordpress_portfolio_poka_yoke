@@ -84,10 +84,10 @@ class Portfolio_Gmail_API {
         
         if (in_array($hook, $gmail_api_pages)) {
             wp_enqueue_style(
-                'portfolio-gmail-api-admin',
-                get_template_directory_uri() . '/assets/css/gmail-api-admin.css',
+                'portfolio-admin',
+                get_template_directory_uri() . '/assets/css/admin.css',
                 array(),
-                filemtime(get_template_directory() . '/assets/css/gmail-api-admin.css')
+                filemtime(get_template_directory() . '/assets/css/admin.css')
             );
         }
     }

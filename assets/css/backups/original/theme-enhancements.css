@@ -1,0 +1,410 @@
+/**
+ * Theme Enhancements
+ * Improved visual design with vibrant, transparent color scheme
+ */
+
+:root {
+  --maroon-transparent: rgba(128, 0, 32, 0.85);
+  --maroon-light: rgba(128, 0, 32, 0.65);
+  --shuka-yellow-transparent: rgba(251, 191, 36, 0.85);
+  --shuka-yellow-light: rgba(251, 191, 36, 0.2);
+  
+  /* Transparent backgrounds instead of solid grays */
+  --bg-dark-transparent: rgba(10, 10, 15, 0.8);
+  --bg-medium-transparent: rgba(25, 25, 35, 0.75);
+  --bg-light-transparent: rgba(40, 40, 50, 0.65);
+  --bg-lighter-transparent: rgba(50, 50, 60, 0.55);
+  
+  --text-light: #ffffff;
+  --text-vibrant: #ffeedd;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --border-subtle: rgba(251, 191, 36, 0.25);
+  --card-bg: rgba(40, 40, 50, 0.6);
+  --card-hover: rgba(50, 50, 60, 0.7);
+  --input-bg: rgba(255, 255, 255, 0.1);
+  --input-border: rgba(251, 191, 36, 0.3);
+  --input-focus: rgba(251, 191, 36, 0.6);
+  
+  /* Vibrant accents */
+  --accent-glow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+/* Global enhancements with more vibrant colors */
+body {
+  background-color: rgba(12, 12, 18, 0.92);
+  color: var(--text-vibrant);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(251, 191, 36, 0.05) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.site-content {
+  background-color: transparent;
+}
+
+/* Card and tile enhancements with vibrant, transparent colors */
+.wp-block-column,
+.wp-block-group,
+.card,
+.testimonial-card,
+.blog-card,
+.project-card {
+  background-color: var(--card-bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.wp-block-column:hover,
+.card:hover,
+.testimonial-card:hover,
+.blog-card:hover,
+.project-card:hover {
+  background-color: var(--card-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), var(--accent-glow);
+  border-color: var(--input-border);
+}
+
+/* Contact section enhancements with vibrant, transparent colors */
+#contact {
+  background-color: transparent;
+  background-image: linear-gradient(135deg, rgba(128, 0, 32, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23800020' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.05;
+  z-index: 0;
+}
+
+#contact .container {
+  position: relative;
+  z-index: 1;
+}
+
+#contact h2 {
+  color: var(--shuka-yellow, #FBBF24);
+}
+
+#contact .text-primary-600 {
+  color: var(--maroon, #800020) !important;
+  background-color: var(--shuka-yellow, #FBBF24);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* Contact form styling with vibrant, transparent look */
+.contact-form {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(128, 0, 32, 0.05) 0%,
+    rgba(251, 191, 36, 0.05) 100%
+  );
+  transform: rotate(-45deg);
+  z-index: -1;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(251, 191, 36, 0.2) !important;
+  color: var(--text-light) !important;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--shuka-yellow, #FBBF24) !important;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.4) !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-form button.button-link {
+  background-color: var(--maroon-transparent);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15), 0 0 5px rgba(128, 0, 32, 0.3);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form button.button-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transition: left 0.5s ease;
+}
+
+.contact-form button.button-link:hover {
+  background-color: var(--shuka-yellow-transparent);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(251, 191, 36, 0.4);
+}
+
+.contact-form button.button-link:hover::before {
+  left: 100%;
+}
+
+/* Contact info section */
+.wp-block-column h3 {
+  color: var(--shuka-yellow, #FBBF24);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+  position: relative;
+  display: inline-block;
+}
+
+.wp-block-column h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(to right, var(--shuka-yellow, #FBBF24), transparent);
+}
+
+.wp-block-column h4 {
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.wp-block-column a {
+  color: var(--shuka-yellow, #FBBF24);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.wp-block-column a:hover {
+  color: white;
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+}
+
+.wp-block-column a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.wp-block-column a:hover::after {
+  width: 100%;
+}
+
+.contact-info-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(251, 191, 36, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.contact-info-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), 0 0 5px rgba(251, 191, 36, 0.2);
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.contact-info-item:hover .icon-container {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Maasai-inspired section dividers and vibrant accents */
+.section {
+  position: relative;
+  padding: 4rem 0;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23FBBF24' stroke-opacity='0.05' stroke-width='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section::after {
+  content: '';
+  display: block;
+  height: 8px;
+  width: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--maroon-transparent) 15%, 
+    var(--shuka-yellow, #FBBF24) 30%, 
+    var(--maroon-transparent) 50%,
+    var(--shuka-yellow, #FBBF24) 70%,
+    var(--maroon-transparent) 85%,
+    transparent 100%
+  );
+  margin-top: 3rem;
+  opacity: 0.8;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.3);
+  animation: shimmer 3s infinite linear;
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Additional vibrant elements */
+.wp-block-heading {
+  position: relative;
+  z-index: 1;
+}
+
+h2.wp-block-heading {
+  color: var(--shuka-yellow, #FBBF24);
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.15);
+}
+
+.text-primary-600 {
+  color: white !important;
+  background: linear-gradient(45deg, var(--maroon-transparent), var(--maroon-light));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 0 5px rgba(128, 0, 32, 0.3);
+}
+
+/* Enhance buttons across the site */
+.wp-block-button__link,
+.button,
+button:not(.components-button):not(.customize-partial-edit-shortcut-button) {
+  background-color: var(--maroon-transparent);
+  color: white;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.wp-block-button__link::before,
+.button::before,
+button:not(.components-button):not(.customize-partial-edit-shortcut-button)::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.wp-block-button__link:hover,
+.button:hover,
+button:not(.components-button):not(.customize-partial-edit-shortcut-button):hover {
+  background-color: var(--shuka-yellow-transparent);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(251, 191, 36, 0.4);
+}
+
+.wp-block-button__link:hover::before,
+.button:hover::before,
+button:not(.components-button):not(.customize-partial-edit-shortcut-button):hover::before {
+  left: 100%;
+}

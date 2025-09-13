@@ -1,0 +1,67 @@
+/**
+ * Gmail API admin styling
+ */
+
+.gmail-api-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.gmail-api-steps {
+    margin-left: 20px;
+    list-style-type: decimal;
+}
+
+.gmail-api-steps li {
+    margin-bottom: 10px;
+}
+
+.gmail-api-steps ul {
+    margin-top: 5px;
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+.gmail-api-status {
+    padding: 10px 15px;
+    border-left: 4px solid #00a0d2;
+    background: #f7fcfe;
+    margin: 15px 0;
+}
+
+.gmail-api-status.success {
+    border-left-color: #46b450;
+    background: #ecf7ed;
+}
+
+.gmail-api-status.warning {
+    border-left-color: #ffb900;
+    background: #fff8e5;
+}
+
+.gmail-api-status.error {
+    border-left-color: #dc3232;
+    background: #fbeaea;
+}
+
+.test-email-form {
+    margin-top: 15px;
+}
+
+.test-email-form .form-field {
+    margin-bottom: 15px;
+}
+
+.test-email-form .form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.test-email-result {
+    margin-top: 15px;
+}
