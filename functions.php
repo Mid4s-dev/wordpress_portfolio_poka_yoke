@@ -120,6 +120,16 @@ function portfolio_enqueue_styles() {
         );
     }
     
+    // Enqueue logo link styles
+    if (file_exists(get_template_directory() . '/assets/css/logo-link.css')) {
+        wp_enqueue_style(
+            'portfolio-logo-link',
+            get_theme_file_uri( 'assets/css/logo-link.css' ),
+            array('portfolio-custom-logo'),
+            filemtime(get_template_directory() . '/assets/css/logo-link.css')
+        );
+    }
+    
     // Enqueue campaigns styles
     if (file_exists(get_template_directory() . '/assets/css/campaigns.css')) {
         wp_enqueue_style(
@@ -149,6 +159,36 @@ function portfolio_enqueue_styles() {
             get_theme_file_uri( 'assets/css/simple-testimonials.css' ),
             array(),
             filemtime(get_template_directory() . '/assets/css/simple-testimonials.css')
+        );
+    }
+    
+    // Enqueue carousel styles
+    if (file_exists(get_template_directory() . '/assets/css/carousels.css')) {
+        wp_enqueue_style(
+            'portfolio-carousels',
+            get_theme_file_uri( 'assets/css/carousels.css' ),
+            array(),
+            filemtime(get_template_directory() . '/assets/css/carousels.css')
+        );
+    }
+    
+    // Enqueue campaigns carousel styles
+    if (file_exists(get_template_directory() . '/assets/css/campaigns-carousel.css')) {
+        wp_enqueue_style(
+            'portfolio-campaigns-carousel',
+            get_theme_file_uri( 'assets/css/campaigns-carousel.css' ),
+            array('portfolio-carousels'),
+            filemtime(get_template_directory() . '/assets/css/campaigns-carousel.css')
+        );
+    }
+    
+    // Enqueue unified carousel styles for consistent design
+    if (file_exists(get_template_directory() . '/assets/css/unified-carousels.css')) {
+        wp_enqueue_style(
+            'portfolio-unified-carousels',
+            get_theme_file_uri( 'assets/css/unified-carousels.css' ),
+            array('portfolio-carousels', 'portfolio-campaigns-carousel'),
+            filemtime(get_template_directory() . '/assets/css/unified-carousels.css')
         );
     }
     
@@ -265,6 +305,44 @@ function portfolio_enqueue_styles() {
     // );
     
     // Debug tools have been consolidated into main.js
+    
+    // Enqueue Swiper.js for carousels
+    wp_enqueue_style(
+        'swiper-css',
+        'https://unpkg.com/swiper@8/swiper-bundle.min.css',
+        array(),
+        '8.0.0'
+    );
+    
+    wp_enqueue_script(
+        'swiper-js',
+        'https://unpkg.com/swiper@8/swiper-bundle.min.js',
+        array('jquery'),
+        '8.0.0',
+        true
+    );
+    
+    // Enqueue our custom carousel JavaScript
+    if (file_exists(get_template_directory() . '/assets/js/carousels.js')) {
+        wp_enqueue_script(
+            'portfolio-carousels-js',
+            get_theme_file_uri( 'assets/js/carousels.js' ),
+            array('jquery', 'swiper-js'),
+            filemtime(get_template_directory() . '/assets/js/carousels.js'),
+            true
+        );
+    }
+    
+    // Enqueue normalize carousels script
+    if (file_exists(get_template_directory() . '/assets/js/normalize-carousels.js')) {
+        wp_enqueue_script(
+            'normalize-carousels-js',
+            get_theme_file_uri( 'assets/js/normalize-carousels.js' ),
+            array('jquery', 'swiper-js', 'portfolio-carousels-js'),
+            filemtime(get_template_directory() . '/assets/js/normalize-carousels.js'),
+            true
+        );
+    }
     
     // Enqueue campaigns JavaScript
     if (file_exists(get_template_directory() . '/assets/js/campaigns.js')) {
@@ -680,15 +758,67 @@ function portfolio_get_owner_name() {
 }
 
 /**
- * Get the portfolio about image URL (theme mod) with fallback to default image
+ * Get the portfolio about image URL prioritizing theme mod with fallback to default image
  */
 function portfolio_get_about_image() {
-    $image_url = get_theme_mod( 'portfolio_about_image' );
-    if ( empty( $image_url ) ) {
-        // Return the default image path if no custom image is set
-        return get_template_directory_uri() . '/assets/images/about-me.jpg';
+    // Use theme mod first (from Customizer)
+    $image_url = get_theme_mod('portfolio_about_image');
+    if (!empty($image_url)) {
+        return $image_url;
     }
-    return $image_url;
+    
+    // Fall back to featured image if available
+    $front_page_id = get_option('page_on_front');
+    if ($front_page_id && has_post_thumbnail($front_page_id)) {
+        // Get the featured image URL
+        $thumbnail_id = get_post_thumbnail_id($front_page_id);
+        $featured_image_url = wp_get_attachment_image_url($thumbnail_id, 'large');
+        if ($featured_image_url) {
+            return $featured_image_url;
+        }
+    }
+    
+    // Return the default image path if no custom image is set
+    return get_template_directory_uri() . '/assets/images/about-me.jpg';
+}
+
+/**
+ * Get the portfolio skills section image URL from theme mod with fallback
+ */
+function portfolio_get_skills_image() {
+    $image_url = get_theme_mod('portfolio_skills_image');
+    if (!empty($image_url)) {
+        return $image_url;
+    }
+    
+    // Return the default image path if no custom image is set
+    return get_template_directory_uri() . '/assets/images/skills.jpg';
+}
+
+/**
+ * Get the portfolio services background image URL from theme mod with fallback
+ */
+function portfolio_get_services_bg() {
+    $image_url = get_theme_mod('portfolio_services_bg');
+    if (!empty($image_url)) {
+        return $image_url;
+    }
+    
+    // Return the default image path if no custom image is set
+    return get_template_directory_uri() . '/assets/images/services-bg.jpg';
+}
+
+/**
+ * Get the portfolio contact section image URL from theme mod with fallback
+ */
+function portfolio_get_contact_image() {
+    $image_url = get_theme_mod('portfolio_contact_image');
+    if (!empty($image_url)) {
+        return $image_url;
+    }
+    
+    // Return the default image path if no custom image is set
+    return get_template_directory_uri() . '/assets/images/contact.jpg';
 }
 
 // Register custom homepage template
@@ -700,3 +830,109 @@ function portfolio_add_homepage_template($templates) {
     return $templates;
 }
 add_filter('theme_page_templates', 'portfolio_add_homepage_template');
+
+/**
+ * Display an admin notice on the front page edit screen to set featured image
+ */
+function portfolio_admin_featured_image_notice() {
+    $screen = get_current_screen();
+    if ($screen->id !== 'page') return;
+    
+    if (isset($_GET['post']) && $_GET['post'] == get_option('page_on_front')) {
+        $message = '<p><strong>Featured Image:</strong> Setting a featured image for this page will display it in the About section on your homepage. You can also manage this and other site images in the WordPress Customizer under "Front Page Images".</p>';
+        echo '<div class="notice notice-info">' . $message . '</div>';
+    }
+}
+add_action('admin_notices', 'portfolio_admin_featured_image_notice');
+
+/**
+ * Add a link in the admin bar for quick access to theme images customization
+ */
+function portfolio_admin_bar_link($admin_bar) {
+    if (!current_user_can('edit_theme_options')) {
+        return;
+    }
+    
+    $admin_bar->add_node(array(
+        'id'    => 'portfolio-theme-images',
+        'title' => 'Theme Images',
+        'href'  => admin_url('customize.php?autofocus[section]=portfolio_frontpage_images'),
+        'meta'  => array(
+            'title' => __('Edit Theme Images', 'portfolio'),
+        ),
+    ));
+}
+add_action('admin_bar_menu', 'portfolio_admin_bar_link', 100);
+
+/**
+ * Add Customizer options for front page images
+ */
+function portfolio_customize_register($wp_customize) {
+    // Add Front Page Images section
+    $wp_customize->add_section('portfolio_frontpage_images', array(
+        'title'       => __('Front Page Images', 'portfolio'),
+        'description' => __('Upload and manage images for your front page sections.', 'portfolio'),
+        'priority'    => 30,
+    ));
+    
+    // About Section Image
+    $wp_customize->add_setting('portfolio_about_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'refresh',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'portfolio_about_image_control', array(
+        'label'       => __('About Section Image', 'portfolio'),
+        'description' => __('Upload an image for the About section. Recommended size: 600x800px.', 'portfolio'),
+        'section'     => 'portfolio_frontpage_images',
+        'settings'    => 'portfolio_about_image',
+        'priority'    => 10,
+    )));
+    
+    // Skills Section Image
+    $wp_customize->add_setting('portfolio_skills_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'refresh',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'portfolio_skills_image_control', array(
+        'label'       => __('Skills Section Image', 'portfolio'),
+        'description' => __('Upload an image for the Skills section.', 'portfolio'),
+        'section'     => 'portfolio_frontpage_images',
+        'settings'    => 'portfolio_skills_image',
+        'priority'    => 20,
+    )));
+    
+    // Services Section Background
+    $wp_customize->add_setting('portfolio_services_bg', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'refresh',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'portfolio_services_bg_control', array(
+        'label'       => __('Services Background Image', 'portfolio'),
+        'description' => __('Upload a background image for the Services section.', 'portfolio'),
+        'section'     => 'portfolio_frontpage_images',
+        'settings'    => 'portfolio_services_bg',
+        'priority'    => 30,
+    )));
+    
+    // Contact Section Image
+    $wp_customize->add_setting('portfolio_contact_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'refresh',
+    ));
+    
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'portfolio_contact_image_control', array(
+        'label'       => __('Contact Section Image', 'portfolio'),
+        'description' => __('Upload an image for the Contact section.', 'portfolio'),
+        'section'     => 'portfolio_frontpage_images',
+        'settings'    => 'portfolio_contact_image',
+        'priority'    => 40,
+    )));
+}
+add_action('customize_register', 'portfolio_customize_register');

@@ -113,8 +113,15 @@ get_header();
             <div class="col-span-1">
                 <div class="relative">
                     <div class="absolute inset-0 bg-primary-600 rounded-lg transform -translate-x-4 -translate-y-4"></div>
-                    <img src="<?php echo esc_url( portfolio_get_about_image() ); ?>" alt="<?php echo esc_attr( portfolio_get_owner_name() ); ?>" class="relative z-10 rounded-lg shadow-lg w-full h-auto">
+                    <img src="<?php echo esc_url( portfolio_get_skills_image() ); ?>" alt="<?php echo esc_attr( portfolio_get_owner_name() ); ?>" class="relative z-10 rounded-lg shadow-lg w-full h-auto">
                 </div>
+                <?php if (current_user_can('edit_theme_options')): ?>
+                <div class="mt-3 text-sm">
+                    <a href="<?php echo admin_url('customize.php?autofocus[section]=portfolio_frontpage_images&autofocus[control]=portfolio_skills_image_control'); ?>" class="text-primary-600 hover:text-primary-800 underline">
+                        <?php echo get_theme_mod('portfolio_skills_image') ? 'Change' : 'Set'; ?> Skills Image in Customizer
+                    </a>
+                </div>
+                <?php endif; ?>
             </div>
             
             <div class="col-span-1 md:col-span-2">
@@ -143,8 +150,18 @@ get_header();
 </section>
 
 <!-- Services Section -->
-<section id="services" class="section bg-gray-50">
+<section id="services" class="section bg-gray-50" 
+         <?php if (get_theme_mod('portfolio_services_bg')): ?>
+         style="background-image: url('<?php echo esc_url(portfolio_get_services_bg()); ?>'); background-size: cover; background-position: center;"
+         <?php endif; ?>>
     <div class="container mx-auto px-4">
+        <?php if (current_user_can('edit_theme_options')): ?>
+        <div class="mb-4 text-sm text-right">
+            <a href="<?php echo admin_url('customize.php?autofocus[section]=portfolio_frontpage_images&autofocus[control]=portfolio_services_bg_control'); ?>" class="text-primary-600 hover:text-primary-800 underline">
+                <?php echo get_theme_mod('portfolio_services_bg') ? 'Change' : 'Set'; ?> Background Image
+            </a>
+        </div>
+        <?php endif; ?>
         <div class="text-center mb-16">
             <div class="text-center mb-16">
             <span class="inline-block text-sm font-semibold text-primary-600 uppercase tracking-wider mb-2">Services</span>
@@ -162,18 +179,17 @@ get_header();
 </section>
 
 <!-- Portfolio Section - Recent Campaigns & Projects -->
-<section id="portfolio" class="section bg-white">
+<section id="portfolio" class="section-carousel bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-
             <h2 class="heading-lg mb-6">Recent Campaigns & Projects</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Showcasing successful PR campaigns, brand launches, social media posts, and communication strategies that delivered measurable results.</p>
         </div>
         
-        <div class="campaigns-wrapper">
+        <div class="campaigns-carousel">
             <?php 
-            // Display recent campaigns using our new shortcode
-            echo do_shortcode('[portfolio_campaigns count="6" orderby="date" order="DESC"]'); 
+            // Display recent campaigns using our shortcode with carousel layout
+            echo do_shortcode('[portfolio_campaigns count="9" orderby="date" order="DESC" layout="carousel"]'); 
             ?>
         </div>
         
@@ -186,20 +202,18 @@ get_header();
 
 
 <!-- Blog Section -->
-<section id="blog" class="section bg-white">
+<section id="blog" class="section-carousel bg-gray-50 py-16">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-          
-            <h2 class="heading-lg mb-6">Latest Articles</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Insights, tutorials, and updates from my blog.</p>
+        <div class="text-center mb-12">
+            <h2 class="heading-xl mb-4">Latest Insights</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Stay up to date with the latest trends, strategies, and insights in the world of PR and communications.</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="blog-carousel">
             <?php
-            // Get the latest 3 blog posts
             $args = array(
                 'post_type'      => 'post',
-                'posts_per_page' => 3,
+                'posts_per_page' => 9, // Show more posts in the carousel
                 'orderby'        => 'date',
                 'order'          => 'DESC',
             );
@@ -207,76 +221,82 @@ get_header();
             $latest_posts = new WP_Query( $args );
             
             if ( $latest_posts->have_posts() ) :
-                while ( $latest_posts->have_posts() ) :
-                    $latest_posts->the_post();
             ?>
-                <article class="card transform transition-all duration-300 hover:-translate-y-1">
-                    <?php if ( has_post_thumbnail() ) : ?>
-                        <a href="<?php the_permalink(); ?>" class="block overflow-hidden">
-                            <?php the_post_thumbnail( 'medium_large', array( 'class' => 'w-full h-48 object-cover transition-transform duration-500 hover:scale-105' ) ); ?>
-                        </a>
-                    <?php endif; ?>
-                    
-                    <div class="card-content">
-                        <div class="mb-2">
-                            <?php
-                            $categories = get_the_category();
-                            if ( $categories ) {
-                                $category = $categories[0];
-                                echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" class="inline-block text-xs font-medium text-primary-600 bg-primary-50 px-2.5 py-0.5 rounded-full">' . esc_html( $category->name ) . '</a>';
-                            }
-                            ?>
-                        </div>
-                        
-                        <h3 class="heading-sm mb-2">
-                            <a href="<?php the_permalink(); ?>" class="hover:text-primary-600 transition-colors"><?php the_title(); ?></a>
-                        </h3>
-                        
-                        <div class="text-gray-500 text-sm mb-3">
-                            <?php echo get_the_date(); ?> • <?php echo get_the_author(); ?>
-                        </div>
-                        
-                        <div class="text-gray-600 mb-4">
-                            <?php the_excerpt(); ?>
-                        </div>
-                        
-                        <a href="<?php the_permalink(); ?>" class="text-primary-600 hover:underline inline-flex items-center font-medium">
-                            Read More
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </a>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                <?php while ( $latest_posts->have_posts() ) : $latest_posts->the_post(); ?>
+                    <div class="swiper-slide">
+                        <article class="card h-full">
+                            <?php if ( has_post_thumbnail() ) : ?>
+                                <a href="<?php the_permalink(); ?>" class="block overflow-hidden">
+                                    <?php the_post_thumbnail( 'medium_large', array( 'class' => 'w-full h-48 object-cover transition-transform duration-500 hover:scale-105' ) ); ?>
+                                </a>
+                            <?php endif; ?>
+                            
+                            <div class="card-content">
+                                <div class="mb-2">
+                                    <?php
+                                    $categories = get_the_category();
+                                    if ( $categories ) {
+                                        $category = $categories[0];
+                                        echo '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" class="inline-block text-xs font-medium text-primary-600 bg-primary-50 px-2.5 py-0.5 rounded-full">' . esc_html( $category->name ) . '</a>';
+                                    }
+                                    ?>
+                                </div>
+                                
+                                <h3 class="heading-sm mb-2">
+                                    <a href="<?php the_permalink(); ?>" class="hover:text-primary-600 transition-colors"><?php the_title(); ?></a>
+                                </h3>
+                                
+                                <div class="text-gray-500 text-sm mb-3">
+                                    <?php echo get_the_date(); ?> • <?php echo get_the_author(); ?>
+                                </div>
+                                
+                                <div class="text-gray-600 mb-4">
+                                    <?php echo wp_trim_words( get_the_excerpt(), 15 ); ?>
+                                </div>
+                                
+                                <a href="<?php the_permalink(); ?>" class="text-primary-600 hover:underline inline-flex items-center font-medium mt-auto">
+                                    Read More
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </article>
                     </div>
-                </article>
-            <?php
-                endwhile;
-                wp_reset_postdata();
-            else:
-            ?>
-                <div class="col-span-1 md:col-span-3 text-center p-8 bg-gray-50 rounded-lg">
-                    <p>No blog posts found. <a href="<?php echo admin_url('post-new.php'); ?>" class="text-primary-600">Create your first post</a>.</p>
+                <?php endwhile; wp_reset_postdata(); ?>
+                </div>
+                
+                <!-- Add pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Navigation arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <?php else : ?>
+                <div class="text-center py-12">
+                    <p class="text-lg text-gray-500">No posts found. <a href="<?php echo esc_url( admin_url( 'post-new.php' ) ); ?>" class="text-primary-600 hover:underline">Add your first blog post</a>.</p>
                 </div>
             <?php endif; ?>
         </div>
         
         <div class="text-center mt-12">
-            <a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>" class="btn btn-primary">View All Posts</a>
+            <a href="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) ); ?>" class="btn btn-primary">View All Posts</a>
         </div>
     </div>
-</section>
-
-<!-- Testimonials Section -->
-<section id="testimonials" class="section bg-gray-50">
+</section><!-- Testimonials Section -->
+<section id="testimonials" class="section-carousel bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            
             <h2 class="heading-lg mb-6">Client Success Stories</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">Hear from brands and organizations I've helped achieve their communication goals.</p>
         </div>
         
         <?php 
         // Use our testimonials shortcode with enhanced styling
-        echo do_shortcode('[simple_testimonials count="3" layout="grid" title="What Our Clients Say" subtitle="Discover the impact of our PR and communications services through our client testimonials" show_title="no"]'); 
+        echo do_shortcode('[simple_testimonials count="6" layout="carousel" title="What Our Clients Say" subtitle="Discover the impact of our PR and communications services through our client testimonials" show_title="no"]'); 
         ?>
         
         <div class="text-center mt-12">
@@ -288,6 +308,13 @@ get_header();
 <!-- Contact Section with Newsletter -->
 <section id="contact" class="section bg-gray-50">
     <div class="container mx-auto px-4">
+        <?php if (current_user_can('edit_theme_options')): ?>
+        <div class="mb-4 text-sm text-right">
+            <a href="<?php echo admin_url('customize.php?autofocus[section]=portfolio_frontpage_images&autofocus[control]=portfolio_contact_image_control'); ?>" class="text-primary-600 hover:text-primary-800 underline">
+                <?php echo get_theme_mod('portfolio_contact_image') ? 'Change' : 'Set'; ?> Contact Image
+            </a>
+        </div>
+        <?php endif; ?>
         <div class="text-center mb-16">
 
             <h2 class="heading-lg mb-6">Get In Touch</h2>
@@ -457,6 +484,12 @@ get_header();
                 <!-- Contact Information -->
                 <div class="card p-8">
                     <h3 class="heading-md mb-6">Contact Information</h3>
+                    
+                    <?php if (get_theme_mod('portfolio_contact_image')): ?>
+                    <div class="mb-6">
+                        <img src="<?php echo esc_url(portfolio_get_contact_image()); ?>" alt="Contact Me" class="rounded-lg shadow-lg w-full h-auto">
+                    </div>
+                    <?php endif; ?>
                     
                     <div class="space-y-4">
                         <div class="flex items-start">

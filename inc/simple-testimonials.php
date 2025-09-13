@@ -244,7 +244,7 @@ function simple_testimonials_shortcode($atts) {
             'count'      => 3,
             'orderby'    => 'date',
             'order'      => 'DESC',
-            'layout'     => 'grid', // grid or slider
+            'layout'     => 'grid', // grid or carousel
             'columns'    => 3,      // for grid layout
             'title'      => 'What Our Clients Say',
             'subtitle'   => 'See what clients are saying about our work and the results we\'ve achieved together.',
@@ -282,68 +282,148 @@ function simple_testimonials_shortcode($atts) {
     }
 
     if ($testimonials->have_posts()) {
-        // Wrapper class based on layout
-        $wrapper_class = $atts['layout'] === 'slider' ? 'testimonials-slider' : 'testimonials-grid';
-
-        echo '<div class="simple-testimonials ' . esc_attr($wrapper_class) . '">';
-
-        while ($testimonials->have_posts()) {
-            $testimonials->the_post();
+        // Handle different layouts
+        if ($atts['layout'] === 'carousel') {
+            // Carousel layout
+            echo '<div class="testimonials-carousel">';
+            echo '<div class="swiper-container">';
+            echo '<div class="swiper-wrapper">';
             
-            // Get testimonial meta
-            $client_name = get_post_meta(get_the_ID(), '_simple_testimonial_client_name', true);
-            $client_position = get_post_meta(get_the_ID(), '_simple_testimonial_client_position', true);
-            $client_company = get_post_meta(get_the_ID(), '_simple_testimonial_client_company', true);
-            $rating = get_post_meta(get_the_ID(), '_simple_testimonial_rating', true);
-
-            // Fallbacks
-            $client_name = !empty($client_name) ? $client_name : get_the_title();
-            ?>
-            <div class="testimonial-item">
-                <div class="testimonial-content">
-                    <blockquote>
-                        <?php the_content(); ?>
-                    </blockquote>
-                </div>
+            while ($testimonials->have_posts()) {
+                $testimonials->the_post();
                 
-                <div class="testimonial-meta">
-                    <div class="client-info">
-                        <div class="client-image">
-                            <?php if (has_post_thumbnail()) : ?>
-                                <?php the_post_thumbnail('thumbnail'); ?>
-                            <?php else : ?>
-                                <span><?php echo substr($client_name, 0, 1); ?></span>
-                            <?php endif; ?>
-                        </div>
-                        <div class="client-details">
-                            <h4><?php echo esc_html($client_name); ?></h4>
-                            <?php if (!empty($client_position)) : ?>
-                                <span class="client-position"><?php echo esc_html($client_position); ?></span>
-                            <?php endif; ?>
-                            <?php if (!empty($client_company)) : ?>
-                                <span class="client-company"><?php echo esc_html($client_company); ?></span>
-                            <?php endif; ?>
-                        </div>
+                // Get testimonial meta
+                $client_name = get_post_meta(get_the_ID(), '_simple_testimonial_client_name', true);
+                $client_position = get_post_meta(get_the_ID(), '_simple_testimonial_client_position', true);
+                $client_company = get_post_meta(get_the_ID(), '_simple_testimonial_client_company', true);
+                $rating = get_post_meta(get_the_ID(), '_simple_testimonial_rating', true);
+
+                // Fallbacks
+                $client_name = !empty($client_name) ? $client_name : get_the_title();
+                
+                echo '<div class="swiper-slide">';
+                echo '<div class="testimonial-item">';
+                
+                // Rating display
+                if (!empty($rating)) {
+                    echo '<div class="testimonial-rating">';
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= $rating) {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 inline-block">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                            </svg>';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 inline-block">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                            </svg>';
+                        }
+                    }
+                    echo '</div>';
+                }
+                
+                // Testimonial content
+                echo '<div class="testimonial-content">';
+                echo '<blockquote>' . get_the_content() . '</blockquote>';
+                echo '</div>';
+                
+                // Client info
+                echo '<div class="client-info">';
+                echo '<div class="client-image">';
+                if (has_post_thumbnail()) {
+                    echo get_the_post_thumbnail(get_the_ID(), 'thumbnail');
+                } else {
+                    echo '<span>' . substr($client_name, 0, 1) . '</span>';
+                }
+                echo '</div>';
+                echo '<div class="client-details">';
+                echo '<h4 class="client-name">' . esc_html($client_name) . '</h4>';
+                
+                if (!empty($client_position) || !empty($client_company)) {
+                    $position_company = array();
+                    if (!empty($client_position)) $position_company[] = esc_html($client_position);
+                    if (!empty($client_company)) $position_company[] = esc_html($client_company);
+                    echo '<p class="client-position">' . implode(', ', $position_company) . '</p>';
+                }
+                
+                echo '</div>'; // End client-details
+                echo '</div>'; // End client-info
+                
+                echo '</div>'; // End testimonial-item
+                echo '</div>'; // End swiper-slide
+            }
+            
+            echo '</div>'; // End swiper-wrapper
+            
+            // Add pagination and navigation
+            echo '<div class="swiper-pagination"></div>';
+            echo '<div class="swiper-button-next"></div>';
+            echo '<div class="swiper-button-prev"></div>';
+            
+            echo '</div>'; // End swiper-container
+            echo '</div>'; // End testimonials-carousel
+            
+        } else {
+            // Regular grid layout
+            echo '<div class="simple-testimonials testimonials-grid">';
+            
+            while ($testimonials->have_posts()) {
+                $testimonials->the_post();
+                
+                // Get testimonial meta
+                $client_name = get_post_meta(get_the_ID(), '_simple_testimonial_client_name', true);
+                $client_position = get_post_meta(get_the_ID(), '_simple_testimonial_client_position', true);
+                $client_company = get_post_meta(get_the_ID(), '_simple_testimonial_client_company', true);
+                $rating = get_post_meta(get_the_ID(), '_simple_testimonial_rating', true);
+
+                // Fallbacks
+                $client_name = !empty($client_name) ? $client_name : get_the_title();
+                ?>
+                <div class="testimonial-item">
+                    <div class="testimonial-content">
+                        <blockquote>
+                            <?php the_content(); ?>
+                        </blockquote>
                     </div>
                     
-                    <?php if (!empty($rating)) : ?>
-                        <div class="testimonial-rating">
-                            <?php for ($i = 1; $i <= 5; $i++) : ?>
-                                <?php if ($i <= $rating) : ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
-                                    </svg>
+                    <div class="testimonial-meta">
+                        <div class="client-info">
+                            <div class="client-image">
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <?php the_post_thumbnail('thumbnail'); ?>
                                 <?php else : ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                                    </svg>
+                                    <span><?php echo substr($client_name, 0, 1); ?></span>
                                 <?php endif; ?>
-                            <?php endfor; ?>
+                            </div>
+                            <div class="client-details">
+                                <h4><?php echo esc_html($client_name); ?></h4>
+                                <?php if (!empty($client_position)) : ?>
+                                    <span class="client-position"><?php echo esc_html($client_position); ?></span>
+                                <?php endif; ?>
+                                <?php if (!empty($client_company)) : ?>
+                                    <span class="client-company"><?php echo esc_html($client_company); ?></span>
+                                <?php endif; ?>
+                            </div>
                         </div>
-                    <?php endif; ?>
+                        
+                        <?php if (!empty($rating)) : ?>
+                            <div class="testimonial-rating">
+                                <?php for ($i = 1; $i <= 5; $i++) : ?>
+                                    <?php if ($i <= $rating) : ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                                        </svg>
+                                    <?php else : ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                        </svg>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
-            <?php
+                <?php
+            }
         }
         
         echo '</div>'; // Close testimonials wrapper

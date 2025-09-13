@@ -1097,6 +1097,10 @@ a {
   margin-top: 2rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .block {
   display: block;
 }
@@ -2002,6 +2006,10 @@ a {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -2198,6 +2206,10 @@ a {
 
 .text-opacity-90 {
   --tw-text-opacity: 0.9;
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .placeholder-white\/50::-moz-placeholder {
@@ -2533,6 +2545,11 @@ a {
   color: rgb(197 48 48 / var(--tw-text-opacity, 1));
 }
 
+.hover\:text-primary-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(130 39 39 / var(--tw-text-opacity, 1));
+}
+
 .hover\:text-shuka-black:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
@@ -2635,10 +2652,6 @@ a {
 
   .md\:col-span-2 {
     grid-column: span 2 / span 2;
-  }
-
-  .md\:col-span-3 {
-    grid-column: span 3 / span 3;
   }
 
   .md\:mb-0 {

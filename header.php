@@ -29,32 +29,59 @@
             <div class="flex justify-between items-center">
                 <!-- Site Branding -->
                 <div class="site-branding flex items-center">
-                    <?php if ( portfolio_has_profile_image() ) : ?>
-                        <div class="header-profile-container">
-                            <img src="<?php echo esc_url( portfolio_get_profile_image() ); ?>" alt="<?php echo esc_attr( portfolio_get_owner_name() ); ?>" class="header-profile-image w-10 h-10 rounded-full object-cover">
-                        </div>
-                    <?php elseif ( has_custom_logo() ) : ?>
-                        <div class="custom-logo-container bg-white p-1 rounded-full border-2 border-maroon hover:border-shuka-yellow transition-all">
-                            <?php the_custom_logo(); ?>
-                        </div>
-                    <?php else : ?>
-                        <h1 class="site-title text-xl font-bold">
-                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="text-shuka-yellow hover:text-white transition-colors">
-                                <?php bloginfo( 'name' ); ?>
-                            </a>
-                        </h1>
-                    <?php endif; ?>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="logo-link">
+                        <?php if ( portfolio_has_profile_image() ) : ?>
+                            <div class="header-profile-container">
+                                <img src="<?php echo esc_url( portfolio_get_profile_image() ); ?>" alt="<?php echo esc_attr( portfolio_get_owner_name() ); ?>" class="header-profile-image w-10 h-10 rounded-full object-cover">
+                            </div>
+                        <?php elseif ( has_custom_logo() ) : ?>
+                            <div class="custom-logo-container bg-white p-1 rounded-full border-2 border-maroon hover:border-shuka-yellow transition-all">
+                                <?php 
+                                // Get the custom logo HTML but without the <a> tag
+                                $custom_logo_id = get_theme_mod('custom_logo');
+                                $logo = wp_get_attachment_image($custom_logo_id, 'full', false, array('class' => 'custom-logo')); 
+                                echo $logo;
+                                ?>
+                            </div>
+                        <?php else : ?>
+                            <h1 class="site-title text-xl font-bold">
+                                <span class="text-shuka-yellow hover:text-white transition-colors">
+                                    <?php bloginfo( 'name' ); ?>
+                                </span>
+                            </h1>
+                        <?php endif; ?>
+                    </a>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:block">
                     <ul class="flex items-center space-x-2">
-                        <li><a href="#about" class="nav-link px-3 py-2 rounded-md text-white hover:text-shuka-yellow hover:bg-maroon/20 transition-all"><?php esc_html_e('About', 'portfolio'); ?></a></li>
-                        <li><a href="#skills" class="nav-link px-3 py-2 rounded-md text-white hover:text-shuka-yellow hover:bg-maroon/20 transition-all"><?php esc_html_e('Skills', 'portfolio'); ?></a></li>
-                        <li><a href="#portfolio" class="nav-link px-3 py-2 rounded-md text-white hover:text-shuka-yellow hover:bg-maroon/20 transition-all"><?php esc_html_e('Portfolio', 'portfolio'); ?></a></li>
-                        <li><a href="#testimonials" class="nav-link px-3 py-2 rounded-md text-white hover:text-shuka-yellow hover:bg-maroon/20 transition-all"><?php esc_html_e('Testimonials', 'portfolio'); ?></a></li>
-                        <li><a href="#blog" class="nav-link px-3 py-2 rounded-md text-white hover:text-shuka-yellow hover:bg-maroon/20 transition-all"><?php esc_html_e('Blog', 'portfolio'); ?></a></li>
-                        <li><a href="#contact" class="px-4 py-2 bg-maroon text-white hover:bg-shuka-yellow hover:text-maroon rounded-md transition-all font-medium"><?php esc_html_e('Contact', 'portfolio'); ?></a></li>
+                        <?php 
+                        // Check if we're on the front page
+                        $is_front_page = is_front_page();
+                        $home_url = esc_url(home_url('/'));
+                        
+                        // Define sections and their labels
+                        $sections = array(
+                            'about' => __('About', 'portfolio'),
+                            'skills' => __('Skills', 'portfolio'),
+                            'portfolio' => __('Portfolio', 'portfolio'),
+                            'testimonials' => __('Testimonials', 'portfolio'),
+                            'blog' => __('Blog', 'portfolio'),
+                            'contact' => __('Contact', 'portfolio')
+                        );
+                        
+                        // Output nav items
+                        foreach ($sections as $section => $label) {
+                            $section_url = $is_front_page ? "#$section" : "$home_url#$section";
+                            $is_contact = ($section === 'contact');
+                            $link_class = $is_contact 
+                                ? 'px-4 py-2 bg-maroon text-white hover:bg-shuka-yellow hover:text-maroon rounded-md transition-all font-medium'
+                                : 'nav-link px-3 py-2 rounded-md text-white hover:text-shuka-yellow hover:bg-maroon/20 transition-all';
+                                
+                            echo '<li><a href="' . esc_url($section_url) . '" class="' . esc_attr($link_class) . '">' . esc_html($label) . '</a></li>';
+                        }
+                        ?>
                     </ul>
                 </nav>
 
@@ -78,30 +105,56 @@
                 
                 <!-- Mobile Navigation Links -->
                 <nav class="flex-1 overflow-y-auto p-4 space-y-1">
-                    <a href="#about" class="mobile-nav-item">
-                        <span class="icon-container bg-maroon"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" /></svg></span>
-                        <span class="text"><?php esc_html_e('About', 'portfolio'); ?></span>
-                    </a>
-                    <a href="#skills" class="mobile-nav-item">
-                        <span class="icon-container bg-shuka-blue"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" /></svg></span>
-                        <span class="text"><?php esc_html_e('Skills', 'portfolio'); ?></span>
-                    </a>
-                    <a href="#portfolio" class="mobile-nav-item">
-                        <span class="icon-container bg-shuka-yellow"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" /></svg></span>
-                        <span class="text"><?php esc_html_e('Portfolio', 'portfolio'); ?></span>
-                    </a>
-                    <a href="#testimonials" class="mobile-nav-item">
-                        <span class="icon-container bg-shuka-earth"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd" /></svg></span>
-                        <span class="text"><?php esc_html_e('Testimonials', 'portfolio'); ?></span>
-                    </a>
-                    <a href="#blog" class="mobile-nav-item">
-                        <span class="icon-container bg-shuka-blue"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" /><path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" /></svg></span>
-                        <span class="text"><?php esc_html_e('Blog', 'portfolio'); ?></span>
-                    </a>
-                    <a href="#contact" class="mobile-nav-item">
-                        <span class="icon-container bg-maroon"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg></span>
-                        <span class="text"><?php esc_html_e('Contact', 'portfolio'); ?></span>
-                    </a>
+                    <?php
+                    // Check if we're on the front page
+                    $is_front_page = is_front_page();
+                    $home_url = esc_url(home_url('/'));
+                    
+                    // Define the mobile navigation items with icons
+                    $mobile_nav_items = array(
+                        'about' => array(
+                            'label' => __('About', 'portfolio'),
+                            'icon_class' => 'bg-maroon',
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" /></svg>'
+                        ),
+                        'skills' => array(
+                            'label' => __('Skills', 'portfolio'),
+                            'icon_class' => 'bg-shuka-blue',
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" /></svg>'
+                        ),
+                        'portfolio' => array(
+                            'label' => __('Portfolio', 'portfolio'),
+                            'icon_class' => 'bg-shuka-yellow',
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" /></svg>'
+                        ),
+                        'testimonials' => array(
+                            'label' => __('Testimonials', 'portfolio'),
+                            'icon_class' => 'bg-shuka-earth',
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>'
+                        ),
+                        'blog' => array(
+                            'label' => __('Blog', 'portfolio'),
+                            'icon_class' => 'bg-shuka-blue',
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" /><path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" /></svg>'
+                        ),
+                        'contact' => array(
+                            'label' => __('Contact', 'portfolio'),
+                            'icon_class' => 'bg-maroon',
+                            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>'
+                        )
+                    );
+                    
+                    // Output each navigation item
+                    foreach ($mobile_nav_items as $section => $item) {
+                        $section_url = $is_front_page ? "#$section" : "$home_url#$section";
+                        ?>
+                        <a href="<?php echo esc_url($section_url); ?>" class="mobile-nav-item">
+                            <span class="icon-container <?php echo esc_attr($item['icon_class']); ?>"><?php echo $item['icon']; ?></span>
+                            <span class="text"><?php echo esc_html($item['label']); ?></span>
+                        </a>
+                        <?php
+                    }
+                    ?>
 
                     <!-- Social Media Links -->
                     <div class="pt-8 mt-6 border-t border-shuka-yellow/30">
