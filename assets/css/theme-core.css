@@ -1,0 +1,375 @@
+/**
+ * Theme Core Styles - Consolidated File
+ * Contains the essential styling for the Portfolio theme
+ * 
+ * Combines:
+ * - custom-theme.css
+ * - maasai-theme.css
+ * - new-header.css
+ * - layout-fix.css
+ * - theme-enhancements.css
+ * - custom-logo.css
+ * - logo-link.css
+ * - joshua-portfolio.css
+ */
+
+/* ======= Header Styles ======= */
+.site-header {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-branding {
+  display: flex;
+  align-items: center;
+}
+
+.custom-logo-container {
+  transition: border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-logo {
+  max-height: 50px;
+  width: auto;
+}
+
+.header-profile-image {
+  border: 2px solid var(--wp--preset--color--primary, #0073aa);
+  transition: border-color 0.3s ease;
+}
+
+.site-title {
+  margin: 0;
+  font-weight: bold;
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+  opacity: 0.9;
+}
+
+/* Navigation */
+.nav-link {
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Mobile menu */
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-item .icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
+  margin-right: 0.75rem;
+}
+
+.mobile-nav-item .text {
+  font-weight: 500;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.social-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.social-link span {
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Fix for hamburger menu icon */
+.hamburger-icon, .close-icon {
+  stroke: white !important;
+}
+
+/* ======= Layout Elements ======= */
+.section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  position: relative;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--wp--preset--color--primary, #0073aa);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header spacer to compensate for fixed header */
+.header-spacer {
+  height: 4rem;
+}
+
+/* ======= Typography ======= */
+.heading-xl {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.heading-lg {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.heading-md {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ======= Button Styles ======= */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: var(--wp--preset--color--primary, #0073aa);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--wp--preset--color--secondary, #005177);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: #f5f5f5;
+  color: #333333;
+  border: 1px solid #e0e0e0;
+}
+
+.btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+/* ======= Hero Section ======= */
+.hero-section {
+  position: relative;
+  padding: 8rem 0 6rem;
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+/* ======= Responsive Adjustments ======= */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .heading-xl {
+    font-size: 2.25rem;
+  }
+  
+  .heading-lg {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .hero-section {
+    padding: 6rem 0 4rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .heading-xl {
+    font-size: 1.75rem;
+  }
+  
+  .heading-lg {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-title {
+    margin-bottom: 2rem;
+  }
+}
+
+/* ======= Utility Classes ======= */
+.text-center {
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+/* ======= Maasai Theme Accents ======= */
+.bg-shuka-black {
+  background-color: #1c1c1c;
+}
+
+.bg-maroon {
+  background-color: #8B0000;
+}
+
+.bg-shuka-yellow {
+  background-color: #FFC107;
+}
+
+.text-maroon {
+  color: #8B0000;
+}
+
+.text-shuka-yellow {
+  color: #FFC107;
+}
+
+.border-maroon {
+  border-color: #8B0000;
+}
+
+.border-shuka-yellow {
+  border-color: #FFC107;
+}
+
+.hover\:border-shuka-yellow:hover {
+  border-color: #FFC107;
+}
+
+.hover\:text-shuka-yellow:hover {
+  color: #FFC107;
+}
+
+.hover\:bg-maroon:hover {
+  background-color: #8B0000;
+}
+
+.hover\:text-maroon:hover {
+  color: #8B0000;
+}
+
+/* Decorative elements */
+.maasai-accent {
+  position: relative;
+}
+
+.maasai-accent:after {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 80px;
+  background: linear-gradient(to right, #8B0000, #FFC107, #8B0000);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}

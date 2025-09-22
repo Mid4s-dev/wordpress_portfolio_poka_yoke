@@ -1,0 +1,303 @@
+/**
+ * Custom Maroon Theme Styles
+ */
+
+:root {
+  --maroon: #800020;
+  --maroon-dark: #600018;
+  --maroon-light: #a01530;
+  --shuka-yellow: #FBBF24;
+  --shuka-yellow-dark: #D97706;
+  --shuka-yellow-light: #FDE68A;
+  --accent-color: var(--shuka-yellow);
+  --text-light: #FFFFFF;
+  --text-dark: #1F2937;
+}
+
+/* Navigation Styles */
+.site-header {
+  background-color: #1A1A1A !important;
+  border-bottom: 3px solid var(--maroon) !important;
+}
+
+.site-branding .custom-logo-container {
+  border-color: var(--shuka-yellow) !important;
+  transition: border-color 0.3s ease;
+}
+
+.site-branding .custom-logo-container:hover {
+  border-color: var(--maroon) !important;
+}
+
+.shuka-button {
+  background-color: var(--maroon) !important;
+  color: var(--text-light) !important;
+  transition: all 0.3s ease !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.375rem !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 6px rgba(128, 0, 32, 0.25) !important;
+}
+
+.shuka-button:hover {
+  background-color: var(--shuka-yellow) !important;
+  color: var(--maroon) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 10px rgba(128, 0, 32, 0.3) !important;
+}
+
+.nav-link:hover {
+  background-color: var(--maroon) !important;
+  color: var(--shuka-yellow) !important;
+}
+
+/* Mobile Menu */
+.mobile-menu-toggle {
+  background-color: var(--maroon) !important;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: var(--shuka-yellow) !important;
+  color: var(--maroon) !important;
+}
+
+/* Maroon & Yellow Theme Elements */
+.text-maroon {
+  color: var(--maroon) !important;
+}
+
+.bg-maroon {
+  background-color: var(--maroon) !important;
+}
+
+.hover\:text-maroon:hover {
+  color: var(--maroon) !important;
+}
+
+.hover\:bg-maroon:hover {
+  background-color: var(--maroon) !important;
+}
+
+.border-maroon {
+  border-color: var(--maroon) !important;
+}
+
+.hover\:border-maroon:hover {
+  border-color: var(--maroon) !important;
+}
+
+/* Content Section Styles */
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--maroon), var(--shuka-yellow));
+}
+
+/* Headings */
+.heading-xl, .heading-lg, .heading-md, .heading-sm {
+  color: var(--maroon);
+  font-weight: 700;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--maroon);
+  color: white;
+  box-shadow: 0 4px 6px rgba(128, 0, 32, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--shuka-yellow);
+  color: var(--maroon);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(128, 0, 32, 0.3);
+}
+
+.btn-outline {
+  border: 2px solid var(--maroon);
+  color: var(--maroon);
+  background-color: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--maroon);
+  color: white;
+}
+
+/* Section Highlights */
+.inline-block.text-sm.font-semibold.text-primary-600 {
+  color: var(--maroon) !important;
+}
+
+/* Cards */
+.card {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+/* Testimonials Section */
+.testimonial-item {
+  border-top: 3px solid var(--maroon);
+}
+
+.testimonial-rating svg {
+  color: var(--shuka-yellow) !important;
+}
+
+/* Footer Elements */
+.site-footer {
+  background-color: #1A1A1A;
+  color: white;
+  border-top: 3px solid var(--maroon);
+}
+
+.footer-heading {
+  color: var(--shuka-yellow);
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), 
+              repeating-linear-gradient(45deg, 
+                rgba(128, 0, 32, 0.05) 0px, 
+                rgba(128, 0, 32, 0.05) 20px, 
+                rgba(251, 191, 36, 0.05) 20px, 
+                rgba(251, 191, 36, 0.05) 40px);
+  background-size: cover;
+  padding: 4rem 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 2;
+}
+
+/* Maasai Profile Styling */
+.profile-image-container {
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Background patterns for the Shuka cloth effect */
+.bg-shuka-pattern {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--maroon),
+    var(--maroon) 10px,
+    var(--shuka-yellow) 10px,
+    var(--shuka-yellow) 20px
+  );
+}
+
+.bg-shuka-vertical {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--maroon),
+    var(--maroon) 10px,
+    var(--shuka-yellow) 10px,
+    var(--shuka-yellow) 20px
+  );
+}
+
+/* Animation for the border pattern */
+.profile-image-container .absolute {
+  transition: all 0.5s ease;
+}
+
+.profile-image-container:hover .absolute {
+  filter: saturate(120%) brightness(105%);
+  transform: scale(1.02) rotate(0.5deg);
+}
+
+.maasai-pattern-border {
+  animation: patternPulse 8s infinite alternate;
+}
+
+@keyframes patternPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.maasai-inner-pattern {
+  animation: patternGlow 4s infinite alternate;
+}
+
+@keyframes patternGlow {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.hero-image .custom-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}

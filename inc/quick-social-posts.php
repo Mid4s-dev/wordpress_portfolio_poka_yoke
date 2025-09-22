@@ -57,12 +57,12 @@ class Portfolio_Quick_Social_Posts {
             return;
         }
         
-        // Add custom CSS
+        // Use consolidated admin styles
         wp_enqueue_style(
-            'portfolio-quick-posts-css',
-            get_template_directory_uri() . '/assets/css/quick-posts.css',
+            'portfolio-admin',
+            get_template_directory_uri() . '/assets/css/admin.css',
             array(),
-            filemtime(get_template_directory() . '/assets/css/quick-posts.css')
+            filemtime(get_template_directory() . '/assets/css/admin.css')
         );
         
         // Add custom JS

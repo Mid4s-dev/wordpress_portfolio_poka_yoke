@@ -6,15 +6,15 @@
 
     // Mobile menu toggle
     function setupMobileMenu() {
-        // Debug - log all IDs that start with mobile
-        document.querySelectorAll('[id^="mobile"]').forEach(el => {
+        // Debug - log all IDs that start with js-mobile
+        document.querySelectorAll('[id^="js-mobile"]').forEach(el => {
             console.log('Found mobile element:', el.id);
         });
         
-        const menuButton = document.getElementById('mobile-menu-button');
+        const menuButton = document.getElementById('js-mobile-menu-button');
         console.log('Mobile menu button found:', menuButton);
         
-        const mobileDrawer = document.getElementById('mobile-menu-drawer');
+        const mobileDrawer = document.getElementById('js-mobile-menu-drawer');
         console.log('Mobile drawer found:', mobileDrawer);
         
         const body = document.body;
@@ -48,8 +48,8 @@
             body.style.overflow = 'hidden';
             
             // Toggle icons visibility
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const closeIcon = document.getElementById('close-icon');
+            const hamburgerIcon = document.getElementById('js-hamburger-icon');
+            const closeIcon = document.getElementById('js-close-icon');
             
             if (hamburgerIcon && closeIcon) {
                 hamburgerIcon.classList.add('hidden');
@@ -77,8 +77,8 @@
             body.style.overflow = '';
             
             // Toggle icons visibility
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const closeIcon = document.getElementById('close-icon');
+            const hamburgerIcon = document.getElementById('js-hamburger-icon');
+            const closeIcon = document.getElementById('js-close-icon');
             
             if (hamburgerIcon && closeIcon) {
                 hamburgerIcon.classList.remove('hidden');
@@ -193,6 +193,10 @@
                 
                 if (currentScrollY >= sectionTop && currentScrollY < sectionTop + sectionHeight) {
                     current = section.getAttribute('id');
+                    // If the section id starts with js-, remove it for comparing with href
+                    if (current && current.startsWith('js-')) {
+                        current = current.substring(3);
+                    }
                 }
             });
             
@@ -201,8 +205,14 @@
                 link.classList.remove('text-primary-600');
                 link.classList.remove('text-shuka-yellow');
                 
+                let href = link.getAttribute('href');
+                // If href starts with #js-, remove the js- part for comparison
+                if (href && href.startsWith('#js-')) {
+                    href = '#' + href.substring(4);
+                }
+                
                 // Add appropriate active class based on the current section
-                if (link.getAttribute('href') === `#${current}`) {
+                if (href === `#${current}`) {
                     // Use Maasai theme color
                     link.classList.add('text-shuka-yellow');
                 }
@@ -214,8 +224,8 @@
 
     // Newsletter form handling
     function setupNewsletterForm() {
-        const newsletterForm = document.getElementById('newsletter-form');
-        const newsletterResponse = document.getElementById('newsletter-response');
+        const newsletterForm = document.getElementById('js-newsletter-form');
+        const newsletterResponse = document.getElementById('js-newsletter-form-response');
         
         if (!newsletterForm) return;
         
@@ -223,8 +233,8 @@
             e.preventDefault();
             
             const formData = new FormData(this);
-            const email = formData.get('newsletter_email');
-            const name = formData.get('newsletter_name');
+            const email = formData.get('email');
+            const name = formData.get('name');
             
             if (!email) return;
             
@@ -259,7 +269,7 @@
         console.log('DOM content loaded - initializing menu components');
         
         // Debug check for mobile menu drawer and ensure it's properly hidden initially
-        const mobileDrawer = document.getElementById('mobile-menu-drawer');
+        const mobileDrawer = document.getElementById('js-mobile-menu-drawer');
         if (mobileDrawer) {
             console.log('Mobile menu drawer found, initializing...');
             
@@ -272,7 +282,7 @@
         }
         
         // Ensure mobile menu button is properly set up
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuButton = document.getElementById('js-mobile-menu-button');
         if (mobileMenuButton) {
             console.log('Mobile menu button found');
             
@@ -288,8 +298,8 @@
             }
             
             // Ensure proper icon visibility
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const closeIcon = document.getElementById('close-icon');
+            const hamburgerIcon = document.getElementById('js-hamburger-icon');
+            const closeIcon = document.getElementById('js-close-icon');
             
             if (hamburgerIcon && closeIcon) {
                 hamburgerIcon.classList.remove('hidden');

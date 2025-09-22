@@ -30,12 +30,12 @@
       <!-- wp:html -->
       <form class="ankara-card p-6">
         <div class="mb-4">
-          <label for="newsletter-name" class="sr-only">Your Name</label>
-          <input type="text" id="newsletter-name" name="name" placeholder="Your Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+          <label for="js-newsletter-name" class="sr-only">Your Name</label>
+          <input type="text" id="js-newsletter-name" name="name" placeholder="Your Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
         </div>
         <div class="mb-4">
-          <label for="newsletter-email" class="sr-only">Your Email</label>
-          <input type="email" id="newsletter-email" name="email" placeholder="Your Email Address" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
+          <label for="js-newsletter-email" class="sr-only">Your Email</label>
+          <input type="email" id="js-newsletter-email" name="email" placeholder="Your Email Address" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500">
         </div>
         <div class="text-center">
           <button type="submit" class="button-link py-3 px-6 w-full">Subscribe Now</button>

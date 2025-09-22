@@ -1,0 +1,82 @@
+/**
+ * Layout Fix CSS
+ * Fixes layout issues with container width and background
+ */
+
+/* Ensure the site container takes full width */
+#page.site {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Remove any unwanted space above header */
+body {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Container should be properly centered */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Add background to specific sections rather than body */
+.hero-section {
+  position: relative;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 107, 158, 0.1) 0px,
+      rgba(255, 107, 158, 0.1) 20px,
+      transparent 20px,
+      transparent 40px
+    );
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Ensure proper responsive behavior on mobile */
+@media (max-width: 767px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
+  
+  .grid {
+    width: 100%;
+  }
+  
+  /* Fix for content being squeezed to one corner */
+  .site-content {
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+  }
+  
+  /* Fix for UI squeezed to one corner */
+  .entry-content > *:not(.alignwide):not(.alignfull) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+}

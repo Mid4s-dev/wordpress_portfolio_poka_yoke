@@ -1,0 +1,310 @@
+/**
+ * Admin Styles - Consolidated File
+ * Contains all styles for admin-specific functionality
+ *
+ * Combines:
+ * - campaigns-admin.css
+ * - quick-posts.css
+ * - quick-testimonials.css
+ * - gmail-api-admin.css
+ * - profile-customizer.css
+ * - site-management-admin.css
+ */
+
+/* ======= Common Admin Styles ======= */
+.portfolio-admin-wrap {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-admin-title {
+  margin-top: 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 1.5em;
+}
+
+.portfolio-admin-section {
+  margin-bottom: 25px;
+}
+
+.portfolio-admin-section-title {
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+/* Form Styling */
+.portfolio-admin-form .form-group {
+  margin-bottom: 15px;
+}
+
+.portfolio-admin-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.portfolio-admin-form input[type="text"],
+.portfolio-admin-form input[type="url"],
+.portfolio-admin-form input[type="email"],
+.portfolio-admin-form input[type="date"],
+.portfolio-admin-form textarea,
+.portfolio-admin-form select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.portfolio-admin-form textarea {
+  min-height: 100px;
+}
+
+/* Admin Buttons */
+.portfolio-admin-button {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 15px;
+  background: #0085ba;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: normal;
+  text-align: center;
+}
+
+.portfolio-admin-button:hover {
+  background: #006799;
+  color: #fff;
+}
+
+.portfolio-admin-button.secondary {
+  background: #f7f7f7;
+  color: #555;
+  border: 1px solid #ccc;
+}
+
+.portfolio-admin-button.secondary:hover {
+  background: #eee;
+  color: #333;
+}
+
+/* Status Messages */
+.portfolio-admin-notice {
+  padding: 10px 15px;
+  margin: 15px 0;
+  border-left: 4px solid;
+  background: #f8f8f8;
+}
+
+.portfolio-admin-notice.success {
+  border-color: #46b450;
+}
+
+.portfolio-admin-notice.error {
+  border-color: #dc3232;
+}
+
+.portfolio-admin-notice.info {
+  border-color: #00a0d2;
+}
+
+.portfolio-admin-notice.warning {
+  border-color: #ffb900;
+}
+
+/* ======= Campaigns Admin ======= */
+.campaigns-meta-box {
+  margin-top: 10px;
+}
+
+.campaigns-meta-field {
+  margin-bottom: 15px;
+}
+
+.campaigns-meta-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.campaigns-meta-field input,
+.campaigns-meta-field select {
+  width: 100%;
+}
+
+.campaigns-dashboard {
+  padding: 20px;
+}
+
+.campaigns-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.campaign-stat-box {
+  flex: 1;
+  min-width: 200px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.campaign-stat-number {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 5px 0;
+  color: #0073aa;
+}
+
+.campaign-stat-label {
+  font-size: 0.9em;
+  color: #666;
+}
+
+/* ======= Quick Posts Admin ======= */
+.quick-posts-form {
+  max-width: 800px;
+}
+
+.quick-posts-preview {
+  padding: 15px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.quick-posts-preview-title {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+/* ======= Quick Testimonials Admin ======= */
+.testimonial-rating-field {
+  margin-bottom: 10px;
+}
+
+.testimonial-rating-field label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.testimonial-star {
+  color: #ffb900;
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.2s;
+}
+
+.testimonial-star.empty {
+  color: #ccc;
+}
+
+.testimonial-preview {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.testimonial-preview-content {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.testimonial-preview-author {
+  font-weight: bold;
+}
+
+/* ======= Gmail API Admin ======= */
+.gmail-auth-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.gmail-auth-status {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.gmail-auth-status.connected {
+  color: #46b450;
+}
+
+.gmail-auth-status.disconnected {
+  color: #dc3232;
+}
+
+.gmail-credentials-form textarea {
+  width: 100%;
+  height: 150px;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+/* ======= Profile Customizer ======= */
+.profile-customizer-section {
+  padding: 15px;
+  margin-bottom: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.profile-image-preview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.profile-image-preview img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid #0073aa;
+}
+
+/* ======= Site Management Admin ======= */
+.site-management-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+  margin-top: 20px;
+}
+
+.site-management-card {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-management-card-title {
+  margin-top: 0;
+  font-size: 1.1em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.site-management-card-content {
+  margin: 15px 0;
+}
+
+.site-management-card-actions {
+  margin-top: 20px;
+}

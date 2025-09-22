@@ -1,0 +1,360 @@
+/**
+ * Unified Mobile Menu Styles
+ * Consolidated mobile menu styling (September 11, 2025)
+ */
+
+/* =========================================================
+   VARIABLES & RESET
+   ========================================================= */
+
+:root {
+  --maroon: #800020;
+  --maroon-dark: #600018;
+  --maroon-light: #a01530;
+  --shuka-yellow: #FBBF24;
+  --shuka-yellow-dark: #D97706;
+  --shuka-yellow-light: #FDE68A;
+  --shuka-black: #222222;
+  --shuka-black-light: #333333;
+}
+
+/* Reset styles for mobile menu elements */
+#mobile-menu,
+.mobile-menu-content,
+.mobile-menu-toggle,
+.mobile-nav-link {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent body scrolling when menu is active */
+body.overflow-hidden {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================================
+   MOBILE TOGGLE BUTTON & HAMBURGER ANIMATION
+   ========================================================= */
+
+/* Mobile Menu Button */
+.mobile-menu-toggle {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 9999;
+  /* Display is controlled in the responsive section */
+  display: flex; /* Default to flex but will be overridden by media queries */
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: var(--maroon);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+  background-color: var(--shuka-yellow);
+  color: var(--maroon);
+  transform: translateY(-2px);
+}
+
+/* Hamburger Icon Structure */
+.hamburger-menu {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 18px;
+}
+
+.hamburger-line {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger-line:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-line:nth-child(2) {
+  top: 8px;
+}
+
+.hamburger-line:nth-child(3) {
+  top: 16px;
+}
+
+/* X Animation */
+.mobile-menu-toggle.is-active .hamburger-line:nth-child(1) {
+  top: 8px;
+  transform: rotate(45deg);
+}
+
+.mobile-menu-toggle.is-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.mobile-menu-toggle.is-active .hamburger-line:nth-child(3) {
+  top: 8px;
+  transform: rotate(-45deg);
+}
+
+.mobile-menu-toggle.is-active {
+  background-color: var(--shuka-yellow);
+}
+
+.mobile-menu-toggle.is-active .hamburger-line {
+  background-color: var(--maroon);
+}
+
+/* Add some animations */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+
+.mobile-menu-toggle.is-active {
+  animation: pulse 1.5s infinite;
+}
+
+/* =========================================================
+   MOBILE MENU OVERLAY & CONTENT
+   ========================================================= */
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9900;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+  overflow: hidden;
+  display: none; /* Hide initially */
+}
+
+/* When active, show the menu */
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  display: block !important; /* Force display when active */
+}
+
+/* Mobile Menu Content */
+.mobile-menu-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 85%;
+  max-width: 320px;
+  background-color: var(--shuka-black);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+  border-radius: 20px 0 0 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 9950;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The transform that absolutely must be applied when active */
+.mobile-menu-overlay.active .mobile-menu-content,
+#mobile-menu.active .mobile-menu-content {
+  transform: translateX(0) !important;
+  width: 85% !important;
+  max-width: 320px !important;
+}
+
+/* =========================================================
+   MOBILE MENU INTERNAL COMPONENTS
+   ========================================================= */
+
+/* Header within mobile menu */
+.mobile-menu-content .flex.items-center.justify-between {
+  padding: 1rem;
+  width: 100%;
+  border-bottom: 1px solid rgba(128, 0, 32, 0.3);
+  background: linear-gradient(to right, var(--maroon), var(--shuka-black));
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Close button */
+.mobile-menu-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.mobile-menu-close:hover {
+  background-color: var(--shuka-yellow);
+  color: var(--maroon);
+}
+
+/* Navigation links */
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(128, 0, 32, 0.3);
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+  background-color: rgba(251, 191, 36, 0.1);
+  color: var(--shuka-yellow);
+}
+
+/* Content Area */
+.mobile-menu-content .flex-1.flex.flex-col {
+  width: 100%;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+/* Mobile menu toggle visibility */
+.mobile-menu-toggle {
+  display: none; /* Hide by default */
+}
+
+/* Only show the mobile menu toggle on mobile screens */
+@media (max-width: 767.98px) {
+  .mobile-menu-toggle {
+    display: flex !important; /* Force display on mobile */
+  }
+  
+  /* Hide desktop menu on mobile */
+  .main-navigation .hidden.md\:flex {
+    display: none !important;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 768px) {
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 480px) {
+  .mobile-menu-content {
+    width: 85% !important;
+    max-width: 280px !important;
+  }
+  
+  /* Prevent overflow outside the menu */
+  .mobile-menu-content {
+    overflow-x: hidden;
+  }
+  
+  /* Ensure mobile toggle button is positioned correctly */
+  .mobile-menu-toggle {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* =========================================================
+   ANIMATIONS & TRANSITIONS
+   ========================================================= */
+
+/* Animation for menu items */
+.mobile-nav-link {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slideIn 0.3s forwards;
+  animation-delay: calc(var(--item-index, 0) * 0.1s);
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Set animation delays for each nav item */
+.mobile-nav-link:nth-child(1) { --item-index: 1; }
+.mobile-nav-link:nth-child(2) { --item-index: 2; }
+.mobile-nav-link:nth-child(3) { --item-index: 3; }
+.mobile-nav-link:nth-child(4) { --item-index: 4; }
+.mobile-nav-link:nth-child(5) { --item-index: 5; }
+.mobile-nav-link:nth-child(6) { --item-index: 6; }
+
+/* =========================================================
+   Z-INDEX MANAGEMENT & FIXES
+   ========================================================= */
+
+/* Fix for any z-index issues */
+.site-header {
+  z-index: 100;
+}
+
+/* Ensure proper stacking of elements */
+.mobile-menu-toggle { z-index: 9999; }
+.mobile-menu-content { z-index: 9950; }
+.mobile-menu-overlay { z-index: 9900; }
+
+/* Desktop navigation visibility */
+@media (min-width: 768px) {
+  .main-navigation .md\:flex.desktop-menu {
+    /* Ensure desktop navigation shows on larger screens */
+    display: flex !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* Ensure desktop menu is hidden on mobile */
+  .main-navigation .desktop-menu {
+    display: none !important;
+  }
+}

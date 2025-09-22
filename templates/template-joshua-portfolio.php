@@ -10,7 +10,8 @@
 
 // Enqueue Swiper JS for testimonials slider
 wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper@8/swiper-bundle.min.js', array('jquery'), '8.0.0', true);
-wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper@8/swiper-bundle.min.css', array(), '8.0.0');
+// Use consolidated component styles that already include Swiper CSS
+wp_enqueue_style('portfolio-components', get_template_directory_uri() . '/assets/css/components.css', array(), filemtime(get_template_directory() . '/assets/css/components.css'));
 
 get_header();
 ?>

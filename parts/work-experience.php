@@ -15,8 +15,8 @@
         
         <div class="space-y-10 max-w-5xl mx-auto">
             <!-- Experience 1 -->
-            <div class="shuka-card p-0 overflow-hidden">
-                <div class="bg-shuka-red px-6 py-4 text-white">
+            <div id="js-experience-1" class="p-0 overflow-hidden shuka-card">
+                <div class="px-6 py-4 text-white bg-shuka-red">
                     <div class="flex flex-col md:flex-row justify-between md:items-center">
                         <h3 class="text-xl font-bold">Ajira Clubs & Digital Hubs Intern</h3>
                         <div class="text-white text-sm md:text-base">
@@ -58,8 +58,8 @@
             </div>
             
             <!-- Experience 2 -->
-            <div class="shuka-card p-0 overflow-hidden">
-                <div class="bg-shuka-blue px-6 py-4 text-white">
+            <div id="js-experience-2" class="p-0 overflow-hidden shuka-card">
+                <div class="px-6 py-4 text-white bg-shuka-blue">
                     <div class="flex flex-col md:flex-row justify-between md:items-center">
                         <h3 class="text-xl font-bold">Technical Support Attaché</h3>
                         <div class="text-white text-sm md:text-base">
@@ -101,8 +101,8 @@
             </div>
             
             <!-- Security Engagements -->
-            <div class="shuka-card p-0 overflow-hidden">
-                <div class="bg-shuka-earth px-6 py-4 text-white">
+            <div id="js-security-engagements" class="p-0 overflow-hidden shuka-card">
+                <div class="px-6 py-4 text-white bg-shuka-earth">
                     <div class="flex flex-col md:flex-row justify-between md:items-center">
                         <h3 class="text-xl font-bold">Security Engagements & Projects</h3>
                     </div>

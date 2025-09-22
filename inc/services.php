@@ -264,7 +264,7 @@ class Portfolio_Services {
             'featured_only' => 'no',
             'orderby' => 'menu_order',
             'order' => 'ASC',
-            'layout' => 'grid', // grid, list
+            'layout' => 'grid', // grid, list, carousel
             'columns' => 3,
         ), $atts);
         
@@ -293,7 +293,15 @@ class Portfolio_Services {
         
         if ($services->have_posts()) {
             $columns_class = 'portfolio-services-columns-' . intval($atts['columns']);
-            echo '<div class="portfolio-services portfolio-services-' . esc_attr($atts['layout']) . ' ' . esc_attr($columns_class) . '">';
+            
+            // Check if we're using carousel layout
+            if ($atts['layout'] === 'carousel') {
+                echo '<div class="portfolio-services portfolio-services-carousel">';
+                echo '<div class="swiper-container">';
+                echo '<div class="swiper-wrapper">';
+            } else {
+                echo '<div class="portfolio-services portfolio-services-' . esc_attr($atts['layout']) . ' ' . esc_attr($columns_class) . '">';
+            }
             
             while ($services->have_posts()) {
                 $services->the_post();
@@ -305,35 +313,45 @@ class Portfolio_Services {
                 
                 // Display the service
                 $featured_class = ($featured === 'yes') ? ' service-featured' : '';
+                
+                // For carousel layout, wrap each service in a swiper-slide
+                if ($atts['layout'] === 'carousel') {
+                    echo '<div class="swiper-slide">';
+                }
                 ?>
-                <div class="portfolio-service<?php echo esc_attr($featured_class); ?>">
+                <div class="portfolio-service<?php echo esc_attr($featured_class); ?> card">
                     <?php if ($featured === 'yes') : ?>
                         <div class="service-featured-badge"><?php _e('Featured', 'portfolio'); ?></div>
                     <?php endif; ?>
                     
-                    <div class="service-header">
+                    <div class="service-thumbnail card-thumbnail">
                         <?php if (has_post_thumbnail()) : ?>
-                            <div class="service-icon">
-                                <?php the_post_thumbnail('thumbnail'); ?>
-                            </div>
-                        <?php elseif (!empty($icon)) : ?>
-                            <div class="service-icon">
-                                <?php if (strpos($icon, 'dashicons') !== false) : ?>
-                                    <span class="dashicons <?php echo esc_attr($icon); ?>"></span>
+                            <?php the_post_thumbnail('service-thumbnail', array('class' => 'w-full h-full object-cover service-image')); ?>
+                        <?php else : ?>
+                            <div class="image-placeholder service-image-placeholder">
+                                <?php if (!empty($icon)) : ?>
+                                    <?php if (strpos($icon, 'dashicons') !== false) : ?>
+                                        <span class="dashicons <?php echo esc_attr($icon); ?>"></span>
+                                    <?php else : ?>
+                                        <i class="<?php echo esc_attr($icon); ?>"></i>
+                                    <?php endif; ?>
                                 <?php else : ?>
-                                    <i class="<?php echo esc_attr($icon); ?>"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                                 <?php endif; ?>
                             </div>
                         <?php endif; ?>
-                        
-                        <h3 class="service-title"><?php the_title(); ?></h3>
                     </div>
                     
-                    <div class="service-content">
-                        <?php the_excerpt(); ?>
+                    <div class="service-content card-content">
+                        
+                        <h3 class="service-title card-title"><?php the_title(); ?></h3>
+                        
+                        <div class="service-excerpt card-excerpt">
+                            <?php the_excerpt(); ?>
+                        </div>
                         
                         <?php if (!empty($price) || !empty($duration)) : ?>
-                            <div class="service-meta">
+                            <div class="service-meta card-meta">
                                 <?php if (!empty($price)) : ?>
                                     <div class="service-price">
                                         <strong><?php _e('Price:', 'portfolio'); ?></strong> <?php echo esc_html($price); ?>
@@ -348,12 +366,25 @@ class Portfolio_Services {
                             </div>
                         <?php endif; ?>
                         
-                        <div class="service-link">
+                        <div class="service-link card-link">
                             <a href="<?php the_permalink(); ?>" class="button"><?php _e('Learn More', 'portfolio'); ?></a>
                         </div>
                     </div>
                 </div>
                 <?php
+                // Close swiper-slide div if we're using carousel layout
+                if ($atts['layout'] === 'carousel') {
+                    echo '</div>';
+                }
+            }
+            
+            // Add carousel navigation and pagination if carousel layout is used
+            if ($atts['layout'] === 'carousel') {
+                echo '</div>'; // Close swiper-wrapper
+                echo '<div class="swiper-pagination"></div>';
+                echo '<div class="swiper-button-next"></div>';
+                echo '<div class="swiper-button-prev"></div>';
+                echo '</div>'; // Close swiper-container
             }
             
             echo '</div>';

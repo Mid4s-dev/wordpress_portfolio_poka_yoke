@@ -1,0 +1,796 @@
+/**
+ * Maasai Hero Frame Styling
+ * This creates a decorative Maasai beadwork-inspired frame for hero images
+ * Based on authentic Maasai beadwork patterns and colors
+ */
+
+:root {
+  /* Enhanced vibrant Maasai-inspired color palette */
+  --shuka-red: #c30017; /* Brighter, more vibrant maroon */
+  --shuka-yellow: #FFD700; /* More vibrant gold yellow */
+  --shuka-blue: #0047AB; /* Rich royal blue */
+  --shuka-black: #1A1A1A;
+  --shuka-white: #FFFFFF;
+  --shuka-orange: #FF5722; /* Vibrant orange */
+  --maroon: #c30017; /* Match the brighter maroon */
+  
+  /* Enhanced vibrant beadwork colors */
+  --bead-red: #c30017; /* Rich vibrant red */
+  --bead-blue: #1a75ff; /* Brighter blue */
+  --bead-orange: #FF8C00; /* Vibrant dark orange */
+  --bead-green: #00A651; /* Brighter green */
+  --bead-white: #FFFFFF;
+  --bead-black: #000000;
+  --bead-yellow: #FFD700; /* Rich gold yellow */
+  
+  /* Additional vibrant accent colors */
+  --bead-turquoise: #00CED1; /* Bright turquoise */
+  --bead-pink: #FF69B4; /* Hot pink accent */
+  --bead-purple: #9932CC; /* Rich purple */
+}
+
+/* Maasai Hero Image Frame - Enhanced Authentic Beadwork Style */
+.hero-image .maasai-image-frame {
+  position: relative;
+  padding: 45px; /* Even more padding for more beadwork space */
+  max-width: 450px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: var(--shuka-red); /* Vibrant rich maroon background */
+  background-image: linear-gradient(
+    45deg, 
+    var(--shuka-red) 0%, 
+    #de001b 30%, 
+    var(--shuka-red) 60%,
+    #b50015 85%,
+    var(--shuka-red) 100%
+  ); /* Rich maroon gradient for more depth and vibrance */
+  border-radius: 10px;
+  border: 3px solid var(--bead-yellow); /* Thicker gold border for more vibrancy */
+  overflow: visible;
+  box-shadow: 0 0 30px rgba(195, 0, 23, 0.6), /* Stronger maroon glow around the frame */
+              0 0 15px rgba(255, 215, 0, 0.4), /* Subtle gold glow */
+              inset 0 0 20px rgba(0, 0, 0, 0.4); /* Inner shadow for depth */
+  filter: saturate(1.2); /* Increase overall color saturation */
+}
+
+/* Main beadwork layer - dense and varied beads surrounding the entire frame */
+.hero-image .maasai-image-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--shuka-red); /* Rich maroon background */
+  
+  /* Primary beadwork patterns with varying bead sizes around entire frame */
+  background-image: 
+    /* Top row - largest beads (5px) with enhanced vibrant colors */
+    radial-gradient(circle at 8px 8px, var(--bead-red) 5px, rgba(0,0,0,0.3) 6px),
+    radial-gradient(circle at 24px 8px, var(--bead-white) 5px, rgba(0,0,0,0.3) 6px),
+    radial-gradient(circle at 40px 8px, var(--bead-blue) 5px, rgba(0,0,0,0.3) 6px),
+    radial-gradient(circle at 56px 8px, var(--bead-yellow) 5px, rgba(0,0,0,0.3) 6px),
+    radial-gradient(circle at 72px 8px, var(--bead-green) 5px, rgba(0,0,0,0.3) 6px),
+    radial-gradient(circle at 88px 8px, var(--bead-orange) 5px, rgba(0,0,0,0.3) 6px),
+    
+    /* Second row - medium beads (4px) offset */
+    radial-gradient(circle at 16px 19px, var(--bead-yellow) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 32px 19px, var(--bead-blue) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 48px 19px, var(--bead-white) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 64px 19px, var(--bead-red) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 80px 19px, var(--bead-yellow) 4px, rgba(0,0,0,0.5) 5px),
+    
+    /* Third row - small beads (3px) */
+    radial-gradient(circle at 8px 30px, var(--bead-orange) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 18px 30px, var(--bead-white) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 28px 30px, var(--bead-green) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 38px 30px, var(--bead-yellow) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 48px 30px, var(--bead-blue) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 58px 30px, var(--bead-white) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 68px 30px, var(--bead-red) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 78px 30px, var(--bead-green) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 88px 30px, var(--bead-yellow) 3px, rgba(0,0,0,0.5) 4px),
+    
+    /* Right side - varying bead sizes */
+    radial-gradient(circle at calc(100% - 8px) 15px, var(--bead-blue) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at calc(100% - 8px) 30px, var(--bead-white) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at calc(100% - 8px) 45px, var(--bead-yellow) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at calc(100% - 8px) 60px, var(--bead-red) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(100% - 8px) 75px, var(--bead-green) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at calc(100% - 8px) 90px, var(--bead-orange) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at calc(100% - 8px) 105px, var(--bead-white) 3px, rgba(0,0,0,0.5) 4px),
+    
+    /* Second right column */
+    radial-gradient(circle at calc(100% - 20px) 22px, var(--bead-yellow) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(100% - 20px) 37px, var(--bead-red) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at calc(100% - 20px) 52px, var(--bead-white) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(100% - 20px) 67px, var(--bead-blue) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(100% - 20px) 82px, var(--bead-orange) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at calc(100% - 20px) 97px, var(--bead-green) 3px, rgba(0,0,0,0.5) 4px),
+    
+    /* Bottom row - largest beads (5px) */
+    radial-gradient(circle at 8px calc(100% - 8px), var(--bead-white) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at 24px calc(100% - 8px), var(--bead-yellow) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at 40px calc(100% - 8px), var(--bead-red) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at 56px calc(100% - 8px), var(--bead-blue) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at 72px calc(100% - 8px), var(--bead-green) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at 88px calc(100% - 8px), var(--bead-white) 5px, rgba(0,0,0,0.5) 6px),
+    
+    /* Second bottom row - medium beads (4px) offset */
+    radial-gradient(circle at 16px calc(100% - 19px), var(--bead-orange) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 32px calc(100% - 19px), var(--bead-blue) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 48px calc(100% - 19px), var(--bead-yellow) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 64px calc(100% - 19px), var(--bead-white) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 80px calc(100% - 19px), var(--bead-red) 4px, rgba(0,0,0,0.5) 5px),
+    
+    /* Left side - varying bead sizes */
+    radial-gradient(circle at 8px 15px, var(--bead-green) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at 8px 30px, var(--bead-white) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 8px 45px, var(--bead-red) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 8px 60px, var(--bead-yellow) 5px, rgba(0,0,0,0.5) 6px),
+    radial-gradient(circle at 8px 75px, var(--bead-blue) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 8px 90px, var(--bead-orange) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 8px 105px, var(--bead-green) 5px, rgba(0,0,0,0.5) 6px),
+    
+    /* Second left column */
+    radial-gradient(circle at 20px 22px, var(--bead-white) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 20px 37px, var(--bead-yellow) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 20px 52px, var(--bead-blue) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 20px 67px, var(--bead-red) 4px, rgba(0,0,0,0.5) 5px),
+    radial-gradient(circle at 20px 82px, var(--bead-white) 3px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at 20px 97px, var(--bead-green) 3px, rgba(0,0,0,0.5) 4px);
+    
+  background-repeat: repeat-x, repeat-x, repeat-x, repeat-y, repeat-y, repeat-x;
+  background-size: 104px 40px, 96px 30px, 96px 30px, 40px 120px, 40px 114px, 104px 40px;
+  z-index: 1;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  animation: beadworkShimmer 15s infinite alternate;
+  opacity: 1; /* Make sure it's fully visible */
+}
+
+/* Middle layer with traditional geometric Maasai patterns */
+.hero-image .maasai-image-frame::after {
+  content: '';
+  position: absolute;
+  inset: 30px; /* Reduced to show more of the beadwork frame */
+  background-color: var(--shuka-red); /* Rich vibrant maroon */
+  z-index: 2;
+  border-radius: 4px;
+  border: 2px solid var(--bead-yellow); /* Gold border for contrast */
+  
+  /* Geometric patterns inspired by traditional Maasai designs */
+  background-image: 
+    /* Diamond patterns - enhanced with larger beads and brighter colors */
+    radial-gradient(circle at 10px 10px, var(--bead-white) 4px, transparent 4px),
+    radial-gradient(circle at 20px 20px, var(--bead-blue) 4px, transparent 4px),
+    radial-gradient(circle at 30px 10px, var(--bead-yellow) 4px, transparent 4px),
+    radial-gradient(circle at 20px 0px, var(--bead-turquoise) 4px, transparent 4px),
+    
+    /* Triangle patterns as seen in the reference image - vibrant colors */
+    linear-gradient(60deg, var(--bead-orange) 15%, transparent 15.5%),
+    linear-gradient(120deg, var(--bead-blue) 15%, transparent 15.5%),
+    linear-gradient(240deg, var(--bead-green) 15%, transparent 15.5%),
+    linear-gradient(300deg, var(--bead-yellow) 15%, transparent 15.5%);
+    
+  background-size: 40px 40px, 50px 86.6px;
+  background-position: center;
+  box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.5);
+  opacity: 1; /* Ensure visibility */
+  filter: saturate(1.4) brightness(1.2); /* Increase color saturation and brightness */
+}
+
+/* Image container - slightly inset from the beadwork */
+.hero-image .maasai-image-frame-inner {
+  position: relative;
+  z-index: 3;
+  margin: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Image itself with decorative border */
+.hero-image .maasai-framed-image,
+.hero-image .maasai-image-frame .custom-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 3px solid var(--bead-white);
+  display: block;
+}
+
+/* Enhanced Maasai medallion corner elements with authentic patterns */
+.hero-image .frame-corner {
+  position: absolute;
+  width: 80px; /* Even larger medallions */
+  height: 80px;
+  border-radius: 50%;
+  z-index: 15; /* Higher z-index to ensure visibility */
+  background: var(--shuka-red); /* Rich maroon background */
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7), /* Golden glow */
+              0 0 35px rgba(195, 0, 23, 0.5); /* Additional maroon glow */
+  border: 4px solid var(--bead-yellow); /* Thicker gold border for vibrant contrast */
+  
+  /* More intricate concentric bead patterns with varying sizes */
+  background-image: 
+    /* Center yellow bead with glow */
+    radial-gradient(circle at center, var(--bead-yellow) 7px, rgba(255,215,0,0.4) 7.5px, rgba(0,0,0,0.5) 8px),
+    
+    /* First inner ring - 8 small beads */
+    radial-gradient(circle at calc(50% + 0px) calc(50% - 11px), var(--bead-red) 4px, rgba(0,0,0,0.5) 4.5px),
+    radial-gradient(circle at calc(50% + 8px) calc(50% - 8px), var(--bead-white) 4px, rgba(0,0,0,0.5) 4.5px),
+    radial-gradient(circle at calc(50% + 11px) calc(50% + 0px), var(--bead-blue) 4px, rgba(0,0,0,0.5) 4.5px),
+    radial-gradient(circle at calc(50% + 8px) calc(50% + 8px), var(--bead-orange) 4px, rgba(0,0,0,0.5) 4.5px),
+    radial-gradient(circle at calc(50% + 0px) calc(50% + 11px), var(--bead-green) 4px, rgba(0,0,0,0.5) 4.5px),
+    radial-gradient(circle at calc(50% - 8px) calc(50% + 8px), var(--bead-white) 4px, rgba(0,0,0,0.5) 4.5px),
+    radial-gradient(circle at calc(50% - 11px) calc(50% + 0px), var(--bead-red) 4px, rgba(0,0,0,0.5) 4.5px),
+    radial-gradient(circle at calc(50% - 8px) calc(50% - 8px), var(--bead-yellow) 4px, rgba(0,0,0,0.5) 4.5px),
+    
+    /* Second ring - medium red beads with improved contrast */
+    radial-gradient(circle at center, transparent 13px, var(--bead-red) 13px, var(--bead-red) 20px, rgba(0,0,0,0.6) 21px),
+    
+    /* Third ring - small alternating beads - enlarged */
+    radial-gradient(circle at calc(50% + 0px) calc(50% - 23px), var(--bead-white) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% + 9px) calc(50% - 21px), var(--bead-yellow) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% + 16px) calc(50% - 16px), var(--bead-blue) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% + 21px) calc(50% - 9px), var(--bead-red) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% + 23px) calc(50% + 0px), var(--bead-white) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% + 21px) calc(50% + 9px), var(--bead-green) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% + 16px) calc(50% + 16px), var(--bead-yellow) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% + 9px) calc(50% + 21px), var(--bead-blue) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% + 0px) calc(50% + 23px), var(--bead-white) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% - 9px) calc(50% + 21px), var(--bead-orange) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% - 16px) calc(50% + 16px), var(--bead-red) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% - 21px) calc(50% + 9px), var(--bead-white) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% - 23px) calc(50% + 0px), var(--bead-blue) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% - 21px) calc(50% - 9px), var(--bead-green) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% - 16px) calc(50% - 16px), var(--bead-yellow) 3.5px, rgba(0,0,0,0.5) 4px),
+    radial-gradient(circle at calc(50% - 9px) calc(50% - 21px), var(--bead-red) 3.5px, rgba(0,0,0,0.5) 4px),
+    
+    /* Fourth ring - blue beads with improved contrast */
+    radial-gradient(circle at center, transparent 26px, var(--bead-blue) 26px, var(--bead-blue) 33px, rgba(0,0,0,0.6) 34px),
+    
+    /* Outer ring - large alternating beads - enlarged and more vibrant */
+    radial-gradient(circle at calc(50% + 0px) calc(50% - 37px), var(--bead-white) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% + 19px) calc(50% - 32px), var(--bead-yellow) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% + 32px) calc(50% - 19px), var(--bead-red) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% + 37px) calc(50% + 0px), var(--bead-green) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% + 32px) calc(50% + 19px), var(--bead-white) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% + 19px) calc(50% + 32px), var(--bead-orange) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% + 0px) calc(50% + 37px), var(--bead-blue) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% - 19px) calc(50% + 32px), var(--bead-yellow) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% - 32px) calc(50% + 19px), var(--bead-red) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% - 37px) calc(50% + 0px), var(--bead-white) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% - 32px) calc(50% - 19px), var(--bead-green) 5px, rgba(0,0,0,0.5) 5.5px),
+    radial-gradient(circle at calc(50% - 19px) calc(50% - 32px), var(--bead-orange) 5px, rgba(0,0,0,0.5) 5.5px);
+    
+  /* Extra visibility and vibrance */
+  filter: brightness(1.3) contrast(1.3) saturate(1.2);
+  animation: beadSparkle 5s infinite alternate;
+}
+
+/* Position the corner medallions outside the frame for better visibility */
+.hero-image .frame-corner.top-left {
+  top: -20px;
+  left: -20px;
+  transform: rotate(-15deg);
+}
+
+.hero-image .frame-corner.top-right {
+  top: -20px;
+  right: -20px;
+  transform: rotate(15deg);
+}
+
+.hero-image .frame-corner.bottom-left {
+  bottom: -20px;
+  left: -20px;
+  transform: rotate(-105deg);
+}
+
+.hero-image .frame-corner.bottom-right {
+  bottom: -20px;
+  right: -20px;
+  transform: rotate(105deg);
+}
+
+/* Add additional decorative beadwork patterns */
+.hero-image .frame-corner::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-image: 
+    /* Create a complex star pattern with different colored beads */
+    radial-gradient(circle at calc(50% + 0px) calc(50% - 12px), var(--bead-white) 2px, transparent 2px),
+    radial-gradient(circle at calc(50% + 8.5px) calc(50% - 8.5px), var(--bead-orange) 2px, transparent 2px),
+    radial-gradient(circle at calc(50% + 12px) calc(50% + 0px), var(--bead-yellow) 2px, transparent 2px),
+    radial-gradient(circle at calc(50% + 8.5px) calc(50% + 8.5px), var(--bead-blue) 2px, transparent 2px),
+    radial-gradient(circle at calc(50% + 0px) calc(50% + 12px), var(--bead-green) 2px, transparent 2px),
+    radial-gradient(circle at calc(50% - 8.5px) calc(50% + 8.5px), var(--bead-red) 2px, transparent 2px),
+    radial-gradient(circle at calc(50% - 12px) calc(50% + 0px), var(--bead-white) 2px, transparent 2px),
+    radial-gradient(circle at calc(50% - 8.5px) calc(50% - 8.5px), var(--bead-yellow) 2px, transparent 2px);
+  animation: rotateBeadwork 12s linear infinite;
+}
+
+/* Central bead in each medallion */
+.hero-image .frame-corner::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--bead-white);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* Additional bead rows for more coverage */
+.hero-image .bead-row {
+  position: absolute;
+  z-index: 4;
+  height: 8px;
+}
+
+.hero-image .bead-row.top {
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 14px; /* Even larger for more visibility */
+  background: linear-gradient(to right,
+    transparent 0px,
+    transparent 4px,
+    var(--bead-red) 4px,
+    var(--bead-red) 10px,
+    var(--bead-yellow) 10px,
+    var(--bead-yellow) 16px,
+    var(--bead-blue) 16px,
+    var(--bead-blue) 22px,
+    var(--bead-white) 22px,
+    var(--bead-white) 28px,
+    var(--bead-black) 28px,
+    var(--bead-black) 34px,
+    var(--bead-orange) 34px,
+    var(--bead-orange) 40px,
+    var(--bead-green) 40px,
+    var(--bead-green) 46px,
+    var(--bead-turquoise) 46px,
+    var(--bead-turquoise) 52px,
+    var(--bead-pink) 52px,
+    var(--bead-pink) 58px,
+    var(--bead-purple) 58px,
+    var(--bead-purple) 64px,
+    var(--bead-red) 64px,
+    var(--bead-red) 70px
+  );
+  background-size: 70px 14px;
+  background-repeat: repeat-x;
+  animation: beadGlow 3s infinite alternate, horizontalBeadShift 15s linear infinite;
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(255,215,0,0.7), /* Enhanced golden glow */
+              0 0 15px rgba(195, 0, 23, 0.4); /* Additional maroon glow */
+  z-index: 10; /* Ensure they're visible on top */
+  filter: saturate(1.6) contrast(1.3) brightness(1.2); /* Increase color vibrancy */
+  border-radius: 7px; /* Round the edges of the bead row */
+  border: 1px solid rgba(255,215,0,0.3); /* Subtle gold border */
+}
+
+.hero-image .bead-row.bottom {
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 14px; /* Even larger for more visibility */
+  background: linear-gradient(to right,
+    transparent 0px,
+    transparent 4px,
+    var(--bead-yellow) 4px,
+    var(--bead-yellow) 10px,
+    var(--bead-blue) 10px,
+    var(--bead-blue) 16px,
+    var(--bead-red) 16px,
+    var(--bead-red) 22px,
+    var(--bead-black) 22px,
+    var(--bead-black) 28px,
+    var(--bead-green) 28px,
+    var(--bead-green) 34px,
+    var(--bead-white) 34px,
+    var(--bead-white) 40px,
+    var(--bead-orange) 40px,
+    var(--bead-orange) 46px,
+    var(--bead-purple) 46px,
+    var(--bead-purple) 52px,
+    var(--bead-turquoise) 52px,
+    var(--bead-turquoise) 58px,
+    var(--bead-blue) 58px,
+    var(--bead-blue) 64px,
+    var(--bead-yellow) 64px,
+    var(--bead-yellow) 70px
+  );
+  background-size: 70px 14px;
+  background-repeat: repeat-x;
+  animation: beadGlow 3.5s infinite alternate, horizontalBeadShift 12s linear infinite reverse;
+  animation-delay: 0.5s;
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(255,215,0,0.7), /* Enhanced golden glow */
+              0 0 15px rgba(195, 0, 23, 0.4); /* Additional maroon glow */
+  z-index: 10; /* Ensure they're visible on top */
+  filter: saturate(1.6) contrast(1.3) brightness(1.2); /* Increase color vibrancy */
+  border-radius: 7px; /* Round the edges of the bead row */
+  border: 1px solid rgba(255,215,0,0.3); /* Subtle gold border */
+}
+
+/* Add a subtle horizontal shift animation for bead rows */
+@keyframes horizontalBeadShift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 46px 0;
+  }
+}
+
+.hero-image .bead-column {
+  position: absolute;
+  z-index: 4;
+  width: 10px;
+}
+
+.hero-image .bead-column.left {
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80%;
+  width: 14px; /* Even wider for visibility */
+  background: linear-gradient(to bottom,
+    transparent 0px,
+    transparent 4px,
+    var(--bead-blue) 4px,
+    var(--bead-blue) 10px,
+    var(--bead-white) 10px,
+    var(--bead-white) 16px,
+    var(--bead-red) 16px,
+    var(--bead-red) 22px,
+    var(--bead-black) 22px,
+    var(--bead-black) 28px,
+    var(--bead-yellow) 28px,
+    var(--bead-yellow) 34px,
+    var(--bead-green) 34px,
+    var(--bead-green) 40px,
+    var(--bead-orange) 40px,
+    var(--bead-orange) 46px,
+    var(--bead-pink) 46px,
+    var(--bead-pink) 52px,
+    var(--bead-turquoise) 52px,
+    var(--bead-turquoise) 58px,
+    var(--bead-purple) 58px,
+    var(--bead-purple) 64px,
+    var(--bead-red) 64px,
+    var(--bead-red) 70px
+  );
+  background-size: 14px 70px;
+  background-repeat: repeat-y;
+  animation: beadGlow 4s infinite alternate, verticalBeadShift 20s linear infinite;
+  animation-delay: 0.7s;
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(255,215,0,0.7), /* Enhanced golden glow */
+              0 0 15px rgba(195, 0, 23, 0.4); /* Additional maroon glow */
+  z-index: 10; /* Ensure they're visible on top */
+  filter: saturate(1.6) contrast(1.3) brightness(1.2); /* Increase color vibrancy */
+  border-radius: 7px; /* Round the edges of the bead column */
+  border: 1px solid rgba(255,215,0,0.3); /* Subtle gold border */
+}
+
+.hero-image .bead-column.right {
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80%;
+  width: 14px; /* Even wider for visibility */
+  background: linear-gradient(to bottom,
+    transparent 0px,
+    transparent 4px,
+    var(--bead-orange) 4px,
+    var(--bead-orange) 10px,
+    var(--bead-green) 10px,
+    var(--bead-green) 16px,
+    var(--bead-black) 16px,
+    var(--bead-black) 22px,
+    var(--bead-red) 22px,
+    var(--bead-red) 28px,
+    var(--bead-white) 28px,
+    var(--bead-white) 34px,
+    var(--bead-yellow) 34px,
+    var(--bead-yellow) 40px,
+    var(--bead-blue) 40px,
+    var(--bead-blue) 46px,
+    var(--bead-purple) 46px,
+    var(--bead-purple) 52px,
+    var(--bead-turquoise) 52px,
+    var(--bead-turquoise) 58px,
+    var(--bead-yellow) 58px,
+    var(--bead-yellow) 64px,
+    var(--bead-blue) 64px,
+    var(--bead-blue) 70px
+  );
+  background-size: 14px 70px;
+  background-repeat: repeat-y;
+  animation: beadGlow 4.5s infinite alternate, verticalBeadShift 18s linear infinite reverse;
+  animation-delay: 1s;
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(255,215,0,0.7), /* Enhanced golden glow */
+              0 0 15px rgba(195, 0, 23, 0.4); /* Additional maroon glow */
+  z-index: 10; /* Ensure they're visible on top */
+  filter: saturate(1.6) contrast(1.3) brightness(1.2); /* Increase color vibrancy */
+  border-radius: 7px; /* Round the edges of the bead column */
+  border: 1px solid rgba(255,215,0,0.3); /* Subtle gold border */
+}
+
+/* Add a subtle vertical shift animation for bead columns */
+@keyframes verticalBeadShift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 46px;
+  }
+}
+
+/* Add diagonal beadwork elements */
+.hero-image .maasai-image-frame::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: 
+    radial-gradient(circle at center, var(--bead-red) 2px, transparent 3px),
+    radial-gradient(circle at center, var(--bead-yellow) 2px, transparent 3px),
+    radial-gradient(circle at center, var(--bead-blue) 2px, transparent 3px),
+    radial-gradient(circle at center, var(--bead-black) 2px, transparent 3px);
+  background-size: 55px 55px;
+  background-position: 0 0, 14px 14px, 28px 28px, 42px 42px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.85;
+  animation: beadworkShimmer 30s linear infinite;
+}
+
+/* Advanced animations for beadwork frame elements with enhanced vibrancy */
+@keyframes beadworkShimmer {
+  0% {
+    background-position: 0 0;
+    filter: brightness(1) saturate(1);
+  }
+  25% {
+    background-position: 12px 0;
+    filter: brightness(1.1) saturate(1.2);
+  }
+  50% {
+    background-position: 12px 12px;
+    filter: brightness(1.2) saturate(1.4);
+  }
+  75% {
+    background-position: 0 12px;
+    filter: brightness(1.1) saturate(1.2);
+  }
+  100% {
+    background-position: 0 0;
+    filter: brightness(1) saturate(1);
+  }
+}
+
+@keyframes rotateBeadwork {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(10deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes beadGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+    opacity: 0.9;
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+    opacity: 0.9;
+  }
+}
+
+/* Additional sparkle animation for beads */
+@keyframes beadSparkle {
+  0%, 100% {
+    filter: brightness(1) contrast(1);
+  }
+  25% {
+    filter: brightness(1.3) contrast(1.1);
+  }
+  50% {
+    filter: brightness(1.2) contrast(1.2);
+  }
+  75% {
+    filter: brightness(1.1) contrast(1.3);
+  }
+}
+
+/* Add inner container for proper nesting */
+.hero-image .maasai-image-frame-inner {
+  position: relative;
+  z-index: 3;
+  margin: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Interactive effects on hover - subtle movements to mimic beadwork catching light */
+.hero-image .maasai-image-frame:hover::before {
+  filter: saturate(130%) brightness(110%);
+  animation-duration: 5s;
+}
+
+.hero-image .maasai-image-frame:hover::after {
+  filter: contrast(120%) brightness(110%);
+}
+
+.hero-image .maasai-image-frame:hover img,
+.hero-image .maasai-image-frame:hover .custom-logo {
+  transform: scale(0.98);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Corner medallion interactions */
+.hero-image .frame-corner {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  animation: beadGlow 5s infinite alternate;
+}
+
+/* Enhanced hover effects for corner medallions with dynamic transitions */
+.hero-image .maasai-image-frame:hover .frame-corner.top-left {
+  transform: scale(1.2) rotate(-45deg);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7),
+              0 0 35px rgba(195, 0, 23, 0.6),
+              0 0 10px rgba(255, 255, 255, 0.5);
+  filter: brightness(1.4) contrast(1.2) saturate(1.4);
+}
+
+.hero-image .maasai-image-frame:hover .frame-corner.top-right {
+  transform: scale(1.2) rotate(45deg);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7),
+              0 0 35px rgba(195, 0, 23, 0.6),
+              0 0 10px rgba(255, 255, 255, 0.5);
+  filter: brightness(1.4) contrast(1.2) saturate(1.4);
+}
+
+.hero-image .maasai-image-frame:hover .frame-corner.bottom-left {
+  transform: scale(1.2) rotate(-135deg);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7),
+              0 0 35px rgba(195, 0, 23, 0.6),
+              0 0 10px rgba(255, 255, 255, 0.5);
+  filter: brightness(1.4) contrast(1.2) saturate(1.4);
+}
+
+.hero-image .maasai-image-frame:hover .frame-corner.bottom-right {
+  transform: scale(1.2) rotate(135deg);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7),
+              0 0 35px rgba(195, 0, 23, 0.6),
+              0 0 10px rgba(255, 255, 255, 0.5);
+  filter: brightness(1.4) contrast(1.2) saturate(1.4);
+}
+
+/* Special styling for the image itself to complete the frame effect */
+.hero-image .maasai-framed-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 4px solid var(--bead-white);
+  background-color: var(--shuka-white);
+  transition: all 0.5s ease;
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* Custom styling for WordPress custom logo in frame */
+.hero-image .maasai-image-frame .custom-logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  border: 4px solid var(--bead-white);
+  transition: all 0.5s ease;
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* Add a decorative bead animation for the inner frame with enhanced sparkles */
+.hero-image .maasai-image-frame-inner::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: 
+    /* Create a subtle animated ring around the image */
+    radial-gradient(circle at 20% 20%, var(--bead-yellow) 3px, transparent 3.5px),
+    radial-gradient(circle at 80% 20%, var(--bead-red) 3px, transparent 3.5px),
+    radial-gradient(circle at 20% 80%, var(--bead-blue) 3px, transparent 3.5px),
+    radial-gradient(circle at 80% 80%, var(--bead-white) 3px, transparent 3.5px);
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  animation: innerBeadFlow 10s infinite alternate;
+  opacity: 0.9;
+  border-radius: 4px;
+  filter: brightness(1.2);
+}
+
+/* Add sparkle highlights to corners of the frame for extra vibrancy */
+.hero-image .maasai-image-frame::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: 
+    /* Create sparkle highlights at the corners */
+    radial-gradient(circle at 5% 5%, rgba(255, 255, 255, 0.8) 2px, rgba(255, 255, 255, 0.4) 4px, transparent 6px),
+    radial-gradient(circle at 95% 5%, rgba(255, 255, 255, 0.8) 2px, rgba(255, 255, 255, 0.4) 4px, transparent 6px),
+    radial-gradient(circle at 5% 95%, rgba(255, 255, 255, 0.8) 2px, rgba(255, 255, 255, 0.4) 4px, transparent 6px),
+    radial-gradient(circle at 95% 95%, rgba(255, 255, 255, 0.8) 2px, rgba(255, 255, 255, 0.4) 4px, transparent 6px);
+  background-repeat: no-repeat;
+  animation: frameSparkle 5s infinite alternate ease-in-out;
+  z-index: 25;
+}
+
+/* Special sparkle animation for frame highlights */
+@keyframes frameSparkle {
+  0%, 100% {
+    opacity: 0.3;
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 0.9;
+    filter: blur(0px);
+  }
+}
+
+/* Add a delicate animation for the inner frame beads */
+@keyframes innerBeadFlow {
+  0% {
+    background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%;
+    opacity: 0.7;
+  }
+  50% {
+    background-position: 5% 5%, 95% 5%, 5% 95%, 95% 95%;
+    opacity: 0.9;
+  }
+  100% {
+    background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%;
+    opacity: 0.7;
+  }
+}

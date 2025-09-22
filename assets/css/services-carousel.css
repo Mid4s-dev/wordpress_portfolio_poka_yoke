@@ -1,0 +1,105 @@
+/**
+ * Services Carousel Specific Styles
+ */
+
+/* Carousel container styling */
+.portfolio-services-carousel {
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Fix for service card heights in the carousel */
+.portfolio-services-carousel .swiper-slide {
+    height: auto !important;
+}
+
+/* Override the border colors with our theme variables */
+.portfolio-services-carousel .portfolio-service {
+    border-color: var(--card-background, #F3F4F6);
+}
+
+.portfolio-services-carousel .swiper-slide:nth-child(2n) .portfolio-service {
+    border-color: var(--primary-hover, #FFD300);
+    border-width: 1px;
+}
+
+.portfolio-services-carousel .swiper-slide:nth-child(3n) .portfolio-service {
+    border-color: var(--primary-color, #800000);
+    border-width: 1px;
+}
+
+/* Service featured badge with Maasai theme colors */
+.portfolio-services-carousel .service-featured-badge {
+    background-color: var(--primary-color, #800000) !important;
+}
+
+/* Service icon coloring */
+.portfolio-services-carousel .service-icon {
+    background-color: rgba(128, 0, 0, 0.1);
+}
+
+.portfolio-services-carousel .service-icon img,
+.portfolio-services-carousel .service-icon i,
+.portfolio-services-carousel .service-icon .dashicons {
+    color: var(--primary-color, #800000);
+}
+
+.portfolio-services-carousel .service-icon:hover img,
+.portfolio-services-carousel .service-icon:hover i,
+.portfolio-services-carousel .service-icon:hover .dashicons {
+    color: var(--primary-hover, #FFD300);
+}
+
+/* Service title underline */
+.portfolio-services-carousel .service-title:after {
+    background-color: var(--primary-color, #800000);
+}
+
+/* Learn more button styling */
+.portfolio-services-carousel .service-link a.button {
+    background-color: var(--primary-color, #800000);
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.portfolio-services-carousel .service-link a.button:hover {
+    background-color: var(--primary-hover, #FFD300);
+    color: var(--text-color, #111827);
+    transform: translateY(-2px);
+}
+
+/* Featured service cards */
+.portfolio-services-carousel .portfolio-service.service-featured {
+    border-color: var(--primary-hover, #FFD300);
+    border-width: 2px;
+}
+
+/* Highlighting different card types */
+.portfolio-services-carousel .portfolio-service:nth-child(3n+1) .service-icon {
+    background-color: rgba(128, 0, 0, 0.1);
+}
+
+.portfolio-services-carousel .portfolio-service:nth-child(3n+2) .service-icon {
+    background-color: rgba(255, 211, 0, 0.2);
+}
+
+.portfolio-services-carousel .portfolio-service:nth-child(3n+3) .service-icon {
+    background-color: rgba(243, 244, 246, 0.7);
+}
+
+/* Animation for service icons */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.portfolio-services-carousel .portfolio-service:hover .service-icon {
+    animation: pulse 2s infinite;
+}

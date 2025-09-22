@@ -300,6 +300,7 @@ class Portfolio_Campaigns {
             'platform' => '',
             'orderby'  => 'date',
             'order'    => 'DESC',
+            'layout'   => 'grid', // grid or carousel
         ), $atts);
         
         $args = array(
@@ -338,28 +339,29 @@ class Portfolio_Campaigns {
         }
         
         ob_start();
-        ?>
-        <div class="portfolio-campaigns-container">
-            <div class="portfolio-campaigns-grid">
-                <?php while ($campaigns->have_posts()) : $campaigns->the_post(); ?>
-                    <?php
-                    $url = get_post_meta(get_the_ID(), '_campaign_url', true);
-                    $date = get_post_meta(get_the_ID(), '_campaign_date', true);
-                    $platform = get_post_meta(get_the_ID(), '_campaign_platform', true);
-                    $embed_code = get_post_meta(get_the_ID(), '_campaign_embed_code', true);
-                    
-                    $formatted_date = !empty($date) ? date_i18n(get_option('date_format'), strtotime($date)) : '';
-                    $platform_icon = $this->get_platform_icon($platform);
+        
+        // Check if we're using carousel layout
+        if ($atts['layout'] === 'carousel') {
+            ?>
+            <div class="campaigns-carousel">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                    <?php while ($campaigns->have_posts()) : $campaigns->the_post(); 
+                        $url = get_post_meta(get_the_ID(), '_campaign_url', true);
+                        $date = get_post_meta(get_the_ID(), '_campaign_date', true);
+                        $platform = get_post_meta(get_the_ID(), '_campaign_platform', true);
+                        $embed_code = get_post_meta(get_the_ID(), '_campaign_embed_code', true);
+                        
+                        $formatted_date = !empty($date) ? date_i18n(get_option('date_format'), strtotime($date)) : '';
+                        $platform_icon = $this->get_platform_icon($platform);
                     ?>
-                    
-                    <div class="portfolio-campaign-item">
-                        <div class="portfolio-campaign-content">
-                            <?php if (!empty($embed_code)) : ?>
-                                <div class="portfolio-campaign-embed">
-                                    <?php echo wp_kses_post($embed_code); ?>
-                                </div>
-                            <?php else : ?>
-                                <div class="portfolio-campaign-preview">
+                        <div class="swiper-slide">
+                            <div class="portfolio-campaign-item">
+                                <?php if (!empty($embed_code)) : ?>
+                                    <div class="portfolio-campaign-embed">
+                                        <?php echo wp_kses_post($embed_code); ?>
+                                    </div>
+                                <?php else : ?>
                                     <?php if (has_post_thumbnail()) : ?>
                                         <div class="portfolio-campaign-thumbnail">
                                             <?php if (!empty($url)) : ?>
@@ -371,51 +373,141 @@ class Portfolio_Campaigns {
                                             <?php endif; ?>
                                         </div>
                                     <?php endif; ?>
+                                <?php endif; ?>
+                                
+                                <div class="portfolio-campaign-content">
+                                    <h3 class="portfolio-campaign-title">
+                                        <?php if (!empty($url)) : ?>
+                                            <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener">
+                                                <?php the_title(); ?>
+                                            </a>
+                                        <?php else : ?>
+                                            <?php the_title(); ?>
+                                        <?php endif; ?>
+                                    </h3>
                                     
                                     <div class="portfolio-campaign-excerpt">
-                                        <h3 class="portfolio-campaign-title">
-                                            <?php if (!empty($url)) : ?>
-                                                <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener">
-                                                    <?php the_title(); ?>
-                                                </a>
-                                            <?php else : ?>
-                                                <?php the_title(); ?>
-                                            <?php endif; ?>
-                                        </h3>
+                                        <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
+                                    </div>
+                                    
+                                    <div class="portfolio-campaign-meta">
+                                        <?php if (!empty($platform)) : ?>
+                                            <span class="portfolio-campaign-platform">
+                                                <span class="dashicons <?php echo esc_attr($platform_icon); ?>"></span>
+                                                <?php echo esc_html(ucfirst($platform)); ?>
+                                            </span>
+                                        <?php endif; ?>
                                         
-                                        <?php the_excerpt(); ?>
-                                        
-                                        <?php if (!empty($url)) : ?>
-                                            <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener" class="portfolio-campaign-link">
-                                                <?php _e('View Original', 'portfolio'); ?> <span class="screen-reader-text"><?php _e('(opens in a new tab)', 'portfolio'); ?></span>
-                                            </a>
+                                        <?php if (!empty($formatted_date)) : ?>
+                                            <span class="portfolio-campaign-date">
+                                                <span class="dashicons dashicons-calendar-alt"></span>
+                                                <?php echo esc_html($formatted_date); ?>
+                                            </span>
                                         <?php endif; ?>
                                     </div>
+                                    
+                                    <?php if (!empty($url)) : ?>
+                                        <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener" class="portfolio-campaign-link">
+                                            <span class="dashicons dashicons-external"></span> <?php _e('View Campaign', 'portfolio'); ?>
+                                        </a>
+                                    <?php endif; ?>
                                 </div>
-                            <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+                
+                <!-- Add pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Navigation arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <?php
+        } else {
+            // Standard grid layout
+            ?>
+            <div class="portfolio-campaigns-container">
+                <div class="portfolio-campaigns-grid">
+                    <?php while ($campaigns->have_posts()) : $campaigns->the_post(); ?>
+                        <?php
+                        $url = get_post_meta(get_the_ID(), '_campaign_url', true);
+                        $date = get_post_meta(get_the_ID(), '_campaign_date', true);
+                        $platform = get_post_meta(get_the_ID(), '_campaign_platform', true);
+                        $embed_code = get_post_meta(get_the_ID(), '_campaign_embed_code', true);
+                        
+                        $formatted_date = !empty($date) ? date_i18n(get_option('date_format'), strtotime($date)) : '';
+                        $platform_icon = $this->get_platform_icon($platform);
+                        ?>
+                        
+                        <div class="portfolio-campaign-item">
+                            <div class="portfolio-campaign-content">
+                                <?php if (!empty($embed_code)) : ?>
+                                    <div class="portfolio-campaign-embed">
+                                        <?php echo wp_kses_post($embed_code); ?>
+                                    </div>
+                                <?php else : ?>
+                                    <div class="portfolio-campaign-preview">
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <div class="portfolio-campaign-thumbnail">
+                                                <?php if (!empty($url)) : ?>
+                                                    <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener">
+                                                        <?php the_post_thumbnail('medium'); ?>
+                                                    </a>
+                                                <?php else : ?>
+                                                    <?php the_post_thumbnail('medium'); ?>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                        
+                                        <div class="portfolio-campaign-excerpt">
+                                            <h3 class="portfolio-campaign-title">
+                                                <?php if (!empty($url)) : ?>
+                                                    <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener">
+                                                        <?php the_title(); ?>
+                                                    </a>
+                                                <?php else : ?>
+                                                    <?php the_title(); ?>
+                                                <?php endif; ?>
+                                            </h3>
+                                            
+                                            <?php the_excerpt(); ?>
+                                            
+                                            <?php if (!empty($url)) : ?>
+                                                <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener" class="portfolio-campaign-link">
+                                                    <?php _e('View Original', 'portfolio'); ?> <span class="screen-reader-text"><?php _e('(opens in a new tab)', 'portfolio'); ?></span>
+                                                </a>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            
+                            <div class="portfolio-campaign-meta">
+                                <?php if (!empty($platform_icon)) : ?>
+                                    <span class="portfolio-campaign-platform">
+                                        <span class="dashicons <?php echo esc_attr($platform_icon); ?>"></span>
+                                        <?php echo esc_html(ucfirst($platform)); ?>
+                                    </span>
+                                <?php endif; ?>
+                                
+                                <?php if (!empty($formatted_date)) : ?>
+                                    <span class="portfolio-campaign-date">
+                                        <span class="dashicons dashicons-calendar-alt"></span>
+                                        <?php echo esc_html($formatted_date); ?>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
                         </div>
                         
-                        <div class="portfolio-campaign-meta">
-                            <?php if (!empty($platform_icon)) : ?>
-                                <span class="portfolio-campaign-platform">
-                                    <span class="dashicons <?php echo esc_attr($platform_icon); ?>"></span>
-                                    <?php echo esc_html(ucfirst($platform)); ?>
-                                </span>
-                            <?php endif; ?>
-                            
-                            <?php if (!empty($formatted_date)) : ?>
-                                <span class="portfolio-campaign-date">
-                                    <span class="dashicons dashicons-calendar-alt"></span>
-                                    <?php echo esc_html($formatted_date); ?>
-                                </span>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
+                </div>
             </div>
-        </div>
-        <?php
+            <?php
+        }
+        
         wp_reset_postdata();
         
         return ob_get_clean();

@@ -1,0 +1,186 @@
+/**
+ * Services Styles
+ * This file contains styles for displaying services on the frontend.
+ */
+
+/* Common service styles */
+.portfolio-services {
+    margin: 2rem 0;
+}
+
+.portfolio-service {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Featured badge */
+.service-featured-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #ed8936;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 10;
+}
+
+/* Featured service style */
+.portfolio-service.service-featured {
+    border: 2px solid #ed8936;
+}
+
+/* Service header with icon and title */
+.service-header {
+    padding: 1.5rem 1.5rem 0.5rem;
+    text-align: center;
+}
+
+.service-icon {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.service-icon img {
+    max-height: 80px;
+    width: auto;
+}
+
+.service-icon .dashicons,
+.service-icon i {
+    font-size: 3rem;
+    color: #4299e1;
+}
+
+.service-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: #2d3748;
+}
+
+/* Service content */
+.service-content {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.service-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+/* Service meta information */
+.service-meta {
+    margin: 1.5rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    color: #718096;
+    font-size: 0.875rem;
+}
+
+.service-price,
+.service-duration {
+    margin-bottom: 0.5rem;
+}
+
+.service-price:last-child,
+.service-duration:last-child {
+    margin-bottom: 0;
+}
+
+/* Learn more button */
+.service-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.service-link .button {
+    display: inline-block;
+    background-color: #4299e1;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.service-link .button:hover {
+    background-color: #3182ce;
+}
+
+/* Grid layout */
+.portfolio-services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1.5rem;
+}
+
+/* Different column layouts */
+@media (min-width: 640px) {
+    .portfolio-services-grid.portfolio-services-columns-2,
+    .portfolio-services-grid.portfolio-services-columns-3,
+    .portfolio-services-grid.portfolio-services-columns-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .portfolio-services-grid.portfolio-services-columns-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .portfolio-services-grid.portfolio-services-columns-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* List layout */
+.portfolio-services-list .portfolio-service {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .portfolio-services-list .portfolio-service {
+        flex-direction: row;
+    }
+    
+    .portfolio-services-list .service-header {
+        padding: 1.5rem;
+        width: 25%;
+        text-align: left;
+    }
+    
+    .portfolio-services-list .service-content {
+        width: 75%;
+        padding: 1.5rem;
+    }
+}
+
+/* Service in widget style */
+.widget .portfolio-services {
+    margin: 0;
+}
+
+.widget .portfolio-service {
+    padding: 1rem;
+}

@@ -85,12 +85,12 @@ class Portfolio_Campaigns_Dashboard {
             return;
         }
         
-        // Add custom CSS
+        // Use consolidated admin styles
         wp_enqueue_style(
-            'portfolio-campaigns-admin-css',
-            get_template_directory_uri() . '/assets/css/campaigns-admin.css',
+            'portfolio-admin',
+            get_template_directory_uri() . '/assets/css/admin.css',
             array(),
-            filemtime(get_template_directory() . '/assets/css/campaigns-admin.css')
+            filemtime(get_template_directory() . '/assets/css/admin.css')
         );
         
         // Add Chart.js
