@@ -438,6 +438,12 @@ require_once get_template_directory() . '/inc/gmail-api.php';
 // Include profile image functionality
 require_once get_template_directory() . '/inc/profile-image.php';
 
+// Include visitor tracking
+require_once get_template_directory() . '/inc/visitor-tracking.php';
+
+// Include visitor analytics admin page
+require_once get_template_directory() . '/inc/visitor-analytics.php';
+
 // Manually flush rewrite rules on theme init to fix potential permalink issues
 function portfolio_manual_flush_rewrite_rules() {
     if (get_option('portfolio_flush_rewrite_rules_flag')) {
